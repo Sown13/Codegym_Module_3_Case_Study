@@ -3,7 +3,7 @@ package dao;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface IDAO<T> {
+public interface IGeneralDAO<T> {
     public void insert(T t) throws SQLException;
 
     public T select(String id);
