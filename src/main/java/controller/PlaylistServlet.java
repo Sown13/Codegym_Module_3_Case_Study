@@ -61,7 +61,7 @@ public class PlaylistServlet extends HttpServlet {
                     break;
             }
         } catch (SQLException e){
-            throw new ServletException(e);
+            throw new ServletException(e)
         }
     }
 
