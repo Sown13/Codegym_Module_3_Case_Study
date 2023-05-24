@@ -1,4 +1,4 @@
 package dao.like;
 
-public interface ILikeDAO extends IGe{
+public interface ILikeDAO{
 }
