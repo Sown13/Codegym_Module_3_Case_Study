@@ -3,34 +3,38 @@ package model;
 import java.sql.Timestamp;
 
 public class Song {
-    private int s_id;
+    private String s_id;
     private String song_name;
     private String author;
-    private Timestamp upload_day;
+    private Timestamp upload_date;
     private String song_url;
     private int listening_frequency;
     private String label;
     private int u_id;
 
-    public Song() {
+    public Song(String id, String song_name, String author, Timestamp upload_date, int listening_frequency, int listeningFrequency, String label){}
+    public Song(String s_id,String song_name,Timestamp upload_date,String author,String song_url,int listening_frequency,String label){
+        this.s_id=s_id;
+        this.song_name=song_name;
+        this.author=author;
+        this.song_url=song_url;
+        this.label=label;
+        this.upload_date=upload_date;
+        this.listening_frequency=listening_frequency;
+
+    }
+    public Song(String song_name,String author,String song_url,String label){
+        this.song_name=song_name;
+        this.author=author;
+        this.song_url=song_url;
+        this.label=label;
     }
 
-    public Song(int s_id, String song_name, String author, Timestamp upload_day, String song_url, int listening_frequency, String label, int u_id) {
-        this.s_id = s_id;
-        this.song_name = song_name;
-        this.author = author;
-        this.upload_day = upload_day;
-        this.song_url = song_url;
-        this.listening_frequency = listening_frequency;
-        this.label = label;
-        this.u_id = u_id;
-    }
-
-    public int getS_id() {
+    public String getS_id() {
         return s_id;
     }
 
-    public void setS_id(int s_id) {
+    public void setS_id(String s_id) {
         this.s_id = s_id;
     }
 
@@ -50,12 +54,12 @@ public class Song {
         this.author = author;
     }
 
-    public Timestamp getUpload_day() {
-        return upload_day;
+    public Timestamp getUpload_date() {
+        return upload_date;
     }
 
-    public void setUpload_day(Timestamp upload_day) {
-        this.upload_day = upload_day;
+    public void setUpload_date(Timestamp upload_date) {
+        this.upload_date = upload_date;
     }
 
     public String getSong_url() {

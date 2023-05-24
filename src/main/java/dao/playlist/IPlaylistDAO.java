@@ -1,7 +1,8 @@
 package dao.playlist;
 
 import dao.IDAO;
+import model.PlayList;
 
-public interface IPlaylistDAO extends IDAO<Playlist> {
+public interface IPlaylistDAO extends IDAO<PlayList> {
 
 }
