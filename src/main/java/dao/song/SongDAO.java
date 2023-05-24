@@ -1,6 +1,7 @@
 package dao.song;
 
 import model.Song;
+import sun.security.x509.ReasonFlags;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ public class SongDAO implements ISongDAO {
     private static final String SELECT_song_BY_ID = "SELECT s_id,song_name,author,upload_date,song_url,label,listening_frequency";
     private static final String SELECT_ALL_song = "SELECT FORM*song";
     private static final String DELETE_song_SQL = "DELETE FROM song WHERE id=?";
+    private static final String Max_listen_song_SQL="SELECT FROM* song WHERE listening_frequency=? ORDER BY listening_frequency DESC";
+    private static final String Search_songName_song_SQL = "SELECT * FROM song WHERE name_song like=%name_song% ";
     private static final String UPDATE_USERS_SQL = "UPDATE song s_name=?,author=?,song_url=?,label=?";
 
     public SongDAO() {
@@ -31,6 +34,7 @@ public class SongDAO implements ISongDAO {
             e.printStackTrace();
         }
         return connection;
+
     }
 
     @Override
@@ -46,7 +50,10 @@ public class SongDAO implements ISongDAO {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
+
         }
+
+
     }
 
 
@@ -107,15 +114,16 @@ public class SongDAO implements ISongDAO {
 
     @Override
     public boolean update(Song song) throws SQLException {
-      boolean checkSong;
-      try(Connection connection=getConnection();
-      PreparedStatement statement=connection.prepareStatement(UPDATE_USERS_SQL )) {
-          statement.setString(1,song.getSong_name());
-          statement.setString(2,song.getAuthor());
-          statement.setString(3,song.getSong_url());
-          statement.setString(4,song.getLabel());
-          checkSong=statement.executeUpdate()>0;
-      }return checkSong;
+        boolean checkSong;
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL)) {
+            statement.setString(1, song.getSong_name());
+            statement.setString(2, song.getAuthor());
+            statement.setString(3, song.getSong_url());
+            statement.setString(4, song.getLabel());
+            checkSong = statement.executeUpdate() > 0;
+        }
+        return checkSong;
     }
 
     private void printSQLException(SQLException ex) {
@@ -132,5 +140,56 @@ public class SongDAO implements ISongDAO {
                 }
             }
         }
+
     }
+
+    public List<Song> searchSong(String name) throws SQLException {
+        List<Song> songs = new ArrayList<>();
+        Song song  ;
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(Search_songName_song_SQL)) {
+            statement.setString(1, name);
+            System.out.println(statement);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                String name_song = rs.getString("song_name");
+                String author = rs.getString("author");
+                String song_url = rs.getString("song_url");
+                String label = rs.getString("label");
+                song = new Song(name_song, author, song_url, label);
+                songs.add(song);
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return songs;
+    }
+
+    //chưa xử lí được lôgic nghiệp vụ .
+    public List<Song>ListMaxSong( int listening_frequency) throws  SQLException{
+        List<Song>songs=new ArrayList<>();
+        Song song;
+        try (Connection connection=getConnection();
+        PreparedStatement statement=connection.prepareStatement(Max_listen_song_SQL)) {
+            statement.setString(1, String.valueOf(listening_frequency));
+            System.out.println(statement);
+            System.out.println(statement);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                String name_song = rs.getString("song_name");
+                String author = rs.getString("author");
+                String song_url = rs.getString("song_url");
+                String label = rs.getString("label");
+                song = new Song(name_song, author, song_url, label);
+                songs.add(song);
+
+            }
+
+        }
+        return songs;
+    }
+
 }

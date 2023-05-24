@@ -34,6 +34,9 @@ public class SongServlet extends HttpServlet {
                 case "delete":
                     deleteSong(request,response);
                     break;
+                case "search":
+                    fromSearchName(request,response);
+                    break;
                 default:
                     listSong(request,response);
             }
@@ -55,9 +58,11 @@ public class SongServlet extends HttpServlet {
               case "createSong":
                   createSong(request,response);
                   break;
-
               case "editSong":
                   editSong(request,response);
+                  break;
+              case "search":
+                  searchName(request,response);
                   break;
           }
 
@@ -111,6 +116,18 @@ public class SongServlet extends HttpServlet {
         songDAO.delete(id);
         List<Song>songs=songDAO.selectAll();
         request.setAttribute("songs",songs);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/view/listSong.jsp");
+        dispatcher.forward(request,response);
+    }
+    private void fromSearchName(HttpServletRequest request,HttpServletResponse response)
+        throws ServletException,SQLException,IOException{
+        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/view/fromSearch.jsp");
+        dispatcher.forward(request,response);
+    }
+    private void searchName(HttpServletRequest request,HttpServletResponse response)
+        throws ServletException,SQLException,IOException{
+        String name_song=request.getParameter("song_name");
+        songDAO.searchSong(name_song);
         RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/view/listSong.jsp");
         dispatcher.forward(request,response);
     }
