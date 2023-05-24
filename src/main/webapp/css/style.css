@@ -1,13 +1,56 @@
 body {
-    background: white;
-}
-main {
     background: black;
 }
 .side-bar-up, .side-bar-down {
-    margin: 10px;
+    /*margin: 10px;*/
 
 }
 .main-display {
     /*border: white solid 1px;*/
 }
+.list-group-item-hover a:hover{
+    background-color: gray;
+}
+.table tbody tr.highlight td {
+    background-color: #ddd;
+}
+
+.input-box{
+    position: relative;
+}
+
+.form{
+    position: relative;
+}
+
+.form .fa-search{
+
+    position: absolute;
+    top:10px;
+    left: 10px;
+    color: #9ca3af;
+
+}
+
+.form span{
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db;
+
+}
+
+.form-input{
+
+    height: 35px;
+    text-indent: 33px;
+    border-radius: 40px;
+}
+
+.form-input:focus{
+
+    box-shadow: none;
+    border:none;
+}
+
