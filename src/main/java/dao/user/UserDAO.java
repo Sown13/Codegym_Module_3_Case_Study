@@ -2,7 +2,6 @@ package dao.user;
 
 import model.User;
 
-<<<<<<< HEAD
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +44,7 @@ public class UserDAO implements IUserDAO {
             }
         }
     }
+
     @Override
     public void insert(User user) throws SQLException {
         try (Connection connection = getConnection();
@@ -54,8 +54,7 @@ public class UserDAO implements IUserDAO {
             preparedStatement.setString(3, user.getFullname());
             preparedStatement.setString(4, user.getAddress());
             preparedStatement.setString(5, user.getEmail());
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             printSQLException(e);
         }
     }
@@ -73,55 +72,35 @@ public class UserDAO implements IUserDAO {
                 String fullname = rs.getString("fullname");
                 String address = rs.getString("address");
                 String email = rs.getString("email");
-                user = new User(user_name,fullname,address,email);
+                user = new User(user_name, fullname, address, email);
             }
         } catch (SQLException e) {
             printSQLException(e);
         }
         return user;
-=======
-import java.sql.SQLException;
-import java.util.List;
-
-public class UserDAO implements IUserDAO{
-    @Override
-    public void insert(User user) throws SQLException {
-
-    }
-
-    @Override
-    public User select(String id) {
-        return null;
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 
     @Override
     public List<User> selectAll() {
-<<<<<<< HEAD
-        List<User> users =new ArrayList<>();
+        List<User> users = new ArrayList<>();
         try (Connection connection = getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS)){
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS)) {
             ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 String user_name = rs.getString("user_name");
                 String fullname = rs.getString("fullname");
                 String address = rs.getString("address");
                 String email = rs.getString("email");
-                users.add(new User(user_name,fullname,address,email));
+                users.add(new User(user_name, fullname, address, email));
             }
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             printSQLException(e);
         }
         return users;
-=======
-        return null;
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 
     @Override
     public boolean delete(String id) throws SQLException {
-<<<<<<< HEAD
         boolean rowDeleted;
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);) {
@@ -129,14 +108,10 @@ public class UserDAO implements IUserDAO{
             rowDeleted = statement.executeUpdate() > 0;
         }
         return rowDeleted;
-=======
-        return false;
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 
     @Override
     public boolean update(User user) throws SQLException {
-<<<<<<< HEAD
         boolean rowUpdated;
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL)) {
@@ -148,9 +123,6 @@ public class UserDAO implements IUserDAO{
             rowUpdated = statement.executeUpdate() > 0;
         }
         return rowUpdated;
-=======
-        return false;
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 }
 

@@ -17,9 +17,10 @@ import java.util.List;
 public class UserServlet extends HttpServlet {
     private UserDAO userDAO;
 
+
     @Override
     public void init() {
-        UserDAO userDAO = new UserDAO();
+        this.userDAO = new UserDAO();
     }
 
     @Override
@@ -98,6 +99,7 @@ public class UserServlet extends HttpServlet {
     protected void showDeleteForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/deleteUser.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void insertUser(HttpServletRequest request, HttpServletResponse response)
@@ -135,5 +137,4 @@ public class UserServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listUser.jsp");
         dispatcher.forward(request, response);
     }
-
 }

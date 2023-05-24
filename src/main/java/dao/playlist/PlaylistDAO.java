@@ -2,21 +2,11 @@ package dao.playlist;
 
 import model.PlayList;
 
-<<<<<<< HEAD
-import java.sql.SQLException;
-import java.util.List;
-
-public class PlaylistDAO implements IPlayListDAO{
-
-    @Override
-    public void insert(PlayList playList) throws SQLException {
-
-=======
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlaylistDAO implements IPlaylistDAO{
+public class PlaylistDAO implements IPlayListDAO{
     private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "25546912$oN";
@@ -52,14 +42,10 @@ public class PlaylistDAO implements IPlaylistDAO{
         }catch (SQLException e){
             printSQLException(e);
         }
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 
     @Override
     public PlayList select(String id) {
-<<<<<<< HEAD
-        return null;
-=======
         PlayList playList = null;
         try (Connection cn = getConnection(); PreparedStatement ps = cn.prepareStatement(SELECT_PLAYLIST_BY_ID)){
             ps.setString(1, id);
@@ -74,14 +60,10 @@ public class PlaylistDAO implements IPlaylistDAO{
             printSQLException(e);
         }
         return playList;
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 
     @Override
     public List<PlayList> selectAll() {
-<<<<<<< HEAD
-        return null;
-=======
         List<PlayList> playLists = new ArrayList<>();
         try (Connection cn = getConnection();
         PreparedStatement ps = cn.prepareStatement(SELECT_ALL_PLAYLIST)){
@@ -97,19 +79,10 @@ public class PlaylistDAO implements IPlaylistDAO{
             printSQLException(e);
         }
         return playLists;
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 
     @Override
     public boolean delete(String id) throws SQLException {
-<<<<<<< HEAD
-        return false;
-    }
-
-    @Override
-    public boolean update(PlayList playList) throws SQLException {
-        return false;
-=======
        boolean rowDelete;
        try (Connection cn = getConnection();
        PreparedStatement ps = cn.prepareStatement(DELETE_PLAYLIST_SQL)){
@@ -144,6 +117,5 @@ public class PlaylistDAO implements IPlaylistDAO{
                 }
             }
         }
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 }

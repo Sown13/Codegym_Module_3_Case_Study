@@ -2,14 +2,6 @@ package dao.song;
 
 import model.Song;
 
-<<<<<<< HEAD
-import java.sql.SQLException;
-import java.util.List;
-
-public class SongDAO implements ISongDAO{
-    @Override
-    public void insert(Song song) throws SQLException {
-=======
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,15 +31,9 @@ public class SongDAO implements ISongDAO {
             e.printStackTrace();
         }
         return connection;
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
-
     }
 
     @Override
-<<<<<<< HEAD
-    public Song select(String id) {
-        return null;
-=======
     public void insert(Song song) throws SQLException {
         System.out.println(INSERT_song_SQL);
         try (Connection connection = getConnection();
@@ -60,10 +46,7 @@ public class SongDAO implements ISongDAO {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
-
         }
-
-
     }
 
 
@@ -86,14 +69,10 @@ public class SongDAO implements ISongDAO {
             printSQLException(e);
         }
         return song;
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 
     @Override
     public List<Song> selectAll() {
-<<<<<<< HEAD
-        return null;
-=======
         List<Song> songs = new ArrayList<>();
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_ALL_song)) {
@@ -113,14 +92,10 @@ public class SongDAO implements ISongDAO {
             printSQLException(e);
         }
         return songs;
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 
     @Override
     public boolean delete(String id) throws SQLException {
-<<<<<<< HEAD
-        return false;
-=======
         boolean checkRow;
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_song_SQL)) {
@@ -128,14 +103,10 @@ public class SongDAO implements ISongDAO {
             checkRow = statement.executeUpdate() > 0;
         }
         return checkRow;
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 
     @Override
     public boolean update(Song song) throws SQLException {
-<<<<<<< HEAD
-        return false;
-=======
       boolean checkSong;
       try(Connection connection=getConnection();
       PreparedStatement statement=connection.prepareStatement(UPDATE_USERS_SQL )) {
@@ -161,7 +132,5 @@ public class SongDAO implements ISongDAO {
                 }
             }
         }
-
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     }
 }
