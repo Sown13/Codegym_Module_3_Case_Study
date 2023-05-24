@@ -1,11 +1,7 @@
 package model;
 
 public class PlayList {
-<<<<<<< HEAD
     private String p_id;
-=======
-    private String  p_id;
->>>>>>> 6b362124dd44226daed17b1661ce761585d8c243
     private String p_name;
     private String u_id;
 
