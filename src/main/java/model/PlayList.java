@@ -1,7 +1,7 @@
 package model;
 
 public class PlayList {
-    private String  p_id;
+    private String p_id;
     private String p_name;
     private String u_id;
 

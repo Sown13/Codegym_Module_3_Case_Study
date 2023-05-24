@@ -5,7 +5,7 @@ CREATE TABLE users (
 u_id int auto_increment primary key,
 user_name varchar(50) not null unique,
 password varchar(50) not null,
-full_name varchar(255),
+fullname varchar(255),
 address varchar(255),
 email varchar(255) not null unique
 );

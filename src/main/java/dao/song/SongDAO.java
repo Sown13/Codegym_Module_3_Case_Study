@@ -31,7 +31,6 @@ public class SongDAO implements ISongDAO {
             e.printStackTrace();
         }
         return connection;
-
     }
 
     @Override
@@ -47,10 +46,7 @@ public class SongDAO implements ISongDAO {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
-
         }
-
-
     }
 
 
@@ -136,6 +132,5 @@ public class SongDAO implements ISongDAO {
                 }
             }
         }
-
     }
 }

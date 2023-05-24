@@ -1,16 +1,33 @@
 package model;
 
 public class User {
-    private int u_id;
+    private String u_id;
     private String user_name;
     private String password;
+    private String fullname;
     private String address;
     private String email;
 
-    public User(int u_id, String user_name, String password, String address, String email) {
+    public User(String u_id, String user_name, String password,String fullname, String address, String email) {
         this.u_id = u_id;
         this.user_name = user_name;
         this.password = password;
+        this.fullname = fullname;
+        this.address = address;
+        this.email = email;
+    }
+
+    public User(String user_name, String password, String fullname, String address, String email) {
+        this.user_name = user_name;
+        this.password = password;
+        this.fullname = fullname;
+        this.address = address;
+        this.email = email;
+    }
+
+    public User(String user_name, String fullname, String address, String email) {
+        this.user_name = user_name;
+        this.fullname = fullname;
         this.address = address;
         this.email = email;
     }
@@ -18,11 +35,11 @@ public class User {
     public User() {
     }
 
-    public int getU_id() {
+    public String getU_id() {
         return u_id;
     }
 
-    public void setU_id(int u_id) {
+    public void setU_id(String u_id) {
         this.u_id = u_id;
     }
 
@@ -56,5 +73,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 }

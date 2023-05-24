@@ -1,7 +1,7 @@
 package dao.song;
 
-import dao.IDAO;
+import dao.IGeneralDAO;
 import model.Song;
 
-public interface ISongDAO extends IDAO<Song> {
+public interface ISongDAO extends IGeneralDAO<Song> {
 }
