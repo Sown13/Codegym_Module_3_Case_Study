@@ -5,5 +5,4 @@ import model.PlayList;
 
 public interface IPlaylistDAO extends IGeneralDAO<PlayList> {
 
-
 }
