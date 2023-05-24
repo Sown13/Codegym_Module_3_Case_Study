@@ -1,7 +1,13 @@
 body {
+    background: white;
+}
+main {
     background: black;
 }
 .side-bar-up, .side-bar-down {
     margin: 10px;
 
+}
+.main-display {
+    /*border: white solid 1px;*/
 }
