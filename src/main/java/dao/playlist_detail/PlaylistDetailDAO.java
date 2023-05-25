@@ -2,12 +2,10 @@ package dao.playlist_detail;
 
 import model.PlaylistDetail;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
-public class PlaylistDetailDAO implements IPlaylistDetailDAO{
+public class PlaylistDetailDAO implements IPlaylistDetailDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "25546912$oN";
@@ -46,14 +44,34 @@ public class PlaylistDetailDAO implements IPlaylistDetailDAO{
             }
         }
     }
+
     @Override
     public void insert(PlaylistDetail playlistDetail) throws SQLException {
-
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PLAYLISTDETAIL_SQL)) {
+            preparedStatement.setString(1, playlistDetail.getSongId());
+            preparedStatement.setString(2, playlistDetail.getPd_id());
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
     }
 
     @Override
     public PlaylistDetail select(String id) {
-        return null;
+        PlaylistDetail playlistDetail = null;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PLAYLISTDETAIL_BY_ID)) {
+            preparedStatement.setString(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                String songID = rs.getString("s_id");
+                String playlistID = rs.getString("p_id");
+                playlistDetail = new PlaylistDetail(songID, playlistID);
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return playlistDetail;
     }
 
     @Override
@@ -63,11 +81,25 @@ public class PlaylistDetailDAO implements IPlaylistDetailDAO{
 
     @Override
     public boolean delete(String id) throws SQLException {
-        return false;
+        boolean rowDeleted;
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_PLAYLISTDETAIL_SQL);) {
+            statement.setString(1, id);
+            rowDeleted = statement.executeUpdate() > 0;
+        }
+        return rowDeleted;
     }
 
     @Override
     public boolean update(PlaylistDetail playlistDetail) throws SQLException {
-        return false;
+        boolean rowUpdated;
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_PLAYLISTDETAIL_SQL)) {
+            statement.setString(1, playlistDetail.getSongId());
+            statement.setString(2, playlistDetail.getPlaylistId());
+
+            rowUpdated = statement.executeUpdate() > 0;
+        }
+        return rowUpdated;
     }
 }

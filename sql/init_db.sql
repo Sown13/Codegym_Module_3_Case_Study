@@ -21,6 +21,9 @@ label varchar(50),
 u_id int,
 foreign key (u_id) references users(u_id)
 );
+alter table songs
+add column playing boolean default false;
+
 
 create table playlist (
 p_id int auto_increment primary key,
@@ -54,7 +57,6 @@ p_id int,
 foreign key (s_id) references songs(s_id),
 foreign key (p_id) references playlist(p_id)
 );
-
 
 
 
