@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommentDAO implements CommentI {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "25546912$oN";
     private static final String INSERT_comment_SQL = "INSET INTO comment(content,s_id,u_id)";

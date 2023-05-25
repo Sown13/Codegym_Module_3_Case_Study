@@ -1,21 +1,20 @@
 package dao.song;
 
 import model.Song;
-import sun.security.x509.ReasonFlags;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SongDAO implements ISongDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "25546912$oN";
     private static final String INSERT_song_SQL = "INSERT INTO song(song_name,author,song_url,label) VALUES(?,?,?,?)";
     private static final String SELECT_song_BY_ID = "SELECT s_id,song_name,author,upload_date,song_url,label,listening_frequency";
     private static final String SELECT_ALL_song = "SELECT FORM*song";
     private static final String DELETE_song_SQL = "DELETE FROM song WHERE id=?";
-    private static final String Max_listen_song_SQL="SELECT FROM* song WHERE listening_frequency=? ORDER BY listening_frequency DESC";
+    private static final String Max_listen_song_SQL = "SELECT FROM* song WHERE listening_frequency=? ORDER BY listening_frequency DESC";
     private static final String Search_songName_song_SQL = "SELECT * FROM song WHERE name_song like=%name_song% ";
     private static final String UPDATE_USERS_SQL = "UPDATE song s_name=?,author=?,song_url=?,label=?";
 
@@ -145,7 +144,7 @@ public class SongDAO implements ISongDAO {
 
     public List<Song> searchSong(String name) throws SQLException {
         List<Song> songs = new ArrayList<>();
-        Song song  ;
+        Song song;
 
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(Search_songName_song_SQL)) {
@@ -167,7 +166,8 @@ public class SongDAO implements ISongDAO {
         }
         return songs;
     }
-//    public List<Song>ListMaxSong(int listening_frequency ) throws  SQLException{
+
+    //    public List<Song>ListMaxSong(int listening_frequency ) throws  SQLException{
 //        List<Song>songs=new ArrayList<>();
 //        Song song;
 //        try (Connection connection=getConnection();
@@ -188,23 +188,46 @@ public class SongDAO implements ISongDAO {
 //        }
 //        return songs;
 //    }
-    public List<Song>range()throws SQLException {
-        List<Song>songList=new ArrayList<>();
+    public List<Song> range() throws SQLException {
+        List<Song> songList = new ArrayList<>();
         Song song;
-        try (Connection connection=getConnection();
-        PreparedStatement statement=connection.prepareStatement(Max_listen_song_SQL)) {
-         ResultSet resultSet= statement.executeQuery(Max_listen_song_SQL);
-         while (resultSet.next()){
-             String name_song=resultSet.getString("name_song");
-             String author=resultSet.getString("author");
-             String song_url=resultSet.getString("song_url");
-             String label=resultSet.getString("label");
-             song=new Song(name_song,author,song_url,label);
-             songList.add(song);
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(Max_listen_song_SQL)) {
+            ResultSet resultSet = statement.executeQuery(Max_listen_song_SQL);
+            while (resultSet.next()) {
+                String name_song = resultSet.getString("name_song");
+                String author = resultSet.getString("author");
+                String song_url = resultSet.getString("song_url");
+                String label = resultSet.getString("label");
+                song = new Song(name_song, author, song_url, label);
+                songList.add(song);
 
-         }
-         return songList;
+            }
+            return songList;
         }
     }
 
+    public void playing(String id) throws SQLException {
+        String play_sql = "UPDATE songs SET playing = true WHERE s_id = ?;";
+        String stop_sql = "UPDATE songs SET playing = false WHERE s_id = ?;";
+        String status_sql = "SELECT status FROM songs WHERE s_id = ?";
+        Connection connection = getConnection();
+        PreparedStatement statement = connection.prepareStatement(status_sql);
+        try {
+            statement.setString(1, id);
+            boolean status = statement.execute();
+            if (status) {
+                statement = connection.prepareStatement(stop_sql);
+                statement.execute();
+            } else {
+                statement = connection.prepareStatement(play_sql);
+                statement.execute();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connection.close();
+            statement.close();
+        }
+    }
 }

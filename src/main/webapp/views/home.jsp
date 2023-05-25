@@ -21,7 +21,7 @@
     <div class="container mt-3">
         <div class="row">
             <jsp:include page="side-bar.jsp"/>
-            <div class="col-9">
+            <div class="col-9 overflow-auto" style="height: 90vh">
                 <section class="album-slider w-auto bg-dark p-3">
                     <jsp:include page="search-bar.jsp"/>
                     <div id="myCarousel" class="carousel slide mt-5 mb-0" data-bs-ride="carousel">

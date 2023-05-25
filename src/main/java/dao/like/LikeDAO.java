@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LikeDAO implements ILikeDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "25546912$oN";
     private static final String INSERT_LIKE_SQL = "INSERT INTO likes (u_id, s_id) VALUES (?,?);";
@@ -16,6 +16,7 @@ public class LikeDAO implements ILikeDAO {
     private static final String DELETE_LIKE_SQL = "delete from likes where u_id = ?";
     private static final String UPDATE_LIKE_SQL = "update likes set u_id=?, s_id=?";
     private Like like;
+
 
     public LikeDAO() {
 
@@ -100,6 +101,7 @@ public class LikeDAO implements ILikeDAO {
         boolean rowUpdate;
         try(Connection cn = getConnection();
         PreparedStatement ps = cn.prepareStatement(UPDATE_LIKE_SQL)){
+
             ps.setString(1, like.getU_id());
             ps.setString(2, like.getS_id());
             rowUpdate = ps.executeUpdate()>0;
@@ -113,6 +115,7 @@ public class LikeDAO implements ILikeDAO {
         }
         return check;
     }
+
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

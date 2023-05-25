@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -43,6 +44,9 @@ public class UserServlet extends HttpServlet {
                     showDeleteForm(request, response);
                     break;
                 }
+                case "fromSign":
+                    showFormLogin(request,response);
+                    break;
                 default: {
                     getListUser(request, response);
                     break;
@@ -67,6 +71,10 @@ public class UserServlet extends HttpServlet {
                 case "edit":
                     updateUser(request, response);
                     break;
+                case "login":
+                    login(request,response);
+                    break;
+
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -77,7 +85,7 @@ public class UserServlet extends HttpServlet {
             throws IOException, ServletException {
         List<User> listUser = userDAO.selectAll();
         request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listUser.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/home.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -134,7 +142,30 @@ public class UserServlet extends HttpServlet {
         userDAO.delete(id);
         List<User> listUser = userDAO.selectAll();
         request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listUser.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/home.jsp");
         dispatcher.forward(request, response);
+    }
+    private  void showFormLogin(HttpServletRequest request, HttpServletResponse response)
+        throws SQLException,IOException,ServletException{
+        RequestDispatcher dispatcher=request.getRequestDispatcher("views/login.jsp");
+        dispatcher.forward(request,response);
+    }
+    private void login(HttpServletRequest request,HttpServletResponse response)
+    throws SQLException,IOException,ServletException{
+        String user=request.getParameter("user");
+        String passwords=request.getParameter("password");
+        User user1=userDAO.login(user,passwords);
+        if(user1!=null){
+            HttpSession session=request.getSession();
+            session.setAttribute("loginUser",user1);
+            session.setMaxInactiveInterval(10);
+            RequestDispatcher dispatcher=request.getRequestDispatcher("");
+            dispatcher.forward(request,response);
+        }else {
+            RequestDispatcher dispatcher=request.getRequestDispatcher("");
+            dispatcher.forward(request,response);
+
+        }
+
     }
 }

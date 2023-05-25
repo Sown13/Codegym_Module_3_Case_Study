@@ -92,7 +92,7 @@
     </section>
     <section class="side-bar-down w-auto bg-dark">
         <h5 class="text-white">Thư viện</h5>
-        <div class="d-flex flex-column align-items-stretch flex-shrink-0 ">
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 overflow-auto" style="height: 66vh;">
             <div class="list-group list-group-flush border-bottom list-group-item-hover scrollarea">
                 <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                     <div class="d-flex w-100 align-items-center justify-content-between">
