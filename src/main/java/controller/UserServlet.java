@@ -3,6 +3,7 @@ package controller;
 import dao.playlist.PlaylistDAO;
 import dao.user.UserDAO;
 import model.User;
+import sun.rmi.server.Dispatcher;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,6 +50,13 @@ public class UserServlet extends HttpServlet {
                     showFormLogin(request,response);
                     break;
                 default: {
+                    request.setAttribute("rock", "rock");
+                    request.setAttribute("nhac tre", "nhac tre");
+                    request.setAttribute("nhac vang", "nhac vang");
+                    request.setAttribute("jar", "jar");
+                    request.setAttribute("nhac cu chuoi", "nhac cu chuoi");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("playlists");
+                    dispatcher.forward(request, response);
                     break;
                 }
             }
@@ -167,5 +175,6 @@ public class UserServlet extends HttpServlet {
 
         }
     }
+
 
 }

@@ -22,12 +22,12 @@ public class PlaylistServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action == null) {
-            action = "";
+        String choice = request.getParameter("choice");
+        if (choice == null) {
+            choice = "";
         }
         try {
-            switch (action) {
+            switch (choice) {
                 case "create":
                     showNewForm(request, response);
                     break;
@@ -44,7 +44,7 @@ public class PlaylistServlet extends HttpServlet {
                     sortPlayListByDate(request, response);
                     break;
                 default:
-                    playList(request,response);
+                    getPlaylistByLabel(request,response);
                     break;
             }
         } catch (SQLException e){
@@ -130,13 +130,20 @@ public class PlaylistServlet extends HttpServlet {
     }
 
 
-    private void playList(HttpServletRequest request,HttpServletResponse response)
+    private void getPlaylistByLabel(HttpServletRequest request, HttpServletResponse response)
             throws SQLException,IOException,ServletException{
-        String label=request.getParameter("label");
-        playlistDAO.playListLabel(label);
+        List<PlayList> playLists = new ArrayList<>();
+        String nhacTre=request.getParameter("nhac tre");
+        String rock=request.getParameter("rock");
+        String nhacVang=request.getParameter("nhac vang");
+        String nhacCuChuoi=request.getParameter("nhac cu chuoi");
+        String jar=request.getParameter("jar");
+        playLists = playlistDAO.playListLabel(label);
+        request.setAttribute("playLists", playLists);
         RequestDispatcher dispatcher=request.getRequestDispatcher("views/home.jsp");
         dispatcher.forward(request,response);
     }
+
 
 
 
