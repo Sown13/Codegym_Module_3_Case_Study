@@ -1,5 +1,6 @@
 package controller;
 
+import dao.playlist.PlaylistDAO;
 import dao.user.UserDAO;
 import model.User;
 
@@ -48,7 +49,6 @@ public class UserServlet extends HttpServlet {
                     showFormLogin(request,response);
                     break;
                 default: {
-                    getListUser(request, response);
                     break;
                 }
             }
@@ -159,13 +159,13 @@ public class UserServlet extends HttpServlet {
             HttpSession session=request.getSession();
             session.setAttribute("loginUser",user1);
             session.setMaxInactiveInterval(10);
-            RequestDispatcher dispatcher=request.getRequestDispatcher("");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("views/home.jsp");
             dispatcher.forward(request,response);
         }else {
             RequestDispatcher dispatcher=request.getRequestDispatcher("");
             dispatcher.forward(request,response);
 
         }
-
     }
+
 }

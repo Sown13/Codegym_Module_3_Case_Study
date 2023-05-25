@@ -57,6 +57,7 @@ p_id int,
 foreign key (s_id) references songs(s_id),
 foreign key (p_id) references playlist(p_id)
 );
+ALTER  table playlist add label varchar(60);
 
 
 
