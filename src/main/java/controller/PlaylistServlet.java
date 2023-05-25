@@ -8,6 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "PlaylistServlet", value = "/playlists")
@@ -35,6 +36,12 @@ public class PlaylistServlet extends HttpServlet {
                     break;
                 case "delete":
                     delete(request,response);
+                    break;
+                case "find":
+                    findPlaylistByName(request, response);
+                    break;
+                case "sort":
+                    sortPlayListByDate(request, response);
                     break;
                 default:
                     list(request,response);
@@ -115,6 +122,20 @@ public class PlaylistServlet extends HttpServlet {
         playlistDAO.delete(id);
 
         List<PlayList> playLists = playlistDAO.selectAll();
+        request.setAttribute("playlist", playLists);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        dispatcher.forward(request, response);
+    }
+    private void findPlaylistByName (HttpServletRequest request, HttpServletResponse response)
+    throws SQLException, IOException, ServletException{
+        String name = request.getParameter("p_name");
+        playlistDAO.findPlayListByName(name);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        dispatcher.forward(request, response);
+    }
+    private void sortPlayListByDate(HttpServletRequest request, HttpServletResponse response)
+        throws SQLException, IOException, ServletException{
+        List<PlayList> playLists = playlistDAO.sortPlaylistByDate();
         request.setAttribute("playlist", playLists);
         RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
