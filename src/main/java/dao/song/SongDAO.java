@@ -167,29 +167,44 @@ public class SongDAO implements ISongDAO {
         }
         return songs;
     }
-
-    //chưa xử lí được lôgic nghiệp vụ .
-    public List<Song>ListMaxSong( int listening_frequency) throws  SQLException{
-        List<Song>songs=new ArrayList<>();
+//    public List<Song>ListMaxSong(int listening_frequency ) throws  SQLException{
+//        List<Song>songs=new ArrayList<>();
+//        Song song;
+//        try (Connection connection=getConnection();
+//        PreparedStatement statement=connection.prepareStatement(Max_listen_song_SQL)) {
+//
+//            System.out.println(statement);
+//            System.out.println(statement);
+//            ResultSet rs = statement.executeQuery();
+//            while (rs.next()) {
+//                String name_song = rs.getString("song_name");
+//                String author = rs.getString("author");
+//                String song_url = rs.getString("song_url");
+//                String label = rs.getString("label");
+//                song = new Song(name_song, author, song_url, label);
+//                songs.add(song);
+//            }
+//
+//        }
+//        return songs;
+//    }
+    public List<Song>range()throws SQLException {
+        List<Song>songList=new ArrayList<>();
         Song song;
         try (Connection connection=getConnection();
         PreparedStatement statement=connection.prepareStatement(Max_listen_song_SQL)) {
-            statement.setString(1, String.valueOf(listening_frequency));
-            System.out.println(statement);
-            System.out.println(statement);
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                String name_song = rs.getString("song_name");
-                String author = rs.getString("author");
-                String song_url = rs.getString("song_url");
-                String label = rs.getString("label");
-                song = new Song(name_song, author, song_url, label);
-                songs.add(song);
+         ResultSet resultSet= statement.executeQuery(Max_listen_song_SQL);
+         while (resultSet.next()){
+             String name_song=resultSet.getString("name_song");
+             String author=resultSet.getString("author");
+             String song_url=resultSet.getString("song_url");
+             String label=resultSet.getString("label");
+             song=new Song(name_song,author,song_url,label);
+             songList.add(song);
 
-            }
-
+         }
+         return songList;
         }
-        return songs;
     }
 
 }

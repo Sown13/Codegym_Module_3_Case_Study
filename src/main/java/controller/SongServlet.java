@@ -37,6 +37,9 @@ public class SongServlet extends HttpServlet {
                 case "search":
                     fromSearchName(request,response);
                     break;
+                case"range":
+                    range(request,response);
+                    break;
                 default:
                     listSong(request,response);
             }
@@ -130,5 +133,12 @@ public class SongServlet extends HttpServlet {
         songDAO.searchSong(name_song);
         RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/view/listSong.jsp");
         dispatcher.forward(request,response);
+    }
+    private void range(HttpServletRequest request,HttpServletResponse response)
+        throws ServletException,SQLException,IOException{
+      songDAO.range();
+      RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/view/listSong.jsp");
+      dispatcher.forward(request,response);
+
     }
 }
