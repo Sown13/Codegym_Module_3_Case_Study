@@ -45,7 +45,7 @@ public class UserServlet extends HttpServlet {
                     break;
                 }
                 case "fromSign":
-                    showFromLogin(request,response);
+                    showFormLogin(request,response);
                     break;
                 default: {
                     getListUser(request, response);
@@ -85,7 +85,7 @@ public class UserServlet extends HttpServlet {
             throws IOException, ServletException {
         List<User> listUser = userDAO.selectAll();
         request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listUser.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/home.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -142,12 +142,12 @@ public class UserServlet extends HttpServlet {
         userDAO.delete(id);
         List<User> listUser = userDAO.selectAll();
         request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/listUser.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/home.jsp");
         dispatcher.forward(request, response);
     }
-    private  void showFromLogin(HttpServletRequest request,HttpServletResponse response)
+    private  void showFormLogin(HttpServletRequest request, HttpServletResponse response)
         throws SQLException,IOException,ServletException{
-        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/view/listUser.jsp");
+        RequestDispatcher dispatcher=request.getRequestDispatcher("views/login.jsp");
         dispatcher.forward(request,response);
     }
     private void login(HttpServletRequest request,HttpServletResponse response)

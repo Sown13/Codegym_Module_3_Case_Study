@@ -50,7 +50,7 @@
             z-index: 2;
         }
 
-        .form-signin input[type="email"] {
+        .form-signin input {
             margin-bottom: -1px;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
@@ -66,16 +66,16 @@
 </head>
 <body class="text-center">
 <main class="form-signin aligns-items-center justify-content-center text-center">
-    <form>
+    <form action="users" method="get">
         <i class="fa-solid fa-music fa-2xl mt-5 mb-5 text-light"></i>
         <h1 class="h3 mb-3 fw-normal text-light">Please sign in</h1>
 
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input class="form-control" name="user" id="floatingInput">
             <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
 
