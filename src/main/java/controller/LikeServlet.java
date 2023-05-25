@@ -113,7 +113,10 @@ public class LikeServlet extends HttpServlet {
     private void deleteLike(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         String u_id = request.getParameter("u_id");
-        likeDAO.delete(u_id);
+        String s_id = request.getParameter("s_id");
+        if (!likeDAO.checkValueExists(u_id, s_id)) {
+            likeDAO.delete(u_id);
+        }
         List<Like> listLike = likeDAO.selectAll();
         request.setAttribute("listLike", listLike);
         RequestDispatcher dispatcher = request.getRequestDispatcher("");
