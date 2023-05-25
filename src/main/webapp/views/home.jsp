@@ -310,14 +310,6 @@
         </div>
     </div>
 </main>
-<c:if test="${sessionScope['loginUser'] == null}">
-    <button><a href="/users?choice=loginForm">login</a></button>
-</c:if>
-<c:if test="${sessionScope['loginUser'] != null}">
-    <c:set var="loginUser" value="${sessionScope['loginUser']}"/>
-    <p><c:out value="${loginUser.getUser_name}"/></p>
-</c:if>
-
 <jsp:include page="play-bar.jsp"/>
 </body>
 </html>
