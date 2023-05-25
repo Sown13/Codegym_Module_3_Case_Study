@@ -15,8 +15,9 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="css/bootstrap_js/bootstrap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bbbce8c886.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="overflow-hidden">
 <main>
     <div class="container mt-3">
         <div class="row">
@@ -303,5 +304,6 @@
         </div>
     </div>
 </main>
+<jsp:include page="play-bar.jsp"/>
 </body>
 </html>
