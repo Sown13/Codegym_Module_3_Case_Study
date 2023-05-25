@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LikeDAO implements ILikeDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "25546912$oN";
     private static final String INSERT_LIKE_SQL = "INSERT INTO likes (u_id, s_id) VALUES (?,?);";
