@@ -44,7 +44,7 @@ public class PlaylistServlet extends HttpServlet {
                     sortPlayListByDate(request, response);
                     break;
                 default:
-                    list(request,response);
+                    playList(request,response);
                     break;
             }
         } catch (SQLException e){
@@ -99,7 +99,8 @@ public class PlaylistServlet extends HttpServlet {
         String p_id = request.getParameter("p_id");
         String p_name = request.getParameter("p_name");
         String u_id = request.getParameter("u_id");
-        PlayList newPlayList = new PlayList(p_id, p_name, u_id);
+        String label=request.getParameter("label");
+        PlayList newPlayList = new PlayList(p_id, p_name, u_id,label);
         playlistDAO.insert(newPlayList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
@@ -110,7 +111,8 @@ public class PlaylistServlet extends HttpServlet {
         String p_id = request.getParameter("p_id");
         String p_name = request.getParameter("P_name");
         String u_id = request.getParameter("u_id");
-        PlayList book = new PlayList(p_id, p_name, u_id);
+        String label=request.getParameter("label");
+        PlayList book = new PlayList(p_id, p_name, u_id,label);
         playlistDAO.update(book);
         RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
@@ -126,6 +128,18 @@ public class PlaylistServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
     }
+
+
+    private void playList(HttpServletRequest request,HttpServletResponse response)
+            throws SQLException,IOException,ServletException{
+        String label=request.getParameter("label");
+        playlistDAO.playListLabel(label);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("views/home.jsp");
+        dispatcher.forward(request,response);
+    }
+
+
+
     private void findPlaylistByName (HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException, ServletException{
         String name = request.getParameter("p_name");

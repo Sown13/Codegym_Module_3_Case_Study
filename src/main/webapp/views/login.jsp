@@ -32,7 +32,7 @@
         }
 
         body {
-            background-image: url("images/login-banner.png");
+            background-image: url("views/images/login-banner.png");
         }
 
         .form-signin {

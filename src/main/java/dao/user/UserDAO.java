@@ -89,7 +89,7 @@ public class UserDAO implements IUserDAO {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 String user_name = rs.getString("user_name");
-                String fullname = rs.getString("fullname");
+                String fullname = rs.getString("full_name");
                 String address = rs.getString("address");
                 String email = rs.getString("email");
                 users.add(new User(user_name, fullname, address, email));
