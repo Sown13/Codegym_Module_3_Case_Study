@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="/src/main/webapp/css/bootstrap_css/bootstrap.css">
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/src/main/webapp/css/style.css">
     <script src="/src/main/webapp/css/bootstrap_js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 <main>
-    <div class="container">
+    <div class="container mt-3">
         <div class="row">
             <div class="col-3">
                 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -61,6 +64,9 @@
                     <symbol id="geo-fill" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
                     </symbol>
+                    <symbol id="search-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </symbol>
                 </svg>
                 <section class="side-bar-up w-auto">
                     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
@@ -81,24 +87,25 @@
                         <hr>
                     </div>
                 </section>
-                <section class="side-bar-down w-auto">
-                    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-dark">
-                        <div class="list-group list-group-flush border-bottom scrollarea">
-                            <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight text-white bg-dark " aria-current="true">
+                <section class="side-bar-down w-auto bg-dark">
+                    <h5 class="text-white">Thư viện</h5>
+                    <div class="d-flex flex-column align-items-stretch flex-shrink-0 ">
+                        <div class="list-group list-group-flush border-bottom list-group-item-hover scrollarea">
+                            <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong class="mb-1">List group item heading</strong>
                                     <small>Wed</small>
                                 </div>
                                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight text-white bg-dark ">
+                            <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong class="mb-1">List group item heading</strong>
                                     <small class="text-muted">Tues</small>
                                 </div>
                                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight text-white bg-dark">
+                            <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong class="mb-1">List group item heading</strong>
                                     <small class="text-muted">Mon</small>
@@ -106,63 +113,56 @@
                                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                             </a>
 
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight text-white bg-dark" aria-current="true">
+                            <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong class="mb-1">List group item heading</strong>
                                     <small class="text-muted">Wed</small>
                                 </div>
                                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                    <strong class="mb-1">List group item heading</strong>
-                                    <small class="text-muted">Tues</small>
-                                </div>
-                                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+                            <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong class="mb-1">List group item heading</strong>
                                     <small class="text-muted">Mon</small>
                                 </div>
                                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
+                            <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong class="mb-1">List group item heading</strong>
                                     <small class="text-muted">Wed</small>
                                 </div>
                                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+                            <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong class="mb-1">List group item heading</strong>
                                     <small class="text-muted">Tues</small>
                                 </div>
                                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+                            <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong class="mb-1">List group item heading</strong>
                                     <small class="text-muted">Mon</small>
                                 </div>
                                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
+                            <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong class="mb-1">List group item heading</strong>
                                     <small class="text-muted">Wed</small>
                                 </div>
                                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+                            <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong class="mb-1">List group item heading</strong>
                                     <small class="text-muted">Tues</small>
                                 </div>
                                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+                            <a href="#" class="text-decoration-none p-3 lh-tight text-white">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong class="mb-1">List group item heading</strong>
                                     <small class="text-muted">Mon</small>
@@ -174,14 +174,16 @@
                 </section>
             </div>
             <div class="col-9">
-                <section class="main-display w-auto bg-dark" style="margin: 10px">
+                <section class="main-display w-auto bg-dark p-3">
                     <!-- As a heading -->
                     <!-- Nav bar display here-->
-                    <nav class="navbar navbar-light bg-light">
-                        <div class="container-fluid">
-                            <span class="navbar-brand mb-0 h1">Navbar</span>
+                    <div class="col-md-6 search-box">
+                        <div class="form ms-5">
+                            <svg class="fa fa-search" width="16" height="16"><use xlink:href="#search-fill"/></svg>
+                            <input type="text" class="form-control form-input" placeholder="Search anything...">
                         </div>
-                    </nav>
+
+                    </div>
                     <!-- Image cover display here-->
                     <div class=" mx-0 my-5">
                         <h1 class="text-white w-100">Image cover</h1>
@@ -192,37 +194,67 @@
                         <h5 class="text-white w-100 m-0">Play button display</h5>
                     </div>
                     <hr style="color: white">
-                    <table class="table">
+                    <table class="table playing-table">
                         <thead>
                         <tr class="table-dark">
                             <th scope="col">#</th>
                             <th scope="col">Tiêu đề</th>
                             <th scope="col">Album</th>
-                            <th scope="col">Ngày thêm</th>
-                            <th scope="col">Thời lượng</th>
+                            <th scope="col">Yêu thích</th>
+                            <th scope="col">Trạng thái</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="table-dark">
-                            <th scope="row">1</th>
+                        <tr class="table-dark" role="button">
+                            <td >1</td>
                             <td>Mark</td>
                             <td>Otto</td>
                             <td>@mdo</td>
                             <td>@mdo</td>
                         </tr>
-                        <tr class="table-dark">
-                            <th scope="row">2</th>
+                        <tr class="table-dark" role="button">
+                            <td>2</td>
                             <td>Jacob</td>
                             <td>Thornton</td>
                             <td>@fat</td>
                             <td>@fat</td>
                         </tr>
-                        <tr class="table-dark">
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
+                        <tr class="table-dark" role="button">
+                            <td>3</td>
+                            <td>Larry the Bird</td>
+                            <td>@twitter</td>
                             <td>@twitter</td>
                             <td>@twitter</td>
                         </tr>
+                        <tr class="table-dark" role="button">
+                            <td>3</td>
+                            <td>Larry the Bird</td>
+                            <td>@twitter</td>
+                            <td>@twitter</td>
+                            <td>@twitter</td>
+                        </tr>
+                        <tr class="table-dark" role="button">
+                            <td>3</td>
+                            <td>Larry the Bird</td>
+                            <td>@twitter</td>
+                            <td>@twitter</td>
+                            <td>@twitter</td>
+                        </tr>
+                        <tr class="table-dark" role="button">
+                            <td>3</td>
+                            <td>Larry the Bird</td>
+                            <td>@twitter</td>
+                            <td>@twitter</td>
+                            <td>@twitter</td>
+                        </tr>
+                        <tr class="table-dark" role="button">
+                            <td>3</td>
+                            <td>Larry the Bird</td>
+                            <td>@twitter</td>
+                            <td>@twitter</td>
+                            <td>@twitter</td>
+                        </tr>
+
                         </tbody>
                     </table>
                 </section>
@@ -233,4 +265,11 @@
 
 </main>
 </body>
+<script>
+        $(document).ready(function(){
+            $('.playing-table').on('click', 'tbody tr', function(event) {
+                $(this).addClass('highlight').siblings().removeClass('highlight');
+            });
+    });
+</script>
 </html>
