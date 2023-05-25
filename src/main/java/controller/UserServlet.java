@@ -114,7 +114,7 @@ public class UserServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         String user_name = request.getParameter("user_name");
         String password = request.getParameter("password");
-        String fullname = request.getParameter("fullname");
+        String fullname = request.getParameter("full_name");
         String address = request.getParameter("address");
         String email = request.getParameter("email");
         User newUser = new User(user_name, password,fullname,email, address);
