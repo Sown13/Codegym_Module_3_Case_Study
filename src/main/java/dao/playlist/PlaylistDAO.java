@@ -80,8 +80,10 @@ public class PlaylistDAO implements IPlayListDAO {
                 String p_name = rs.getString("p_name");
                 String u_id = rs.getString("u_id");
 
+
                 String label = rs.getString("label");
                 playLists.add(new PlayList(p_id, p_name, u_id, label));
+
 
             }
         } catch (SQLException e) {
@@ -138,6 +140,7 @@ public class PlaylistDAO implements IPlayListDAO {
 
     }
 
+
     public PlayList findPlayListByName(String name) {
         PlayList playList = null;
         try (Connection cn = getConnection();
@@ -148,8 +151,10 @@ public class PlaylistDAO implements IPlayListDAO {
             while (rs.next()) {
                 String p_id = rs.getString("p_id");
                 String u_id = rs.getString("u_id");
+
                 String label=rs.getString("label");
                 playList = new PlayList(p_id, name, u_id,label);
+
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -167,8 +172,10 @@ public class PlaylistDAO implements IPlayListDAO {
                 String p_id = rs.getString("p_id");
                 String p_name = rs.getString("p_name");
                 String u_id = rs.getString("u_id");
+
                 String label=rs.getString("label");
                 playLists.add(new PlayList(p_id, p_name, u_id,label));
+
             }
 
         } catch (SQLException e) {

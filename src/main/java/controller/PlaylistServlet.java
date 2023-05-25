@@ -129,6 +129,7 @@ public class PlaylistServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+
     private void playList(HttpServletRequest request,HttpServletResponse response)
             throws SQLException,IOException,ServletException{
         String label=request.getParameter("label");
@@ -136,6 +137,7 @@ public class PlaylistServlet extends HttpServlet {
         RequestDispatcher dispatcher=request.getRequestDispatcher("views/home.jsp");
         dispatcher.forward(request,response);
     }
+
 
 
     private void findPlaylistByName (HttpServletRequest request, HttpServletResponse response)
