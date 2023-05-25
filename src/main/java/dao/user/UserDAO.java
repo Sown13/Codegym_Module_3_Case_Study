@@ -1,5 +1,6 @@
 package dao.user;
 
+import controller.UserServlet;
 import model.User;
 
 import java.sql.*;
@@ -9,7 +10,7 @@ import java.util.List;
 public class UserDAO implements IUserDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "25546912$oN";
+    private String jdbcPassword = "06042001";
     private static final String INSERT_USERS_SQL = "INSERT INTO users (user_name, password, full_name, address, email) VALUES (?, ?, ?, ?, ?);";
     private static final String SELECT_USER_BY_ID = "select user_name,full_name, address, email from users where u_id =?";
     private static final String SELECT_ALL_USERS = "select user_name,full_name, address, email from users";
@@ -123,6 +124,34 @@ public class UserDAO implements IUserDAO {
             rowUpdated = statement.executeUpdate() > 0;
         }
         return rowUpdated;
+    }
+    public User login(String user, String password){
+        String SELECT_USERS_BY_USER_NAME_AND_PASSWORD="SELECT * FROM users WHERE user_name=? and password=?;";
+        try {
+            Connection connection=getConnection();
+            PreparedStatement statement=connection.prepareStatement(SELECT_USERS_BY_USER_NAME_AND_PASSWORD);
+            statement.setString(1,user);
+            statement.setString(2,password);
+            ResultSet resultSet=statement.executeQuery();
+            while (resultSet.next()){
+                return new User(
+                        resultSet.getString("u_id"),
+                        resultSet.getString("user_name"),
+                        resultSet.getString("password"),
+                        resultSet.getString("full_name"),
+                        resultSet.getString("address"),
+                        resultSet.getString("email"));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        UserDAO userDAO=new UserDAO();
+        User user=userDAO.login("1","1");
+        System.out.println(user);
     }
 }
 

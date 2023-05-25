@@ -16,6 +16,7 @@ public class LikeDAO implements ILikeDAO {
     private static final String DELETE_LIKE_SQL = "delete from likes where u_id=?";
     private static final String UPDATE_LIKE_SQL = "update likes set u_id=?, s_id=?";
 
+
     public LikeDAO() {
 
     }
@@ -99,12 +100,14 @@ public class LikeDAO implements ILikeDAO {
         boolean rowUpdate;
         try(Connection cn = getConnection();
         PreparedStatement ps = cn.prepareStatement(UPDATE_LIKE_SQL)){
+
             ps.setString(1, like.getU_id());
             ps.setString(2, like.getS_id());
             rowUpdate = ps.executeUpdate()>0;
         }
         return rowUpdate;
     }
+
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
