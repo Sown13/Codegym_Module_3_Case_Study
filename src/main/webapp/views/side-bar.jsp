@@ -8,13 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<%--    <title>Title</title>--%>
-<%--    <link rel="stylesheet" href="css/bootstrap_css/bootstrap.css">--%>
-<%--    <!-- Option 1: Include in HTML -->--%>
-<%--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">--%>
-<%--    <link rel="stylesheet" href="css/style.css">--%>
-<%--    <script src="css/bootstrap_js/bootstrap.js"></script>--%>
-<%--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>--%>
 </head>
 <body>
 <div class="col-3">
