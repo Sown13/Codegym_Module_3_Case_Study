@@ -13,8 +13,9 @@ public class LikeDAO implements ILikeDAO {
     private static final String INSERT_LIKE_SQL = "INSERT INTO likes (u_id, s_id) VALUES (?,?);";
     private static final String SELECT_LIKE_BY_ID = "select u_id, s_id from likes where u_id = ?";
     private static final String SELECT_ALL_LIKE = "select * from likes";
-    private static final String DELETE_LIKE_SQL = "delete from likes where u_id=?";
+    private static final String DELETE_LIKE_SQL = "delete from likes where u_id = ?";
     private static final String UPDATE_LIKE_SQL = "update likes set u_id=?, s_id=?";
+    private Like like;
 
 
     public LikeDAO() {
@@ -106,6 +107,13 @@ public class LikeDAO implements ILikeDAO {
             rowUpdate = ps.executeUpdate()>0;
         }
         return rowUpdate;
+    }
+    public boolean checkValueExists(String u_id, String s_id) {
+        boolean check = false;
+        if (u_id.equals(like.getS_id()) && s_id.equals(like.getS_id())){
+            check = true;
+        }
+        return check;
     }
 
 

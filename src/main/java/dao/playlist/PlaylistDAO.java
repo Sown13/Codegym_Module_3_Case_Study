@@ -14,8 +14,9 @@ public class PlaylistDAO implements IPlayListDAO {
     private static final String SELECT_PLAYLIST_BY_ID = "select p_id, p_name, create_date, u_id from playlist where p_id = ?";
     private static final String SELECT_ALL_PLAYLIST = "select * from playlist";
     private static final String DELETE_PLAYLIST_SQL = "delete from playlist where p_id = ?;";
-    private static final String UPDATE_PLAYLIST_SQL = "update playlist set p_name=?,";
-
+    private static final String UPDATE_PLAYLIST_SQL = "update playlist set p_name=?;";
+    private static final String FIND_PLAYLIST_BY_NAME = "select * from playlist where p_name like '%?%';";
+    private static final String SORT_PLAYLIST_BY_DATE = "select * from playlist order by create_date desc;";
 
     public PlaylistDAO() {
 
@@ -78,8 +79,10 @@ public class PlaylistDAO implements IPlayListDAO {
                 String p_id = rs.getString("p_id");
                 String p_name = rs.getString("p_name");
                 String u_id = rs.getString("u_id");
+
                 String label = rs.getString("label");
                 playLists.add(new PlayList(p_id, p_name, u_id, label));
+
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -135,6 +138,44 @@ public class PlaylistDAO implements IPlayListDAO {
 
     }
 
+    public PlayList findPlayListByName(String name) {
+        PlayList playList = null;
+        try (Connection cn = getConnection();
+             PreparedStatement ps = cn.prepareStatement(FIND_PLAYLIST_BY_NAME)) {
+            ps.setString(1, name);
+            System.out.println(ps);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String p_id = rs.getString("p_id");
+                String u_id = rs.getString("u_id");
+                String label=rs.getString("label");
+                playList = new PlayList(p_id, name, u_id,label);
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return playList;
+    }
+
+    public List<PlayList> sortPlaylistByDate() {
+        List<PlayList> playLists = new ArrayList<>();
+        System.out.println(SORT_PLAYLIST_BY_DATE);
+        try (Connection cn = getConnection(); PreparedStatement ps = cn.prepareStatement(SORT_PLAYLIST_BY_DATE)) {
+            System.out.println(ps);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String p_id = rs.getString("p_id");
+                String p_name = rs.getString("p_name");
+                String u_id = rs.getString("u_id");
+                String label=rs.getString("label");
+                playLists.add(new PlayList(p_id, p_name, u_id,label));
+            }
+
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return playLists;
+    }
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

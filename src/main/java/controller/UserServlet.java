@@ -45,7 +45,7 @@ public class UserServlet extends HttpServlet {
                     showDeleteForm(request, response);
                     break;
                 }
-                case "fromSign":
+                case "loginForm":
                     showFormLogin(request,response);
                     break;
                 default: {

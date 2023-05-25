@@ -9,19 +9,20 @@
 <html>
 <head>
     <title>select-playlist</title>
-    <link rel="stylesheet" href="css/bootstrap_css/bootstrap.css">
+    <link rel="stylesheet" href="views/css/bootstrap_css/bootstrap.css">
     <!-- Option 1: Include in HTML -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="css/bootstrap_js/bootstrap.js"></script>
+    <link rel="stylesheet" href="views/css/style.css">
+    <script src="views/css/bootstrap_js/bootstrap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bbbce8c886.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="overflow-hidden">
 <main>
     <div class="container mt-3">
         <div class="row">
             <jsp:include page="side-bar.jsp"/>
-            <div class="col-9 overflow-auto" style="height: 100vh">
+            <div class="col-9 overflow-auto" style="height: 90vh">
                 <section class="main-display w-auto bg-dark p-3">
                     <jsp:include page="search-bar.jsp"/>
                     <!-- Image cover display here-->
@@ -102,6 +103,7 @@
         </div>
     </div>
 </main>
+<jsp:include page="play-bar.jsp"/>
 </body>
 <script>
     $(document).ready(function(){

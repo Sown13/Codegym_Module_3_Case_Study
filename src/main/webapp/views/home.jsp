@@ -9,14 +9,15 @@
 <html>
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="css/bootstrap_css/bootstrap.css">
+    <link rel="stylesheet" href="views/css/bootstrap_css/bootstrap.css">
     <!-- Option 1: Include in HTML -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="css/bootstrap_js/bootstrap.js"></script>
+    <link rel="stylesheet" href="views/css/style.css">
+    <script src="views/css/bootstrap_js/bootstrap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bbbce8c886.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="overflow-hidden">
 <main>
     <div class="container mt-3">
         <div class="row">
@@ -81,7 +82,7 @@
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_2_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 1</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -90,7 +91,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_3_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_3_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 2</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -99,7 +100,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_4_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_4_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 3</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -108,7 +109,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_5_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_5_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 4</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -124,7 +125,7 @@
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_2_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 1</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -133,7 +134,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_3_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_3_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 2</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -142,7 +143,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_4_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_4_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 3</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -151,7 +152,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_5_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_5_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 4</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -166,7 +167,7 @@
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_2_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 1</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -175,7 +176,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_3_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_3_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 2</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -184,7 +185,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_4_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_4_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 3</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -193,7 +194,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_5_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_5_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 4</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -208,7 +209,7 @@
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_2_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 1</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -217,7 +218,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_3_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_3_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 2</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -226,7 +227,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_4_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_4_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 3</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -235,7 +236,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_5_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_5_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 4</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -250,7 +251,7 @@
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_2_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 1</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -259,7 +260,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_3_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_3_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 2</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -268,7 +269,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_4_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_4_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 3</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -277,7 +278,7 @@
                             </div>
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <img src="images/img_5_horizontal.jpg" class="w-100 h-100">
+                                    <img src="views/images/img_5_horizontal.jpg" class="w-100 h-100">
                                     <div class="card-body">
                                         <p class="card-text"><b>Daily Mix 4</b></p>
                                         <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>
@@ -303,5 +304,14 @@
         </div>
     </div>
 </main>
+<c:if test="${sessionScope['loginUser'] == null}">
+    <button><a href="/users?choice=loginForm">login</a></button>
+</c:if>
+<c:if test="${sessionScope['loginUser'] != null}">
+    <c:set var="loginUser" value="${sessionScope['loginUser']}"/>
+    <p><c:out value="${loginUser.getUser_name}"/></p>
+</c:if>
+
+<jsp:include page="play-bar.jsp"/>
 </body>
 </html>
