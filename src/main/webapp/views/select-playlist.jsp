@@ -21,17 +21,8 @@
     <div class="container mt-3">
         <div class="row">
             <jsp:include page="side-bar.jsp"/>
-            <div class="col-9">
+            <div class="col-9 overflow-auto" style="height: 100vh">
                 <section class="main-display w-auto bg-dark p-3">
-                    <!-- As a heading -->
-                    <!-- Nav bar display here-->
-<%--                    <div class="col-md-6 search-box">--%>
-<%--                        <div class="form ms-5">--%>
-<%--                            <svg class="fa fa-search" width="16" height="16"><use xlink:href="#search-fill"/></svg>--%>
-<%--                            <input type="text" class="form-control form-input" placeholder="Search anything...">--%>
-<%--                        </div>--%>
-
-<%--                    </div>--%>
                     <jsp:include page="search-bar.jsp"/>
                     <!-- Image cover display here-->
                     <div class=" mx-0 my-5">
