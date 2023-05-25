@@ -32,7 +32,7 @@
         }
 
         body {
-            background-image: url("images/login-banner.png");
+            background-image: url("views/images/login-banner.png");
         }
 
         .form-signin {
@@ -66,7 +66,7 @@
 </head>
 <body class="text-center">
 <main class="form-signin aligns-items-center justify-content-center text-center">
-    <form action="users" method="get">
+    <form action="/users?choice=login" method="post">
         <i class="fa-solid fa-music fa-2xl mt-5 mb-5 text-light"></i>
         <h1 class="h3 mb-3 fw-normal text-light">Please sign in</h1>
 
