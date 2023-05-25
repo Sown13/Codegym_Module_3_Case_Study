@@ -6,10 +6,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static others.Utils.*;
+
 public class PlaylistDAO implements IPlayListDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "25546912$oN";
     private static final String INSERT_PLAYLIST_SQL = "INSERT INTO playlist (p_id, p_name, u_id) VALUES (?, ?, ?);";
     private static final String SELECT_PLAYLIST_BY_ID = "select p_id, p_name, create_date, u_id from playlist where p_id = ?";
     private static final String SELECT_ALL_PLAYLIST = "select * from playlist";
@@ -21,19 +20,21 @@ public class PlaylistDAO implements IPlayListDAO {
     public PlaylistDAO() {
 
     }
+    Connection connection=getConnection();
 
-    protected Connection getConnection() {
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return connection;
-    }
+
+//    protected Connection getConnection() {
+//        Connection connection = null;
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//            connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        return connection;
+//    }
 
     @Override
     public void insert(PlayList playlist) throws SQLException {
