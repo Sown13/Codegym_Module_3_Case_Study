@@ -1,4 +1,7 @@
 package dao.like;
 
-public interface ILikeDAO extends IGe{
+import dao.IGeneralDAO;
+import model.Like;
+
+public interface ILikeDAO extends IGeneralDAO<Like> {
 }
