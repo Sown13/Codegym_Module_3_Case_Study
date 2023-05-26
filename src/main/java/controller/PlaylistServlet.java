@@ -70,7 +70,7 @@ public class PlaylistServlet extends HttpServlet {
         try {
             switch (choice) {
                 case "create":
-                    insert(request, response);
+                    showNewForm(request, response);
                     break;
                 case "edit":
                     update(request, response);
@@ -97,6 +97,7 @@ public class PlaylistServlet extends HttpServlet {
         User loginUser = (User) session.getAttribute("loginUser");
         playlistDAO.insert(new PlayList("New PlayList", loginUser.getU_id(), "Unknow"));
         showPlaylistOrderByUser(request, response);
+//        response.sendRedirect("views/select-playlist.jsp");
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/select-playlist.jsp");
         dispatcher.forward(request, response);
     }

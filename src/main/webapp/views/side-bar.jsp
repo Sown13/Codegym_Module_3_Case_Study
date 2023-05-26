@@ -69,7 +69,7 @@
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
             <ul class="nav nav-pills flex-column mb-auto ">
                 <li class="nav-item">
-                    <a href="#" class="nav-link active" aria-current="page">
+                    <a href="home" class="nav-link active" aria-current="page">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
                         Home
                     </a>
@@ -88,8 +88,8 @@
         <div class="row mb-2">
             <div class="col-9"><h5 class="text-white">Thư viện</h5></div>
             <div class="col-3 mt-1">
-                <form method="post">
-                    <input type="hidden" name="key" value="test">
+                <form action="playlists" method="post">
+                    <input type="hidden" name="choice" value="create">
                     <button type="submit" class="btn btn-success bg-dark border-0">
                         <i class="fa-solid fa-plus fa-xl text-light" role="button" data-bs-toggle="tooltip"
                            data-bs-placement="left" title="Tạo playlist"></i>
