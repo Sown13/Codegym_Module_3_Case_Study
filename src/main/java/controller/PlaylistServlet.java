@@ -132,14 +132,26 @@ public class PlaylistServlet extends HttpServlet {
 
     private void getPlaylistByLabel(HttpServletRequest request, HttpServletResponse response)
             throws SQLException,IOException,ServletException{
-        List<PlayList> playLists = new ArrayList<>();
+        List<PlayList> playLists1 = new ArrayList<>();
+        List<PlayList> playLists2 = new ArrayList<>();
+        List<PlayList> playLists3 = new ArrayList<>();
+        List<PlayList> playLists4 = new ArrayList<>();
+        List<PlayList> playLists5 = new ArrayList<>();
         String nhacTre=request.getParameter("nhac tre");
         String rock=request.getParameter("rock");
         String nhacVang=request.getParameter("nhac vang");
         String nhacCuChuoi=request.getParameter("nhac cu chuoi");
         String jar=request.getParameter("jar");
-        playLists = playlistDAO.playListLabel(label);
-        request.setAttribute("playLists", playLists);
+        playLists1 = playlistDAO.playListLabel(nhacTre);
+        playLists2 = playlistDAO.playListLabel(rock);
+        playLists3 = playlistDAO.playListLabel(nhacVang);
+        playLists4 = playlistDAO.playListLabel(nhacCuChuoi);
+        playLists5 = playlistDAO.playListLabel(jar);
+        request.setAttribute("playLists1", playLists1);
+        request.setAttribute("playLists2", playLists2);
+        request.setAttribute("playLists3", playLists3);
+        request.setAttribute("playLists4", playLists4);
+        request.setAttribute("playLists5", playLists5);
         RequestDispatcher dispatcher=request.getRequestDispatcher("views/home.jsp");
         dispatcher.forward(request,response);
     }
