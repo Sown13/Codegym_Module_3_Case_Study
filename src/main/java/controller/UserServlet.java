@@ -2,7 +2,9 @@ package controller;
 
 import dao.playlist.PlaylistDAO;
 import dao.user.UserDAO;
+import model.PlayList;
 import model.User;
+import sun.rmi.server.Dispatcher;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +17,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "UserServlet", value = "/users")
+@WebServlet(name = "UserServlet", value = "/home")
 public class UserServlet extends HttpServlet {
     private UserDAO userDAO;
 
@@ -47,11 +49,15 @@ public class UserServlet extends HttpServlet {
                 }
                 case "loginForm": {
                     showFormLogin(request, response);
+                    break;
                 }
                 case "logout":
                     logout(request,response);
                     break;
                 default: {
+                    setHomePlaylist(request,response);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("playlists");
+                    dispatcher.forward(request, response);
                     break;
                 }
             }
@@ -84,6 +90,13 @@ public class UserServlet extends HttpServlet {
         }
     }
 
+    private void setHomePlaylist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        request.setAttribute("rock", "rock");
+        request.setAttribute("nhac tre", "nhac tre");
+        request.setAttribute("nhac vang", "nhac vang");
+        request.setAttribute("jar", "jar");
+        request.setAttribute("nhac cu chuoi", "nhac cu chuoi");
+    }
     private void getListUser(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         List<User> listUser = userDAO.selectAll();
@@ -94,7 +107,7 @@ public class UserServlet extends HttpServlet {
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createUser.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
     }
 
@@ -158,14 +171,16 @@ public class UserServlet extends HttpServlet {
         String user=request.getParameter("user");
         String passwords=request.getParameter("password");
         User user1=userDAO.login(user,passwords);
+        setHomePlaylist(request, response);
         if(user1!=null){
-            HttpSession session=request.getSession();
+            HttpSession session = request.getSession();
             session.setAttribute("loginUser",user1);
-            session.setMaxInactiveInterval(10);
-            RequestDispatcher dispatcher=request.getRequestDispatcher("views/home.jsp");
+//            session.setMaxInactiveInterval(10);
+            request.setAttribute("choice", "");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("playlists");
             dispatcher.forward(request,response);
         }else {
-            RequestDispatcher dispatcher=request.getRequestDispatcher("");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("playlists");
             dispatcher.forward(request,response);
 
         }
@@ -174,10 +189,13 @@ public class UserServlet extends HttpServlet {
     throws IOException,ServletException{
         HttpSession session=request.getSession();
         session.removeAttribute("loginUser");
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("view/home.jsp");
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("views/home.jsp");
         requestDispatcher.forward(request,response);
 
     }
+
+
+
 
 
 }

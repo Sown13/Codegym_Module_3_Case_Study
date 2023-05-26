@@ -30,6 +30,20 @@ public class Song {
         this.label=label;
     }
 
+    public Song(String s_id, String song_name, String author) {
+        this.s_id = s_id;
+        this.song_name = song_name;
+        this.author = author;
+    }
+
+    public Song(String s_id, String song_name, String author, String song_url, String label) {
+        this.s_id = s_id;
+        this.song_name = song_name;
+        this.author = author;
+        this.song_url = song_url;
+        this.label = label;
+    }
+
     public String getS_id() {
         return s_id;
     }
@@ -92,5 +106,14 @@ public class Song {
 
     public void setU_id(int u_id) {
         this.u_id = u_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Song{" +
+                "s_id='" + s_id + '\'' +
+                ", song_name='" + song_name + '\'' +
+                ", author='" + author + '\'' +
+                '}';
     }
 }
