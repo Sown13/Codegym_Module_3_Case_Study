@@ -24,7 +24,6 @@ foreign key (u_id) references users(u_id)
 alter table songs
 add column playing boolean default false;
 
-
 create table playlist (
 p_id int auto_increment primary key,
 p_name varchar(255) not null,

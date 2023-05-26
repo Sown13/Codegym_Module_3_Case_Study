@@ -20,15 +20,20 @@
         </div>
     </div>
     <div class="col-6">
-        <c:if test="${sessionScope['loginUser'] == null}">
-            <a href="/users?choice=loginForm">
+        <c:choose>
+        <c:when test="${sessionScope['loginUser'] == null}">
+            <p class="text-white">????????????????????</p>
+            <a href="/home?choice=loginForm">
                 <i class="fa-solid fa-circle-user fa-2xl float-end text-warning-emphasis" role="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Login"></i>
             </a>
-        </c:if>
-        <c:if test="${sessionScope['loginUser'] != null}">
+        </c:when>
+        <c:when test="${sessionScope['loginUser'] != null}">
+            <p class="text-white"> hien len neu co user</p>
             <i class="fa-solid fa-circle-user fa-2xl float-end text-warning" role="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left"></i>
 <%--            <p><c:out value="${loginUser.getUser_name}"/></p>--%>
-        </c:if>
+        </c:when>
+        </c:choose>
+
     </div>
 </div>
 </body>

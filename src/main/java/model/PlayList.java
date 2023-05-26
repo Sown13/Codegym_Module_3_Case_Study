@@ -26,7 +26,7 @@ public class PlayList {
         this.p_id = p_id;
     }
 
-    public String getP_name() {
+    public String getPlayListName() {
         return p_name;
     }
 
@@ -49,6 +49,7 @@ public class PlayList {
     public void setLabel(String label) {
         this.label = label;
     }
+<<<<<<< HEAD
 
     public boolean isEdit() {
         return edit;
@@ -57,4 +58,6 @@ public class PlayList {
     public void setEdit(boolean edit) {
         this.edit = edit;
     }
+=======
+>>>>>>> f1ee920402ae2aebf909aca386d09faa360df382
 }
