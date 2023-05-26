@@ -88,7 +88,7 @@
         <div class="row mb-2">
             <div class="col-9"><h5 class="text-white">Thư viện</h5></div>
             <div class="col-3 mt-3">
-                <a href="#">
+                <a href="playlists?choice=create">
                     <i class="fa-solid fa-plus fa-xl text-light" role="button" data-bs-toggle="tooltip"
                        data-bs-placement="left" title="Tạo playlist"></i>
                 </a>
@@ -98,7 +98,7 @@
             <div class="list-group list-group-flush border-bottom list-group-item-hover scrollarea">
 
                 <c:forEach var="playLists" items="${requestScope['playLists']}">
-                <a href="#" class="text-decoration-none p-3 lh-tight text-white">
+                <a href="playlists?choice=edit&playlistID=${playLists.getP_id()}" class="text-decoration-none p-3 lh-tight text-white">
                     <div class="d-flex w-100 align-items-center justify-content-between">
                         <strong class="mb-1">${playLists.getPlayListName()}</strong>
                         <small>Wed</small>
@@ -107,79 +107,6 @@
                 </a>
                 </c:forEach>
 
-<%--                <a href="#" class="text-decoration-none p-3 lh-tight text-white">--%>
-<%--                    <div class="d-flex w-100 align-items-center justify-content-between">--%>
-<%--                        <strong class="mb-1">List group item heading</strong>--%>
-<%--                        <small class="text-muted">Tues</small>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>--%>
-<%--                </a>--%>
-
-
-<%--                <a href="#" class="text-decoration-none p-3 lh-tight text-white">--%>
-<%--                    <div class="d-flex w-100 align-items-center justify-content-between">--%>
-<%--                        <strong class="mb-1">List group item heading</strong>--%>
-<%--                        <small class="text-muted">Mon</small>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>--%>
-<%--                </a>--%>
-
-<%--                <a href="#" class="text-decoration-none p-3 lh-tight text-white">--%>
-<%--                    <div class="d-flex w-100 align-items-center justify-content-between">--%>
-<%--                        <strong class="mb-1">List group item heading</strong>--%>
-<%--                        <small class="text-muted">Wed</small>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>--%>
-<%--                </a>--%>
-<%--                <a href="#" class="text-decoration-none p-3 lh-tight text-white">--%>
-<%--                    <div class="d-flex w-100 align-items-center justify-content-between">--%>
-<%--                        <strong class="mb-1">List group item heading</strong>--%>
-<%--                        <small class="text-muted">Mon</small>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>--%>
-<%--                </a>--%>
-<%--                <a href="#" class="text-decoration-none p-3 lh-tight text-white">--%>
-<%--                    <div class="d-flex w-100 align-items-center justify-content-between">--%>
-<%--                        <strong class="mb-1">List group item heading</strong>--%>
-<%--                        <small class="text-muted">Wed</small>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>--%>
-<%--                </a>--%>
-<%--                <a href="#" class="text-decoration-none p-3 lh-tight text-white">--%>
-<%--                    <div class="d-flex w-100 align-items-center justify-content-between">--%>
-<%--                        <strong class="mb-1">List group item heading</strong>--%>
-<%--                        <small class="text-muted">Tues</small>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>--%>
-<%--                </a>--%>
-<%--                <a href="#" class="text-decoration-none p-3 lh-tight text-white">--%>
-<%--                    <div class="d-flex w-100 align-items-center justify-content-between">--%>
-<%--                        <strong class="mb-1">List group item heading</strong>--%>
-<%--                        <small class="text-muted">Mon</small>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>--%>
-<%--                </a>--%>
-<%--                <a href="#" class="text-decoration-none p-3 lh-tight text-white">--%>
-<%--                    <div class="d-flex w-100 align-items-center justify-content-between">--%>
-<%--                        <strong class="mb-1">List group item heading</strong>--%>
-<%--                        <small class="text-muted">Wed</small>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>--%>
-<%--                </a>--%>
-<%--                <a href="#" class="text-decoration-none p-3 lh-tight text-white">--%>
-<%--                    <div class="d-flex w-100 align-items-center justify-content-between">--%>
-<%--                        <strong class="mb-1">List group item heading</strong>--%>
-<%--                        <small class="text-muted">Tues</small>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>--%>
-<%--                </a>--%>
-<%--                <a href="#" class="text-decoration-none p-3 lh-tight text-white">--%>
-<%--                    <div class="d-flex w-100 align-items-center justify-content-between">--%>
-<%--                        <strong class="mb-1">List group item heading</strong>--%>
-<%--                        <small class="text-muted">Mon</small>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>--%>
-<%--                </a>--%>
             </div>
         </div>
     </section>

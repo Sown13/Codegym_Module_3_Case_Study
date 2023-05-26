@@ -92,17 +92,23 @@ public class PlaylistServlet extends HttpServlet {
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+            throws SQLException, ServletException, IOException {
+        HttpSession session = request.getSession();
+        User loginUser = (User) session.getAttribute("loginUser");
+        playlistDAO.insert(new PlayList("New PlayList", loginUser.getU_id(), "Unknow"));
+        showPlaylistOrderByUser(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/select-playlist.jsp");
         dispatcher.forward(request, response);
     }
 
     private void showEditFrom(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
-        String id = request.getParameter("id");
-        PlayList playList = playlistDAO.select(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
-        request.setAttribute("playlist", playList);
+        HttpSession session = request.getSession();
+        String playListID = request.getParameter("playlistID");
+        List<Song> listSong = playlistDAO.getListSongByPlayListId(playListID);
+        request.setAttribute("listSong", listSong);
+        showPlaylistOrderByUser(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/select-playlist.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -164,7 +170,7 @@ public class PlaylistServlet extends HttpServlet {
         request.setAttribute("playLists3", playLists3);
         request.setAttribute("playLists4", playLists4);
         request.setAttribute("playLists5", playLists5);
-        showPlaylistOrderByUser(request,response);
+        showPlaylistOrderByUser(request, response);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/home.jsp");
         dispatcher.forward(request, response);
     }
@@ -189,7 +195,7 @@ public class PlaylistServlet extends HttpServlet {
     private void findListSongByPlayListId(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         String p_id = request.getParameter("p_id");
-        List<Song> listSong = playlistDAO.findListSongByPlayListId(p_id);
+        List<Song> listSong = playlistDAO.getListSongByPlayListId(p_id);
         request.setAttribute("listSong", listSong);
         RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
@@ -208,5 +214,12 @@ public class PlaylistServlet extends HttpServlet {
             playLists.addAll(playlistDAO.selectPlayListFromOtherUser(userID));
         }
         request.setAttribute("playLists", playLists);
+    }
+
+    private List<Song> showSongInPlaylist(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String playlistID = request.getParameter("playlistID");
+        List<Song> listSong = playlistDAO.getListSongByPlayListId(playlistID);
+
+        return listSong;
     }
 }

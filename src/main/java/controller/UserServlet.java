@@ -2,6 +2,7 @@ package controller;
 
 import dao.playlist.PlaylistDAO;
 import dao.user.UserDAO;
+import model.PlayList;
 import model.User;
 import sun.rmi.server.Dispatcher;
 
@@ -102,7 +103,7 @@ public class UserServlet extends HttpServlet {
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createUser.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
     }
 
@@ -180,6 +181,8 @@ public class UserServlet extends HttpServlet {
 
         }
     }
+
+
 
 
 }

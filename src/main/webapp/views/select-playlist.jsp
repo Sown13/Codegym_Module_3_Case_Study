@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: namnh
@@ -46,55 +47,16 @@
                         </tr>
                         </thead>
                         <tbody>
+
+                        <c:forEach var="song" items="${requestScope.listSong}">
                         <tr class="table-dark" role="button">
-                            <td >1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
+                            <td >${song.getS_id()}</td>
+                            <td>${song.getSong_name()}</td>
+                            <td>${song.getAuthor()}</td>
+                            <td>${song.getLabel()}</td>
+                            <td>${song.getSong_url()}</td>
                         </tr>
-                        <tr class="table-dark" role="button">
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr class="table-dark" role="button">
-                            <td>3</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr class="table-dark" role="button">
-                            <td>3</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr class="table-dark" role="button">
-                            <td>3</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr class="table-dark" role="button">
-                            <td>3</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr class="table-dark" role="button">
-                            <td>3</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
+                        </c:forEach>
 
                         </tbody>
                     </table>

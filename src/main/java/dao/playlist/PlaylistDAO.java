@@ -5,19 +5,20 @@ import model.Song;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static others.Utils.*;
 
 public class PlaylistDAO implements IPlayListDAO {
-    private static final String INSERT_PLAYLIST_SQL = "INSERT INTO playlist (p_id, p_name, u_id) VALUES (?, ?, ?);";
+    private static final String INSERT_PLAYLIST_SQL = "INSERT INTO playlist (p_name, u_id, label) VALUES (?, ?, ?);";
     private static final String SELECT_PLAYLIST_BY_ID = "select p_id, p_name, create_date, u_id from playlist where p_id = ?";
     private static final String SELECT_ALL_PLAYLIST = "select * from playlist";
     private static final String DELETE_PLAYLIST_SQL = "delete from playlist where p_id = ?;";
     private static final String UPDATE_PLAYLIST_SQL = "update playlist set p_name=?;";
     private static final String FIND_PLAYLIST_BY_NAME = "select * from playlist where p_name like '%'?'%';";
     private static final String SORT_PLAYLIST_BY_DATE = "select * from playlist order by create_date desc;";
-    private static final String LIST_SONG = "select songs.s_id, song_name, author from songs inner join playlist_detail on songs.s_id = playlist_detail.s_id where p_id = ?;";
+    private static final String LIST_SONG = "select*from playlist_detail inner join playlist using(p_id) inner join songs using(s_id) where p_id = ?";
 
     public PlaylistDAO() {
 
@@ -41,9 +42,9 @@ public class PlaylistDAO implements IPlayListDAO {
     public void insert(PlayList playlist) throws SQLException {
         System.out.println(INSERT_PLAYLIST_SQL);
         try (Connection cn = getConnection(); PreparedStatement ps = cn.prepareStatement(INSERT_PLAYLIST_SQL)) {
-            ps.setString(1, playlist.getP_id());
-            ps.setString(2, playlist.getPlayListName());
-            ps.setString(3, playlist.getU_id());
+            ps.setString(1, playlist.getPlayListName());
+            ps.setString(2, playlist.getU_id());
+            ps.setString(3, playlist.getLabel());
             System.out.println(ps);
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -159,7 +160,8 @@ public class PlaylistDAO implements IPlayListDAO {
     public List<PlayList> sortPlaylistByDate() {
         List<PlayList> playLists = new ArrayList<>();
         System.out.println(SORT_PLAYLIST_BY_DATE);
-        try (Connection cn = getConnection(); PreparedStatement ps = cn.prepareStatement(SORT_PLAYLIST_BY_DATE)) {
+        try (Connection cn = getConnection();
+             PreparedStatement ps = cn.prepareStatement(SORT_PLAYLIST_BY_DATE)) {
             System.out.println(ps);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -177,23 +179,25 @@ public class PlaylistDAO implements IPlayListDAO {
         return playLists;
     }
 
-    public List<Song> findListSongByPlayListId(String p_id) {
-        List<Song> songs = new ArrayList<>();
+    public List<Song> getListSongByPlayListId(String playlistID) {
+        List<Song> listSong = new ArrayList<>();
         try (Connection cn = getConnection();
              PreparedStatement ps = cn.prepareStatement(LIST_SONG)) {
-            ps.setString(1, p_id);
+            ps.setString(1, playlistID);
             System.out.println(ps);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 String s_id = rs.getString("s_id");
                 String s_name = rs.getString("song_name");
                 String author = rs.getString("author");
-                songs.add(new Song(s_id, s_name, author));
+                String url = rs.getString("url");
+                String label = rs.getString("label");
+                listSong.add(new Song(s_id, s_name, author,url,label));
             }
         } catch (SQLException e) {
             printSQLException(e);
         }
-        return songs;
+        return listSong;
     }
 
     public List<PlayList> selectPlayListByUID(String userID) {
@@ -209,6 +213,7 @@ public class PlaylistDAO implements IPlayListDAO {
                 String label = rs.getString("label");
                 playLists.add(new PlayList(playlistID, playlistName, userID, label));
             }
+            playLists.sort(Comparator.comparing(PlayList ::getP_id));
         } catch (SQLException e) {
             printSQLException(e);
         }
