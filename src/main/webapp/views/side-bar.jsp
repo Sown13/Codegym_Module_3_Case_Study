@@ -88,7 +88,7 @@
         <div class="row mb-2">
             <div class="col-9"><h5 class="text-white">Thư viện</h5></div>
             <div class="col-3 mt-3">
-                <a href="#">
+                <a href="views/select-playlist.jsp">
                     <i class="fa-solid fa-plus fa-xl text-light" role="button" data-bs-toggle="tooltip"
                        data-bs-placement="left" title="Tạo playlist"></i>
                 </a>

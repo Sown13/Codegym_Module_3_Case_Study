@@ -22,83 +22,143 @@
     <div class="container mt-3">
         <div class="row">
             <jsp:include page="side-bar.jsp"/>
-            <div class="col-9 overflow-auto" style="height: 90vh">
-                <section class="main-display w-auto bg-dark p-3">
+            <div class="col-9 bg-dark">
+                <div class="pt-3 mb-3">
                     <jsp:include page="search-bar.jsp"/>
-                    <!-- Image cover display here-->
-                    <div class=" mx-0 my-5">
-                        <h1 class="text-white w-100">Image cover</h1>
-                    </div>
-                    <hr style="color: white">
-                    <!-- Playlist play button display here-->
-                    <div class="mx-0 my-3">
-                        <h5 class="text-white w-100 m-0">Play button display</h5>
-                    </div>
-                    <hr style="color: white">
-                    <table class="table playing-table">
-                        <thead>
-                        <tr class="table-dark">
-                            <th scope="col">#</th>
-                            <th scope="col">Tiêu đề</th>
-                            <th scope="col">Album</th>
-                            <th scope="col">Yêu thích</th>
-                            <th scope="col">Trạng thái</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="table-dark" role="button">
-                            <td >1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr class="table-dark" role="button">
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr class="table-dark" role="button">
-                            <td>3</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr class="table-dark" role="button">
-                            <td>3</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr class="table-dark" role="button">
-                            <td>3</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr class="table-dark" role="button">
-                            <td>3</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr class="table-dark" role="button">
-                            <td>3</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
+                </div>
+                <div class="overflow-auto" style="height: 80vh">
+                    <section class="main-display w-auto bg-dark p-3">
+                        <!-- Image cover display here-->
+                        <div class=" mx-0 my-5">
+                            <h1 class="text-white w-100">Image cover</h1>
+                        </div>
+                        <hr style="color: white">
+                        <!-- Playlist play button display here-->
+                        <div class="mx-0 my-3">
+                            <h5 class="text-white w-100 m-0">Play button display</h5>
+                        </div>
+                        <hr style="color: white">
+                        <table class="table playing-table">
+                            <thead>
+                            <tr class="table-dark">
+                                <th scope="col">#</th>
+                                <th scope="col">Tiêu đề</th>
+                                <th scope="col">Album</th>
+                                <th scope="col">Yêu thích</th>
+                                <th scope="col">Trạng thái</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-dark" role="button">
+                                <td >1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>2</td>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
 
-                        </tbody>
-                    </table>
-                </section>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
