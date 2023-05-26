@@ -2,6 +2,7 @@ package controller;
 
 import dao.playlist.PlaylistDAO;
 import model.PlayList;
+import model.Song;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -35,7 +36,7 @@ public class PlaylistServlet extends HttpServlet {
                     showEditFrom(request, response);
                     break;
                 case "delete":
-                    delete(request,response);
+                    delete(request, response);
                     break;
                 case "find":
                     findPlaylistByName(request, response);
@@ -43,11 +44,14 @@ public class PlaylistServlet extends HttpServlet {
                 case "sort":
                     sortPlayListByDate(request, response);
                     break;
+                case "listSong":
+                    findListSongByPlayListId(request,response);
+                    break;
                 default:
-                    list(request,response);
+                    list(request, response);
                     break;
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }
@@ -55,19 +59,19 @@ public class PlaylistServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action == null){
+        if (action == null) {
             action = "";
         }
         try {
-            switch (action){
+            switch (action) {
                 case "create":
-                    insert(request,response);
+                    insert(request, response);
                     break;
                 case "edit":
                     update(request, response);
                     break;
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }
@@ -126,18 +130,29 @@ public class PlaylistServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
     }
-    private void findPlaylistByName (HttpServletRequest request, HttpServletResponse response)
-    throws SQLException, IOException, ServletException{
+
+    private void findPlaylistByName(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
         String name = request.getParameter("p_name");
         playlistDAO.findPlayListByName(name);
         RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
     }
+
     private void sortPlayListByDate(HttpServletRequest request, HttpServletResponse response)
-        throws SQLException, IOException, ServletException{
+            throws SQLException, IOException, ServletException {
         List<PlayList> playLists = playlistDAO.sortPlaylistByDate();
         request.setAttribute("playlist", playLists);
         RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
+    }
+
+    private void findListSongByPlayListId(HttpServletRequest request, HttpServletResponse response)
+    throws SQLException, IOException, ServletException{
+        String p_id = request.getParameter("p_id");
+        List<Song> listSong = playlistDAO.findListSongByPlayListId(p_id);
+        request.setAttribute("listSong", listSong);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        dispatcher.forward(request,response);
     }
 }

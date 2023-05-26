@@ -1,6 +1,7 @@
 package dao.playlist;
 
 import model.PlayList;
+import model.Song;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,14 +10,15 @@ import java.util.List;
 public class PlaylistDAO implements IPlayListDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "25546912$oN";
+    private String jdbcPassword = "19091995@xk0305";
     private static final String INSERT_PLAYLIST_SQL = "INSERT INTO playlist (p_id, p_name, u_id) VALUES (?, ?, ?);";
     private static final String SELECT_PLAYLIST_BY_ID = "select p_id, p_name, create_date, u_id from playlist where p_id = ?";
     private static final String SELECT_ALL_PLAYLIST = "select * from playlist";
     private static final String DELETE_PLAYLIST_SQL = "delete from playlist where p_id = ?;";
     private static final String UPDATE_PLAYLIST_SQL = "update playlist set p_name=?;";
-    private static final String FIND_PLAYLIST_BY_NAME = "select * from playlist where p_name like '%?%';";
+    private static final String FIND_PLAYLIST_BY_NAME = "select * from playlist where p_name like '%'?'%';";
     private static final String SORT_PLAYLIST_BY_DATE = "select * from playlist order by create_date desc;";
+    private static final String LIST_SONG = "select songs.s_id, song_name, author from songs inner join playlist_detail on songs.s_id = playlist_detail.s_id where p_id = ?;" ;
 
     public PlaylistDAO() {
 
@@ -144,6 +146,25 @@ public class PlaylistDAO implements IPlayListDAO {
             printSQLException(e);
         }
         return playLists;
+    }
+
+    public List<Song> findListSongByPlayListId(String p_id) {
+        List<Song> songs = new ArrayList<>();
+        try (Connection cn = getConnection();
+             PreparedStatement ps = cn.prepareStatement(LIST_SONG)) {
+            ps.setString(1, p_id);
+            System.out.println(ps);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String s_id = rs.getString("s_id");
+                String s_name = rs.getString("song_name");
+                String author = rs.getString("author");
+                songs.add(new Song(s_id, s_name, author));
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return songs;
     }
 
     private void printSQLException(SQLException ex) {
