@@ -14,13 +14,12 @@ public class PlaylistDAO implements IPlayListDAO {
     private static final String SELECT_ALL_PLAYLIST = "select * from playlist";
     private static final String DELETE_PLAYLIST_SQL = "delete from playlist where p_id = ?;";
     private static final String UPDATE_PLAYLIST_SQL = "update playlist set p_name=?;";
-    private static final String FIND_PLAYLIST_BY_NAME = "select * from playlist where p_name like '%?%';";
+    private static final String FIND_PLAYLIST_BY_NAME = "select * from playlist where p_name like `%?%`";
     private static final String SORT_PLAYLIST_BY_DATE = "select * from playlist order by create_date desc;";
 
     public PlaylistDAO() {
 
     }
-
 
 
     protected Connection getConnection() {
@@ -31,9 +30,9 @@ public class PlaylistDAO implements IPlayListDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-           e.printStackTrace();
-      }
-       return connection;
+            e.printStackTrace();
+        }
+        return connection;
     }
 
     @Override
@@ -121,7 +120,7 @@ public class PlaylistDAO implements IPlayListDAO {
         String SELECT_FROM_PLAYLIST = "SELECT * FROM playlist WHERE label=`?`;";
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_FROM_PLAYLIST)) {
-             statement.setString(1,labeled);
+            statement.setString(1, labeled);
             System.out.println(statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -142,6 +141,9 @@ public class PlaylistDAO implements IPlayListDAO {
     }
 
 
+
+
+
     public PlayList findPlayListByName(String name) {
         PlayList playList = null;
         try (Connection cn = getConnection();
@@ -153,8 +155,8 @@ public class PlaylistDAO implements IPlayListDAO {
                 String p_id = rs.getString("p_id");
                 String u_id = rs.getString("u_id");
 
-                String label=rs.getString("label");
-                playList = new PlayList(p_id, name, u_id,label);
+                String label = rs.getString("label");
+                playList = new PlayList(p_id, name, u_id, label);
 
             }
         } catch (SQLException e) {
@@ -174,8 +176,8 @@ public class PlaylistDAO implements IPlayListDAO {
                 String p_name = rs.getString("p_name");
                 String u_id = rs.getString("u_id");
 
-                String label=rs.getString("label");
-                playLists.add(new PlayList(p_id, p_name, u_id,label));
+                String label = rs.getString("label");
+                playLists.add(new PlayList(p_id, p_name, u_id, label));
 
             }
 

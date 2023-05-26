@@ -45,8 +45,11 @@ public class UserServlet extends HttpServlet {
                     showDeleteForm(request, response);
                     break;
                 }
-                case "loginForm":
-                    showFormLogin(request,response);
+                case "loginForm": {
+                    showFormLogin(request, response);
+                }
+                case "logout":
+                    logout(request,response);
                     break;
                 default: {
                     break;
@@ -167,5 +170,14 @@ public class UserServlet extends HttpServlet {
 
         }
     }
+    private void logout(HttpServletRequest request,HttpServletResponse response)
+    throws IOException,ServletException{
+        HttpSession session=request.getSession();
+        session.removeAttribute("loginUser");
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("view/home.jsp");
+        requestDispatcher.forward(request,response);
+
+    }
+
 
 }

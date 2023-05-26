@@ -39,4 +39,14 @@ public class PlayList {
     public void setU_id(String u_id) {
         this.u_id = u_id;
     }
+
+    @Override
+    public String toString() {
+        return "PlayList{" +
+                "p_id='" + p_id + '\'' +
+                ", p_name='" + p_name + '\'' +
+                ", u_id='" + u_id + '\'' +
+                ", label='" + label + '\'' +
+                '}';
+    }
 }

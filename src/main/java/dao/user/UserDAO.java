@@ -147,11 +147,15 @@ public class UserDAO implements IUserDAO {
         }
         return null;
     }
+    public void logout(){
 
-    public static void main(String[] args) {
-        UserDAO userDAO=new UserDAO();
-        User user=userDAO.login("1","1");
-        System.out.println(user);
     }
+
+//
+//    public static void main(String[] args) {
+//        UserDAO userDAO=new UserDAO();
+//        User user=userDAO.login("1","1");
+//        System.out.println(user);
+//    }
 }
 
