@@ -28,28 +28,32 @@
                 </div>
                 <div class="overflow-auto" style="height: 80vh">
                     <section class="main-display w-auto bg-dark p-3">
-                        <!-- Image cover display here-->
                         <div class=" mx-0 my-5">
                             <div class="row">
                                 <div class="col-6">
                                     <img src="images/img_2_horizontal.jpg" alt="Image placeholder" class="rounded img-fluid">
                                 </div>
                                 <div class="col-6">
-                                    <p class="text-white">Personal playlist</p>
-                                    <h3 class="text-white">My Playlist #n</h3>
-                                    <p class="text-white">#author</p>
+                                    <a href="#edit-playlist-info" class="text-decoration-none">
+                                        <p class="text-white">Personal playlist</p>
+                                        <h3 class="text-white">My Playlist #n</h3>
+                                        <p class="text-white">#author</p>
+                                    </a>
+
                                 </div>
                             </div>
                         </div>
                         <hr style="color: white">
-                        <!-- Playlist play button display here-->
                         <div class="mx-0 my-3">
                             <div class="row align-items-center">
                                 <div class="col-1">
-                                    <i class="fa-solid fa-circle-play fa-3x ms-4" style="color: limegreen"></i>
+                                    <a href="#play-playlist"><i class="fa-solid fa-circle-play fa-3x ms-4" data-bs-toggle="tooltip"  data-bs-placement="left" title="Play/Pause" role="button" style="color: limegreen"></i></a>
                                 </div>
                                 <div class="col-1">
-                                    <i class="fa-solid fa-heart fa-2xl ms-3" style="color: limegreen"></i>
+                                    <a href="#like-playlist"><i class="fa-solid fa-heart fa-2xl ms-3" data-bs-toggle="tooltip"  data-bs-placement="left" title="Like/Unlike" role="button" style="color: limegreen"></i></a>
+                                </div>
+                                <div class="col">
+                                    <a href="#delete-playlist"><i class="fa-solid fa-trash fa-xl float-end text-light me-3" data-bs-toggle="tooltip"  data-bs-placement="left" title="Delete playlist" role="button"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -173,6 +177,7 @@
 
                             </tbody>
                         </table>
+<%--                    Section for add/remove songs from playlist --%>
                     </section>
                 </div>
             </div>
