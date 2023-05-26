@@ -30,12 +30,28 @@
                     <section class="main-display w-auto bg-dark p-3">
                         <!-- Image cover display here-->
                         <div class=" mx-0 my-5">
-                            <h1 class="text-white w-100">Image cover</h1>
+                            <div class="row">
+                                <div class="col-6">
+                                    <img src="images/img_2_horizontal.jpg" alt="Image placeholder" class="rounded img-fluid">
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-white">Personal playlist</p>
+                                    <h3 class="text-white">My Playlist #n</h3>
+                                    <p class="text-white">#author</p>
+                                </div>
+                            </div>
                         </div>
                         <hr style="color: white">
                         <!-- Playlist play button display here-->
                         <div class="mx-0 my-3">
-                            <h5 class="text-white w-100 m-0">Play button display</h5>
+                            <div class="row align-items-center">
+                                <div class="col-1">
+                                    <i class="fa-solid fa-circle-play fa-3x ms-4" style="color: limegreen"></i>
+                                </div>
+                                <div class="col-1">
+                                    <i class="fa-solid fa-heart fa-2xl ms-3" style="color: limegreen"></i>
+                                </div>
+                            </div>
                         </div>
                         <hr style="color: white">
                         <table class="table playing-table">
