@@ -87,11 +87,15 @@
     <section class="side-bar-down w-auto bg-dark">
         <div class="row mb-2">
             <div class="col-9"><h5 class="text-white">Thư viện</h5></div>
-            <div class="col-3 mt-3">
-                <a href="views/select-playlist.jsp">
-                    <i class="fa-solid fa-plus fa-xl text-light" role="button" data-bs-toggle="tooltip"
-                       data-bs-placement="left" title="Tạo playlist"></i>
-                </a>
+            <div class="col-3 mt-1">
+                <form method="post">
+                    <input type="hidden" name="key" value="test">
+                    <button type="submit" class="btn btn-success bg-dark border-0">
+                        <i class="fa-solid fa-plus fa-xl text-light" role="button" data-bs-toggle="tooltip"
+                           data-bs-placement="left" title="Tạo playlist"></i>
+                    </button>
+
+                </form>
             </div>
         </div>
         <div class="d-flex flex-column align-items-stretch flex-shrink-0 overflow-auto" style="height: 66vh;">
