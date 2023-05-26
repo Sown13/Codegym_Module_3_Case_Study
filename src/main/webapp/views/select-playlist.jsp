@@ -57,6 +57,158 @@
                             <td>${song.getSong_url()}</td>
                         </tr>
                         </c:forEach>
+            <div class="col-9 bg-dark">
+                <div class="pt-3 mb-3">
+                    <jsp:include page="search-bar.jsp"/>
+                </div>
+                <div class="overflow-auto" style="height: 80vh">
+                    <section class="main-display w-auto bg-dark p-3">
+                        <div class=" mx-0 my-5">
+                            <div class="row">
+                                <div class="col-6">
+                                    <img src="images/img_2_horizontal.jpg" alt="Image placeholder" class="rounded img-fluid">
+                                </div>
+                                <div class="col-6">
+                                    <a href="#edit-playlist-info" class="text-decoration-none">
+                                        <p class="text-white">Personal playlist</p>
+                                        <h3 class="text-white">My Playlist #n</h3>
+                                        <p class="text-white">#author</p>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="color: white">
+                        <div class="mx-0 my-3">
+                            <div class="row align-items-center">
+                                <div class="col-1">
+                                    <a href="#play-playlist"><i class="fa-solid fa-circle-play fa-3x ms-4" data-bs-toggle="tooltip"  data-bs-placement="left" title="Play/Pause" role="button" style="color: limegreen"></i></a>
+                                </div>
+                                <div class="col-1">
+                                    <a href="#like-playlist"><i class="fa-solid fa-heart fa-2xl ms-3" data-bs-toggle="tooltip"  data-bs-placement="left" title="Like/Unlike" role="button" style="color: limegreen"></i></a>
+                                </div>
+                                <div class="col">
+                                    <a href="#delete-playlist"><i class="fa-solid fa-trash fa-xl float-end text-light me-3" data-bs-toggle="tooltip"  data-bs-placement="left" title="Delete playlist" role="button"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="color: white">
+                        <table class="table playing-table">
+                            <thead>
+                            <tr class="table-dark">
+                                <th scope="col">#</th>
+                                <th scope="col">Tiêu đề</th>
+                                <th scope="col">Album</th>
+                                <th scope="col">Yêu thích</th>
+                                <th scope="col">Trạng thái</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-dark" role="button">
+                                <td >1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>2</td>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td>3</td>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
 
                         </tbody>
                     </table>
