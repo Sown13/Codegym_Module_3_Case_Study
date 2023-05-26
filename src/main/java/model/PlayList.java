@@ -24,7 +24,7 @@ public class PlayList {
         this.p_id = p_id;
     }
 
-    public String getP_name() {
+    public String getPlayListName() {
         return p_name;
     }
 
@@ -38,5 +38,13 @@ public class PlayList {
 
     public void setU_id(String u_id) {
         this.u_id = u_id;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 }

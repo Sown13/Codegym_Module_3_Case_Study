@@ -41,7 +41,7 @@ public class PlaylistDAO implements IPlayListDAO {
         System.out.println(INSERT_PLAYLIST_SQL);
         try (Connection cn = getConnection(); PreparedStatement ps = cn.prepareStatement(INSERT_PLAYLIST_SQL)) {
             ps.setString(1, playlist.getP_id());
-            ps.setString(2, playlist.getP_name());
+            ps.setString(2, playlist.getPlayListName());
             ps.setString(3, playlist.getU_id());
             System.out.println(ps);
             ps.executeUpdate();
@@ -109,14 +109,14 @@ public class PlaylistDAO implements IPlayListDAO {
         try (Connection cn = getConnection();
              PreparedStatement ps = cn.prepareStatement(UPDATE_PLAYLIST_SQL)) {
             ps.setString(1, playlist.getP_id());
-            ps.setString(2, playlist.getP_name());
+            ps.setString(2, playlist.getPlayListName());
             ps.setString(3, playlist.getU_id());
             rowUpdate = ps.executeUpdate() > 0;
         }
         return rowUpdate;
     }
 
-    public List<PlayList> playListLabel(String label) {
+    public List<PlayList> selectPlayListByLabel(String label) {
         List<PlayList> playLists = new ArrayList<>();
         String SELECT_FROM_PLAYLIST = "SELECT * FROM playlist WHERE label= ? LIMIT 4;";
         try (Connection connection = getConnection();

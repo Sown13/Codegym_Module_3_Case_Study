@@ -9,7 +9,7 @@ import java.util.List;
 public class SongDAO implements ISongDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "admin";
+    private String jdbcPassword = "25546912$oN";
     private static final String INSERT_song_SQL = "INSERT INTO song(song_name,author,song_url,label) VALUES(?,?,?,?)";
     private static final String SELECT_song_BY_ID = "SELECT s_id,song_name,author,upload_date,song_url,label,listening_frequency";
     private static final String SELECT_ALL_song = "SELECT FORM*song";

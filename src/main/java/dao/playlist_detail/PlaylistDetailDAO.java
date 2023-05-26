@@ -8,7 +8,7 @@ import java.util.List;
 public class PlaylistDetailDAO implements IPlaylistDetailDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "admin";
+    private String jdbcPassword = "25546912$oN";
 
     private static final String INSERT_PLAYLISTDETAIL_SQL = "INSERT INTO playlist_detail (s_id, p_id) VALUES (?, ?);";
     private static final String SELECT_PLAYLISTDETAIL_BY_ID = "select  from playlist_detail group by p_id";

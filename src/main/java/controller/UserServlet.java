@@ -166,7 +166,7 @@ public class UserServlet extends HttpServlet {
         if(user1!=null){
             HttpSession session=request.getSession();
             session.setAttribute("loginUser",user1);
-            session.setMaxInactiveInterval(10);
+//            session.setMaxInactiveInterval(10);
             RequestDispatcher dispatcher=request.getRequestDispatcher("views/home.jsp");
             dispatcher.forward(request,response);
         }else {
