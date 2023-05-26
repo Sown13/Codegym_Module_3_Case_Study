@@ -1,15 +1,12 @@
 package dao.comment;
 
 import model.Comment;
-
+import static others.Utils.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CommentDAO implements CommentI {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "25546912$oN";
     private static final String INSERT_comment_SQL = "INSET INTO comment(content,s_id,u_id)";
     private static final String SELECT_comment_BY_ID = "SELECT c_id,content,s_id,u_id From comment where c_id=?";
     private static final String SELECT_ALL_comment = "SELECT FROM * comment";
@@ -21,7 +18,7 @@ public class CommentDAO implements CommentI {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+            connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

@@ -1,15 +1,14 @@
 package dao.like;
 
 import model.Like;
+import static others.Utils.*;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LikeDAO implements ILikeDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "25546912$oN";
+
     private static final String INSERT_LIKE_SQL = "INSERT INTO likes (u_id, s_id) VALUES (?,?);";
     private static final String SELECT_LIKE_BY_ID = "select u_id, s_id from likes where u_id = ?";
     private static final String SELECT_ALL_LIKE = "select * from likes";
@@ -26,7 +25,7 @@ public class LikeDAO implements ILikeDAO {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+            connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

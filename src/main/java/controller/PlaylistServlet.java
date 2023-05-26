@@ -2,6 +2,7 @@ package controller;
 
 import dao.playlist.PlaylistDAO;
 import model.PlayList;
+import model.Song;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -42,6 +43,9 @@ public class PlaylistServlet extends HttpServlet {
                     break;
                 case "sort":
                     sortPlayListByDate(request, response);
+                    break;
+                case "listSong":
+                    findListSongByPlayListId(request,response);
                     break;
                 default:
                     getPlaylistByLabel(request,response);
@@ -130,7 +134,7 @@ public class PlaylistServlet extends HttpServlet {
     }
 
 
-    private void getPlaylistByLabel(HttpServletRequest request, HttpServletResponse response)
+    private void getPlaylistByLabel(HttpServletRequest request,HttpServletResponse response)
             throws SQLException,IOException,ServletException{
         List<PlayList> playLists1 = new ArrayList<>();
         List<PlayList> playLists2 = new ArrayList<>();
@@ -158,7 +162,6 @@ public class PlaylistServlet extends HttpServlet {
 
 
 
-
     private void findPlaylistByName (HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException, ServletException{
         String name = request.getParameter("p_name");
@@ -172,5 +175,14 @@ public class PlaylistServlet extends HttpServlet {
         request.setAttribute("playlist", playLists);
         RequestDispatcher dispatcher = request.getRequestDispatcher("");
         dispatcher.forward(request, response);
+    }
+
+    private void findListSongByPlayListId(HttpServletRequest request, HttpServletResponse response)
+    throws SQLException, IOException, ServletException{
+        String p_id = request.getParameter("p_id");
+        List<Song> listSong = playlistDAO.findListSongByPlayListId(p_id);
+        request.setAttribute("listSong", listSong);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        dispatcher.forward(request,response);
     }
 }
