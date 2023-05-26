@@ -209,7 +209,6 @@ public class PlaylistDAO implements IPlayListDAO {
                 String label = rs.getString("label");
                 playLists.add(new PlayList(playlistID, playlistName, userID, label));
             }
-            return playLists;
         } catch (SQLException e) {
             printSQLException(e);
         }
@@ -228,12 +227,12 @@ public class PlaylistDAO implements IPlayListDAO {
                 String playlistName = rs.getString("p_name");
                 String ortherUserID = rs.getString("u_id");
                  String label = rs.getString("label");
-                playLists.add(new PlayList(playlistID, playlistName, userID, label));
+                playLists.add(new PlayList(playlistID, playlistName, ortherUserID, label));
             }
-            return playLists;
         } catch (SQLException e) {
             printSQLException(e);
         }
+        System.out.println(playLists.toString());
         return playLists;
     }
 

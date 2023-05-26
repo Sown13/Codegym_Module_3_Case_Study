@@ -205,7 +205,7 @@ public class PlaylistServlet extends HttpServlet {
             User loginUser = (User) session.getAttribute("loginUser");
             String userID = loginUser.getU_id();
             playLists.addAll(playlistDAO.selectPlayListByUID(userID));
-            playLists.addAll(playlistDAO.selectPlayListFromOtherUser(request.getParameter(userID)));
+            playLists.addAll(playlistDAO.selectPlayListFromOtherUser(userID));
         }
         request.setAttribute("playLists", playLists);
     }
