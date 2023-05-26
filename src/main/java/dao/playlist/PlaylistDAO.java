@@ -148,8 +148,6 @@ public class PlaylistDAO implements IPlayListDAO {
             while (rs.next()) {
                 String p_id = rs.getString("p_id");
                 String u_id = rs.getString("u_id");
-<<<<<<< HEAD
-
                 String label=rs.getString("label");
                 playLists.add(new PlayList(p_id, name, u_id,label)) ;
 
@@ -172,10 +170,6 @@ public class PlaylistDAO implements IPlayListDAO {
                 String label=rs.getString("label");
                 playList = new PlayList(p_id,p_id,u_id,label);
 
-=======
-                String label = rs.getString("label");
-                playList = new PlayList(p_id, name, u_id, label);
->>>>>>> f1ee920402ae2aebf909aca386d09faa360df382
             }
         } catch (SQLException e) {
             printSQLException(e);
