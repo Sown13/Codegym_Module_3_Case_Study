@@ -57,8 +57,7 @@ insert into songs values
                       (default,'Em gai mua','Huong tram',default,'abc',300,'V-pop',7, default),
                       (default,'Duyen minh lo','Huong tram',default,'abc',300,'V-pop',9, default),
                       (default,'la em','Mo no',default,'abc',300,'V-pop',2, default),
-                      (default,'Em cua qua khu','Son tung',default,'abc',300,'V-pop',5, default),
-                      (default,'Chung ta cua hien tai','Son tung',default,'abc',300,'V-pop',5, default);
+                      (default,'Em cua qua khu','Son tung',default,'abc',300,'V-pop',5, default);
 
 -- insert into songs(s_id, song_name, author, upload_date, url, listening_frequency, label, u_id) values
 -- (default, 'Khong yeu', 'sonson',default, 'abc', 1, 'nhac tre', 1),
@@ -82,14 +81,15 @@ insert into songs values
 -- (default, 'Chau len tam', 'sonson', default, 'abc', 1, 'pop', 9),
 -- (default, 'Chau len chin', 'sonson', default, 'abc', 1, 'classical', 7),
 -- (default, 'Chau len muoi', 'sonson', default, 'abc', 1, 'nhac tre', 8);
+--
 -- insert into playlist values
 -- (default, 'Ua thich cua Son', default, 1,'nhac tre'),
 -- (default, 'Son hay nghe', default, 1,'nhac vang'),
 -- (default, 'Ua thich cua Nam', default, 2,'rock'),
 -- (default, 'Ua thich cua Dua', default, 3,'jar'),
 -- (default, 'Ua thich cua Uyen', default, 4,'pop');
-
-
+--
+--
 
 insert into playlist values
                          (default, 'Ua thich cua Son', default, 1,'Nhac Vpop'),
@@ -98,7 +98,7 @@ insert into playlist values
                          (default, 'Nhac chua lanh son', default, 1,'Nhac khong loi'),
                          (default, 'Nhac son ghet', default, 1,'nhac vang'),
                          (default, 'Ua thich cua Uyen', default, 4,'nhac khong loi'),
-                         (default, 'Uyen hay nhghe', default, 4,'Nhac kpop'),
+                         (default, 'Uyen hay nghe', default, 4,'Nhac kpop'),
                          (default, 'Ua thich cua Tuan', default, 5,'Nhac tre'),
                          (default, 'Ua thich cua Hung', default, 6,'Nhac EDM'),
                          (default, 'Ua thich cua Cong', default, 7,'nhac buon'),

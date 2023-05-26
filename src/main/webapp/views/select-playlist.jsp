@@ -23,40 +23,6 @@
     <div class="container mt-3">
         <div class="row">
             <jsp:include page="side-bar.jsp"/>
-            <div class="col-9 overflow-auto" style="height: 90vh">
-                <section class="main-display w-auto bg-dark p-3">
-                    <jsp:include page="search-bar.jsp"/>
-                    <!-- Image cover display here-->
-                    <div class=" mx-0 my-5">
-                        <h1 class="text-white w-100">Image cover</h1>
-                    </div>
-                    <hr style="color: white">
-                    <!-- Playlist play button display here-->
-                    <div class="mx-0 my-3">
-                        <h5 class="text-white w-100 m-0">Play button display</h5>
-                    </div>
-                    <hr style="color: white">
-                    <table class="table playing-table">
-                        <thead>
-                        <tr class="table-dark">
-                            <th scope="col">#</th>
-                            <th scope="col">Tiêu đề</th>
-                            <th scope="col">Album</th>
-                            <th scope="col">Yêu thích</th>
-                            <th scope="col">Trạng thái</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <c:forEach var="song" items="${requestScope.listSong}">
-                        <tr class="table-dark" role="button">
-                            <td >${song.getS_id()}</td>
-                            <td>${song.getSong_name()}</td>
-                            <td>${song.getAuthor()}</td>
-                            <td>${song.getLabel()}</td>
-                            <td>${song.getSong_url()}</td>
-                        </tr>
-                        </c:forEach>
             <div class="col-9 bg-dark">
                 <div class="pt-3 mb-3">
                     <jsp:include page="search-bar.jsp"/>
@@ -66,13 +32,15 @@
                         <div class=" mx-0 my-5">
                             <div class="row">
                                 <div class="col-6">
-                                    <img src="images/img_2_horizontal.jpg" alt="Image placeholder" class="rounded img-fluid">
+                                    <img src="views/images/img_2_horizontal.jpg" alt="Image placeholder"
+                                         class="rounded img-fluid">
                                 </div>
                                 <div class="col-6">
                                     <a href="#edit-playlist-info" class="text-decoration-none">
                                         <p class="text-white">Personal playlist</p>
                                         <h3 class="text-white">My Playlist #n</h3>
                                         <p class="text-white">#author</p>
+                                        <p class="text-white">Số lượt nghe: #number</p>
                                     </a>
 
                                 </div>
@@ -82,13 +50,22 @@
                         <div class="mx-0 my-3">
                             <div class="row align-items-center">
                                 <div class="col-1">
-                                    <a href="#play-playlist"><i class="fa-solid fa-circle-play fa-3x ms-4" data-bs-toggle="tooltip"  data-bs-placement="left" title="Play/Pause" role="button" style="color: limegreen"></i></a>
+                                    <a href="#play-playlist"><i class="fa-solid fa-circle-play fa-3x ms-4"
+                                                                data-bs-toggle="tooltip" data-bs-placement="left"
+                                                                title="Play/Pause" role="button"
+                                                                style="color: limegreen"></i></a>
                                 </div>
                                 <div class="col-1">
-                                    <a href="#like-playlist"><i class="fa-solid fa-heart fa-2xl ms-3" data-bs-toggle="tooltip"  data-bs-placement="left" title="Like/Unlike" role="button" style="color: limegreen"></i></a>
+                                    <a href="#like-playlist"><i class="fa-solid fa-heart fa-2xl ms-3"
+                                                                data-bs-toggle="tooltip" data-bs-placement="left"
+                                                                title="Like/Unlike" role="button"
+                                                                style="color: limegreen"></i></a>
                                 </div>
                                 <div class="col">
-                                    <a href="#delete-playlist"><i class="fa-solid fa-trash fa-xl float-end text-light me-3" data-bs-toggle="tooltip"  data-bs-placement="left" title="Delete playlist" role="button"></i></a>
+                                    <a href="#delete-playlist"><i
+                                            class="fa-solid fa-trash fa-xl float-end text-light me-3"
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Delete playlist"
+                                            role="button"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -104,115 +81,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="table-dark" role="button">
-                                <td >1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                            </tr>
 
-                        </tbody>
-                    </table>
-                </section>
+                            <c:forEach var="song" items="${requestScope.listSong}">
+                                <tr class="table-dark" role="button">
+                                    <td>${song.getS_id()}</td>
+                                    <td>${song.getSong_name()}</td>
+                                    <td>${song.getAuthor()}</td>
+                                    <td>${song.getLabel()}</td>
+                                    <td>${song.getSong_url()}</td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
@@ -220,8 +102,8 @@
 <jsp:include page="play-bar.jsp"/>
 </body>
 <script>
-    $(document).ready(function(){
-        $('.playing-table').on('click', 'tbody tr', function(event) {
+    $(document).ready(function () {
+        $('.playing-table').on('click', 'tbody tr', function (event) {
             $(this).addClass('highlight').siblings().removeClass('highlight');
         });
     });
