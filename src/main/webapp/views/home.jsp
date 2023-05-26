@@ -118,77 +118,7 @@
                                 </c:forEach>
 
 
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_3_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 2</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_4_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 3</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_5_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 4</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
 
-<%--                            <p class="text-white-50 text-decoration-underline text-end mt-2" role="button">Hiện tất--%>
-<%--                                cả</p>--%>
-<%--                        </div>--%>
-<%--                        <div class="container list1">--%>
-<%--                            <h5 class="text-white">Mới phát gần đây</h5>--%>
-<%--                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 1</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_3_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 2</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_4_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 3</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_5_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 4</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
                             </div>
                             <p class="text-white-50 text-decoration-underline text-end mt-2" role="button">Hiện tất
                                 cả</p>
@@ -208,43 +138,6 @@
                                     </div>
                                 </c:forEach>
 
-
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 1</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_3_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 2</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_4_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 3</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_5_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 4</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
                             </div>
                             <p class="text-white-50 text-decoration-underline text-end mt-2" role="button">Hiện tất
                                 cả</p>
@@ -264,42 +157,7 @@
                                         </div>
                                     </div>
                                 </c:forEach>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 1</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_3_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 2</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_4_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 3</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_5_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 4</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
+
                             </div>
                             <p class="text-white-50 text-decoration-underline text-end mt-2" role="button">Hiện tất
                                 cả</p>
@@ -319,42 +177,6 @@
                                     </div>
                                 </c:forEach>
 
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 1</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_3_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 2</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_4_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 3</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <div class="card shadow-sm">--%>
-<%--                                        <img src="views/images/img_5_horizontal.jpg" class="w-100 h-100">--%>
-<%--                                        <div class="card-body">--%>
-<%--                                            <p class="card-text"><b>Daily Mix 4</b></p>--%>
-<%--                                            <p class="card-text">Ngọt,Chilies,Đen và nhiều hơn nữa</p>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
                             </div>
                             <p class="text-white-50 text-decoration-underline text-end mt-2" role="button">Hiện tất
                                 cả</p>

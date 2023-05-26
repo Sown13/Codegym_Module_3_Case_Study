@@ -50,11 +50,7 @@ public class UserServlet extends HttpServlet {
                     showFormLogin(request,response);
                     break;
                 default: {
-                    request.setAttribute("rock", "rock");
-                    request.setAttribute("nhac tre", "nhac tre");
-                    request.setAttribute("nhac vang", "nhac vang");
-                    request.setAttribute("jar", "jar");
-                    request.setAttribute("nhac cu chuoi", "nhac cu chuoi");
+                    setHomePlaylist(request,response);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("playlists");
                     dispatcher.forward(request, response);
                     break;
@@ -89,6 +85,13 @@ public class UserServlet extends HttpServlet {
         }
     }
 
+    private void setHomePlaylist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        request.setAttribute("rock", "rock");
+        request.setAttribute("nhac tre", "nhac tre");
+        request.setAttribute("nhac vang", "nhac vang");
+        request.setAttribute("jar", "jar");
+        request.setAttribute("nhac cu chuoi", "nhac cu chuoi");
+    }
     private void getListUser(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         List<User> listUser = userDAO.selectAll();
@@ -163,14 +166,16 @@ public class UserServlet extends HttpServlet {
         String user=request.getParameter("user");
         String passwords=request.getParameter("password");
         User user1=userDAO.login(user,passwords);
+        setHomePlaylist(request, response);
         if(user1!=null){
-            HttpSession session=request.getSession();
+            HttpSession session = request.getSession();
             session.setAttribute("loginUser",user1);
 //            session.setMaxInactiveInterval(10);
-            RequestDispatcher dispatcher=request.getRequestDispatcher("views/home.jsp");
+            request.setAttribute("choice", "");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("playlists");
             dispatcher.forward(request,response);
         }else {
-            RequestDispatcher dispatcher=request.getRequestDispatcher("");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("playlists");
             dispatcher.forward(request,response);
 
         }

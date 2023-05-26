@@ -17,12 +17,11 @@ public class PlaylistDAO implements IPlayListDAO {
     private static final String UPDATE_PLAYLIST_SQL = "update playlist set p_name=?;";
     private static final String FIND_PLAYLIST_BY_NAME = "select * from playlist where p_name like '%'?'%';";
     private static final String SORT_PLAYLIST_BY_DATE = "select * from playlist order by create_date desc;";
-    private static final String LIST_SONG = "select songs.s_id, song_name, author from songs inner join playlist_detail on songs.s_id = playlist_detail.s_id where p_id = ?;" ;
+    private static final String LIST_SONG = "select songs.s_id, song_name, author from songs inner join playlist_detail on songs.s_id = playlist_detail.s_id where p_id = ?;";
 
     public PlaylistDAO() {
 
     }
-
 
 
     protected Connection getConnection() {
@@ -33,9 +32,9 @@ public class PlaylistDAO implements IPlayListDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-           e.printStackTrace();
-      }
-       return connection;
+            e.printStackTrace();
+        }
+        return connection;
     }
 
     @Override
@@ -82,12 +81,8 @@ public class PlaylistDAO implements IPlayListDAO {
                 String p_id = rs.getString("p_id");
                 String p_name = rs.getString("p_name");
                 String u_id = rs.getString("u_id");
-
-
                 String label = rs.getString("label");
                 playLists.add(new PlayList(p_id, p_name, u_id, label));
-
-
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -123,7 +118,7 @@ public class PlaylistDAO implements IPlayListDAO {
         String SELECT_FROM_PLAYLIST = "SELECT * FROM playlist WHERE label= ? LIMIT 4;";
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_FROM_PLAYLIST)) {
-             statement.setString(1,label);
+            statement.setString(1, label);
             System.out.println(statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -152,8 +147,8 @@ public class PlaylistDAO implements IPlayListDAO {
             while (rs.next()) {
                 String p_id = rs.getString("p_id");
                 String u_id = rs.getString("u_id");
-                String label=rs.getString("label");
-                playList = new PlayList(p_id, name, u_id,label);
+                String label = rs.getString("label");
+                playList = new PlayList(p_id, name, u_id, label);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -171,8 +166,8 @@ public class PlaylistDAO implements IPlayListDAO {
                 String p_id = rs.getString("p_id");
                 String p_name = rs.getString("p_name");
                 String u_id = rs.getString("u_id");
-                String label=rs.getString("label");
-                playLists.add(new PlayList(p_id, p_name, u_id,label));
+                String label = rs.getString("label");
+                playLists.add(new PlayList(p_id, p_name, u_id, label));
 
             }
 
@@ -199,6 +194,47 @@ public class PlaylistDAO implements IPlayListDAO {
             printSQLException(e);
         }
         return songs;
+    }
+
+    public List<PlayList> selectPlayListByUID(String userID) {
+        String SELECT_PLAYLIST_BY_UID = "select * from playlist where u_id = ?;";
+        List<PlayList> playLists = new ArrayList<>();
+        try (Connection cn = getConnection();
+             PreparedStatement ps = cn.prepareStatement(SELECT_PLAYLIST_BY_UID)) {
+            ps.setString(1, userID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String playlistID = rs.getString("p_id");
+                String playlistName = rs.getString("p_name");
+                String label = rs.getString("label");
+                playLists.add(new PlayList(playlistID, playlistName, userID, label));
+            }
+            return playLists;
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return playLists;
+    }
+
+    public List<PlayList> selectPlayListFromOtherUser(String userID) {
+        String SELECT_PLAYLIST_FROM_ORTHER = "select * from playlist where u_id != ?;";
+        List<PlayList> playLists = new ArrayList<>();
+        try (Connection cn = getConnection();
+             PreparedStatement ps = cn.prepareStatement(SELECT_PLAYLIST_FROM_ORTHER)) {
+            ps.setString(1, userID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String playlistID = rs.getString("p_id");
+                String playlistName = rs.getString("p_name");
+                String ortherUserID = rs.getString("u_id");
+                 String label = rs.getString("label");
+                playLists.add(new PlayList(playlistID, playlistName, userID, label));
+            }
+            return playLists;
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return playLists;
     }
 
     private void printSQLException(SQLException ex) {
