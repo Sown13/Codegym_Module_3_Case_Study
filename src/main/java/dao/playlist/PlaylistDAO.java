@@ -144,8 +144,8 @@ public class PlaylistDAO implements IPlayListDAO {
     }
 
 
-    public PlayList findPlayListByName(String name) {
-        PlayList playList = null;
+    public List<PlayList> findPlayListByName(String name) {
+        List<PlayList> playLists = new ArrayList<>();
         try (Connection cn = getConnection();
              PreparedStatement ps = cn.prepareStatement(FIND_PLAYLIST_BY_NAME)) {
             ps.setString(1, name);
@@ -156,7 +156,26 @@ public class PlaylistDAO implements IPlayListDAO {
                 String u_id = rs.getString("u_id");
 
                 String label=rs.getString("label");
-                playList = new PlayList(p_id, name, u_id,label);
+                playLists.add(new PlayList(p_id, name, u_id,label)) ;
+
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return playLists;
+    }
+    public PlayList findPlaylistById (String id){
+        PlayList playList = null;
+        try (Connection cn = getConnection();
+             PreparedStatement ps = cn.prepareStatement(FIND_PLAYLIST_BY_NAME)) {
+            ps.setString(1, id);
+            System.out.println(ps);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String p_id = rs.getString("p_id");
+                String u_id = rs.getString("u_id");
+                String label=rs.getString("label");
+                playList = new PlayList(p_id,p_id,u_id,label);
 
             }
         } catch (SQLException e) {
@@ -164,6 +183,7 @@ public class PlaylistDAO implements IPlayListDAO {
         }
         return playList;
     }
+
 
     public List<PlayList> sortPlaylistByDate() {
         List<PlayList> playLists = new ArrayList<>();

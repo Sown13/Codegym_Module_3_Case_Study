@@ -1,6 +1,7 @@
 package dao.user;
 
 import controller.UserServlet;
+import model.Song;
 import model.User;
 
 import java.sql.*;
@@ -125,15 +126,16 @@ public class UserDAO implements IUserDAO {
         }
         return rowUpdated;
     }
-    public User login(String user, String password){
-        String SELECT_USERS_BY_USER_NAME_AND_PASSWORD="SELECT * FROM users WHERE user_name=? and password=?;";
+
+    public User login(String user, String password) {
+        String SELECT_USERS_BY_USER_NAME_AND_PASSWORD = "SELECT * FROM users WHERE user_name=? and password=?;";
         try {
-            Connection connection=getConnection();
-            PreparedStatement statement=connection.prepareStatement(SELECT_USERS_BY_USER_NAME_AND_PASSWORD);
-            statement.setString(1,user);
-            statement.setString(2,password);
-            ResultSet resultSet=statement.executeQuery();
-            while (resultSet.next()){
+            Connection connection = getConnection();
+            PreparedStatement statement = connection.prepareStatement(SELECT_USERS_BY_USER_NAME_AND_PASSWORD);
+            statement.setString(1, user);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
                 return new User(
                         resultSet.getString("u_id"),
                         resultSet.getString("user_name"),
@@ -142,15 +144,16 @@ public class UserDAO implements IUserDAO {
                         resultSet.getString("address"),
                         resultSet.getString("email"));
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
+
     public static void main(String[] args) {
-        UserDAO userDAO=new UserDAO();
-        User user=userDAO.login("1","1");
+        UserDAO userDAO = new UserDAO();
+        User user = userDAO.login("1", "1");
         System.out.println(user);
     }
 }

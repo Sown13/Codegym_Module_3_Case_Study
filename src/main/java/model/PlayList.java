@@ -5,6 +5,7 @@ public class PlayList {
     private String p_name;
     private String u_id;
     private String label;
+    private boolean edit;
 
     public PlayList() {
     }
@@ -14,6 +15,7 @@ public class PlayList {
         this.p_name = p_name;
         this.u_id = u_id;
         this.label=label;
+
     }
 
     public String getP_id() {
@@ -38,5 +40,21 @@ public class PlayList {
 
     public void setU_id(String u_id) {
         this.u_id = u_id;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
     }
 }
