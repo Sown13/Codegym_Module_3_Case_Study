@@ -11,7 +11,7 @@ insert into users values
 (default, 'hai00', '234567','Do Trong Hai', 'Bac Ninh', 'haido@gmail.com'),
 (default, 'hieu96', '3445778', 'Dang Manh Hieu', 'Nam Dinh', 'hieu@gmail.com');
 
-insert into songs values
+insert into songs(s_id, song_name, author, upload_date, url, listening_frequency, label, u_id) values
 (default, 'Khong yeu', 'sonson',default, 'abc', 1, 'nhac tre', 1),
 (default, 'Yeu khong', 'sonson',default, 'abc', 1, 'nhac tre', 1),
 (default, 'Em la ai', 'sonson',default, 'abc', 1, 'pop', 1),
@@ -29,16 +29,16 @@ insert into songs values
 (default, 'Chau len bon', 'sonson', default, 'abc', 1, 'nhac thieu nhi', 8),
 (default, 'Chau len nam', 'sonson', default, 'abc', 1, 'nhac vang', 9),
 (default, 'Chau len sau', 'sonson', default, 'abc', 1, 'nhac buon', 10),
-(default, 'Chau len bay', 'sonson', default, 'abc', 1, 'jar', 11),
-(default, 'Chau len tam', 'sonson', default, 'abc', 1, 'pop', 12),
-(default, 'Chau len chin', 'sonson', default, 'abc', 1, 'classical', 13),
-(default, 'Chau len muoi', 'sonson', default, 'abc', 1, 'nhac tre', 14);
+(default, 'Chau len bay', 'sonson', default, 'abc', 1, 'jar', 10),
+(default, 'Chau len tam', 'sonson', default, 'abc', 1, 'pop', 9),
+(default, 'Chau len chin', 'sonson', default, 'abc', 1, 'classical', 7),
+(default, 'Chau len muoi', 'sonson', default, 'abc', 1, 'nhac tre', 8);
 insert into playlist values
-(default, 'Ua thich cua Son', default, 1),
-(default, 'Son hay nghe', default, 1),
-(default, 'Ua thich cua Nam', default, 2),
-(default, 'Ua thich cua Dua', default, 3),
-(default, 'Ua thich cua Uyen', default, 4);
+(default, 'Ua thich cua Son', default, 1,'nhac tre'),
+(default, 'Son hay nghe', default, 1,'nhac vang'),
+(default, 'Ua thich cua Nam', default, 2,'rock'),
+(default, 'Ua thich cua Dua', default, 3,'jar'),
+(default, 'Ua thich cua Uyen', default, 4,'pop');
 
 
 insert into playlist_detail values
