@@ -20,21 +20,21 @@ public class PlaylistDAO implements IPlayListDAO {
     public PlaylistDAO() {
 
     }
-    Connection connection=getConnection();
 
 
-//    protected Connection getConnection() {
-//        Connection connection = null;
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        return connection;
-//    }
+
+    protected Connection getConnection() {
+        Connection connection = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+           e.printStackTrace();
+      }
+       return connection;
+    }
 
     @Override
     public void insert(PlayList playlist) throws SQLException {
