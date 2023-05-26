@@ -107,16 +107,19 @@
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                                 <c:forEach var="playLists1" items="${requestScope['playLists1']}">
                                     <div class="col">
-                                        <div class="card shadow-sm">
-                                            <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
-                                            <div class="card-body">
-                                                <p class="card-text"><b><c:out value="${playLists1.getPlayListName()}"/></b></p>
-                                                <p class="card-text"><c:out value="${playLists1.getLabel()}"/></p>
+                                        <a href="playlists?choice=edit&playlistID=${playLists1.getP_id()}"
+                                           class="text-decoration-none p-3 lh-tight text-white">
+                                            <div class="card shadow-sm">
+                                                <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
+                                                <div class="card-body">
+                                                    <p class="card-text"><b><c:out
+                                                            value="${playLists1.getPlayListName()}"/></b></p>
+                                                    <p class="card-text"><c:out value="${playLists1.getLabel()}"/></p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </c:forEach>
-
 
 
                             </div>
@@ -128,13 +131,17 @@
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                                 <c:forEach var="playLists2" items="${requestScope['playLists2']}">
                                     <div class="col">
-                                        <div class="card shadow-sm">
-                                            <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
-                                            <div class="card-body">
-                                                <p class="card-text"><b><c:out value="${playLists2.getPlayListName()}"/></b></p>
-                                                <p class="card-text"><c:out value="${playLists2.getLabel()}"/></p>
+                                        <a href="playlists?choice=edit&playlistID=${playLists2.getP_id()}"
+                                           class="text-decoration-none p-3 lh-tight text-white">
+                                            <div class="card shadow-sm">
+                                                <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
+                                                <div class="card-body">
+                                                    <p class="card-text"><b><c:out
+                                                            value="${playLists2.getPlayListName()}"/></b></p>
+                                                    <p class="card-text"><c:out value="${playLists2.getLabel()}"/></p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </c:forEach>
 
@@ -148,13 +155,17 @@
 
                                 <c:forEach var="playLists3" items="${requestScope['playLists3']}">
                                     <div class="col">
-                                        <div class="card shadow-sm">
-                                            <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
-                                            <div class="card-body">
-                                                <p class="card-text"><b><c:out value="${playLists3.getPlayListName()}"/></b></p>
-                                                <p class="card-text"><c:out value="${playLists3.getLabel()}"/></p>
+                                        <a href="playlists?choice=edit&playlistID=${playLists3.getP_id()}"
+                                           class="text-decoration-none p-3 lh-tight text-white">
+                                            <div class="card shadow-sm">
+                                                <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
+                                                <div class="card-body">
+                                                    <p class="card-text"><b><c:out
+                                                            value="${playLists3.getPlayListName()}"/></b></p>
+                                                    <p class="card-text"><c:out value="${playLists3.getLabel()}"/></p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </c:forEach>
 
@@ -170,7 +181,8 @@
                                         <div class="card shadow-sm">
                                             <img src="views/images/img_2_horizontal.jpg" class="w-100 h-100">
                                             <div class="card-body">
-                                                <p class="card-text"><b><c:out value="${playLists4.getPlayListName()}"/></b></p>
+                                                <p class="card-text"><b><c:out
+                                                        value="${playLists4.getPlayListName()}"/></b></p>
                                                 <p class="card-text"><c:out value="${playLists4.getLabel()}"/></p>
                                             </div>
                                         </div>
