@@ -7,10 +7,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static others.Utils.*;
+
 public class UserDAO implements IUserDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/case_study_m3?useSSL=false";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "25546912$oN";
+
     private static final String INSERT_USERS_SQL = "INSERT INTO users (user_name, password, full_name, address, email) VALUES (?, ?, ?, ?, ?);";
     private static final String SELECT_USER_BY_ID = "select user_name,full_name, address, email from users where u_id =?";
     private static final String SELECT_ALL_USERS = "select user_name,full_name, address, email from users";
@@ -21,7 +21,7 @@ public class UserDAO implements IUserDAO {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+            connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

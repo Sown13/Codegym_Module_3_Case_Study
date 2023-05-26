@@ -85,7 +85,15 @@
         </div>
     </section>
     <section class="side-bar-down w-auto bg-dark">
-        <h5 class="text-white">Thư viện</h5>
+        <div class="row mb-2">
+            <div class="col-9"><h5 class="text-white">Thư viện</h5></div>
+            <div class="col-3 mt-3">
+                <a href="#">
+                    <i class="fa-solid fa-plus fa-xl text-light" role="button" data-bs-toggle="tooltip"
+                       data-bs-placement="left" title="Tạo playlist"></i>
+                </a>
+            </div>
+        </div>
         <div class="d-flex flex-column align-items-stretch flex-shrink-0 overflow-auto" style="height: 66vh;">
             <div class="list-group list-group-flush border-bottom list-group-item-hover scrollarea">
 
