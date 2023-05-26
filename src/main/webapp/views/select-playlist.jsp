@@ -40,6 +40,7 @@
                                         <p class="text-white">Personal playlist</p>
                                         <h3 class="text-white">My Playlist #n</h3>
                                         <p class="text-white">#author</p>
+                                        <p class="text-white">Số lượt nghe: #number</p>
                                     </a>
 
                                 </div>
