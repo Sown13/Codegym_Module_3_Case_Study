@@ -93,7 +93,7 @@ public class PlaylistServlet extends HttpServlet {
                     break;
                 case "cancel":
                     showEditForm(request, response);
-                break;
+                    break;
                 default:
                     getPlaylistByLabel(request, response);
                     break;
@@ -119,7 +119,7 @@ public class PlaylistServlet extends HttpServlet {
         PlayList playList = playlistDAO.SelectLastestAddedPlaylist();
         LikeDAO likeDAO = new LikeDAO();
         int numberOfLike = likeDAO.countLikeFromPlaylist(playList.getP_id());
-        request.setAttribute("numberOfLike",numberOfLike);
+        request.setAttribute("numberOfLike", numberOfLike);
         request.setAttribute("playlistName", playList.getPlayListName());
         if (playList != null) {
             String servlet_url = "/playlists?choice=edit&playlistID=" + playList.getP_id();
@@ -147,7 +147,7 @@ public class PlaylistServlet extends HttpServlet {
         request.setAttribute("playlistUserID", playList.getU_id());
         LikeDAO likeDAO = new LikeDAO();
         int numberOfLike = likeDAO.countLikeFromPlaylist(playListID);
-        request.setAttribute("numberOfLike",numberOfLike);
+        request.setAttribute("numberOfLike", numberOfLike);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/select-playlist.jsp");
         dispatcher.forward(request, response);
     }
@@ -219,18 +219,26 @@ public class PlaylistServlet extends HttpServlet {
         request.setAttribute("playLists4", playLists4);
         request.setAttribute("playLists5", playLists5);
         showPlaylistOrderByUser(request, response);
+        setHotTrendPlaylist(request, response);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/home.jsp");
         dispatcher.forward(request, response);
     }
 
+    private void setHotTrendPlaylist(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        List<PlayList> trendList = new ArrayList<>();
+    trendList = playlistDAO.getHotTrendPlaylist();
+    request.setAttribute("trendList", trendList);
+    }
 
     private void searchPlaylistByName(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         String playlistName = request.getParameter("playlistName");
         List<PlayList> resultPlaylist = playlistDAO.findPlayListByName(playlistName);
         request.setAttribute("resultPlaylist", resultPlaylist);
-        request.setAttribute("choice","searchResult");
+        request.setAttribute("choice", "searchResult");
         showPlaylistOrderByUser(request, response);
+        setHotTrendPlaylist(request, response);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/home.jsp");
         dispatcher.forward(request, response);
     }

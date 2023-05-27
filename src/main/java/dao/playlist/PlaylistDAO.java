@@ -327,6 +327,29 @@ public class PlaylistDAO implements IPlayListDAO {
         return songList;
     }
 
+    public List<PlayList> getHotTrendPlaylist(){
+        String sql = "SELECT p_id,p.p_name,p.u_id,label,COUNT(l.u_id) AS numberOfLike \n" +
+                "FROM likes l \n" +
+                "inner join playlist p using(p_id) \n" +
+                "GROUP BY p_id \n" +
+                "ORDER BY numberOfLike DESC LIMIT 3;";
+        List<PlayList> playLists = new ArrayList<>();
+        try (Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String playlistID = resultSet.getString("p_id");
+                String playlistName = resultSet.getString("p_name");
+                String playlistUserID = resultSet.getString("u_id");
+                String label = resultSet.getString("label");
+                playLists.add(new PlayList(playlistID,playlistName,playlistUserID,label));
+            }
+        }catch (SQLException e) {
+            printSQLException(e);
+        }
+        return playLists;
+    }
+
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {
