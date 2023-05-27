@@ -52,6 +52,7 @@ public class UserServlet extends HttpServlet {
                     break;
                 }
                 case "logout":
+                    setHomePlaylist(request,response);
                     logout(request,response);
                     break;
                 default: {
@@ -189,7 +190,7 @@ public class UserServlet extends HttpServlet {
     throws IOException,ServletException{
         HttpSession session=request.getSession();
         session.removeAttribute("loginUser");
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("views/home.jsp");
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("playlists");
         requestDispatcher.forward(request,response);
 
     }
