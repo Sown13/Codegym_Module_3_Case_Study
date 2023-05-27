@@ -55,12 +55,20 @@
                                                                 title="Play/Pause" role="button"
                                                                 style="color: limegreen"></i></a>
                                 </div>
-                                <div class="col-1">
-                                    <a href="#like-playlist"><i class="fa-solid fa-heart fa-2xl ms-3"
-                                                                data-bs-toggle="tooltip" data-bs-placement="left"
-                                                                title="Like/Unlike" role="button"
-                                                                style="color: limegreen"></i></a>
-                                </div>
+
+                                <c:choose>
+                                    <c:when test="${sessionScope['loginUser']!= null && playlistUserID != sessionScope.loginUser.getU_id()}">
+                                        <div class="col-1">
+                                            <a href="playlists?choice=like&playlistID=${playlistID}&userID=${sessionScope.loginUser.getU_id()}">
+                                                <i class="fa-solid fa-heart fa-2xl ms-3"
+                                                   data-bs-toggle="tooltip"
+                                                   data-bs-placement="left"
+                                                   title="Like/Unlike" role="button"
+                                                   style="color: limegreen"></i></a>
+                                        </div>
+                                    </c:when>
+                                </c:choose>
+
                                 <c:choose>
                                     <c:when test="${sessionScope['loginUser'] != null && playlistUserID == sessionScope.loginUser.getU_id()}">
                                         <div class="col">

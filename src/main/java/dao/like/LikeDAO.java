@@ -1,11 +1,12 @@
 package dao.like;
 
 import model.Like;
-import static others.Utils.*;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static others.Utils.*;
 
 public class LikeDAO implements ILikeDAO {
 
@@ -73,12 +74,12 @@ public class LikeDAO implements ILikeDAO {
              PreparedStatement ps = cn.prepareStatement(SELECT_ALL_LIKE)) {
             System.out.println(ps);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 String u_id = rs.getString("u_id");
                 String s_id = rs.getString("s_id");
                 likes.add(new Like(u_id, s_id));
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             printSQLException(e);
         }
         return likes;
@@ -88,9 +89,9 @@ public class LikeDAO implements ILikeDAO {
     public boolean delete(String id) throws SQLException {
         boolean rowDelete;
         try (Connection cn = getConnection();
-        PreparedStatement ps = cn.prepareStatement(DELETE_LIKE_SQL)){
+             PreparedStatement ps = cn.prepareStatement(DELETE_LIKE_SQL)) {
             ps.setString(1, id);
-            rowDelete = ps.executeUpdate()>0;
+            rowDelete = ps.executeUpdate() > 0;
         }
         return rowDelete;
     }
@@ -98,18 +99,19 @@ public class LikeDAO implements ILikeDAO {
     @Override
     public boolean update(Like like) throws SQLException {
         boolean rowUpdate;
-        try(Connection cn = getConnection();
-        PreparedStatement ps = cn.prepareStatement(UPDATE_LIKE_SQL)){
+        try (Connection cn = getConnection();
+             PreparedStatement ps = cn.prepareStatement(UPDATE_LIKE_SQL)) {
 
             ps.setString(1, like.getU_id());
             ps.setString(2, like.getS_id());
-            rowUpdate = ps.executeUpdate()>0;
+            rowUpdate = ps.executeUpdate() > 0;
         }
         return rowUpdate;
     }
+
     public boolean checkValueExists(String u_id, String s_id) {
         boolean check = false;
-        if (u_id.equals(like.getS_id()) && s_id.equals(like.getS_id())){
+        if (u_id.equals(like.getS_id()) && s_id.equals(like.getS_id())) {
             check = true;
         }
         return check;
@@ -130,5 +132,53 @@ public class LikeDAO implements ILikeDAO {
                 }
             }
         }
+    }
+
+    public boolean isExistedLike(String userID, String playlistID) {
+        String sql = "select*from likes where u_id= ? and p_id =?";
+        boolean isExist = true;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, userID);
+            preparedStatement.setString(2, playlistID);
+            if (preparedStatement.executeUpdate() == 0) {
+                isExist = false;
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return isExist;
+    }
+
+    public void likePlaylist(String userID, String playlistID) {
+        String sql = "INSERT INTO likes VALUES (?,?);";
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, userID);
+            preparedStatement.setString(2, playlistID);
+            System.out.println(preparedStatement);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        System.out.println("liked");
+    }
+
+    public void unLikePlaylist(String userID, String playlistID) {
+        String sql = "DELETE FROM likes WHERE u_id =? and p_id = ?;";
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, userID);
+            preparedStatement.setString(2, playlistID);
+            System.out.println(preparedStatement);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        System.out.println("unliked");
+    }
+
+    public int countLikeFromPlaylist(String playlistI){
+        return 0;
     }
 }

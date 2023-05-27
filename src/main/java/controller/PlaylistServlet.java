@@ -1,5 +1,6 @@
 package controller;
 
+import dao.like.LikeDAO;
 import dao.playlist.PlaylistDAO;
 import dao.playlist_detail.PlaylistDetailDAO;
 import model.PlayList;
@@ -53,6 +54,9 @@ public class PlaylistServlet extends HttpServlet {
                 case "listSong":
                     findListSongByPlayListId(request, response);
                     break;
+                case "like":
+                    likePlaylist(request, response);
+                    showEditForm(request, response);
                 default:
                     getPlaylistByLabel(request, response);
                     break;
@@ -177,9 +181,10 @@ public class PlaylistServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         String playlistID = request.getParameter("playlistID");
         request.setAttribute("playlistID", playlistID);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("views/delete_confirm.jsp");
-        dispatcher.forward(request,response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/delete_confirm.jsp");
+        dispatcher.forward(request, response);
     }
+
     private void getPlaylistByLabel(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List<PlayList> playLists1 = new ArrayList<>();
@@ -264,6 +269,17 @@ public class PlaylistServlet extends HttpServlet {
         String addSongID = request.getParameter("addSongID");
         String playlistID = request.getParameter("playlistID");
         playlistDAO.removeSongFromPlaylist(addSongID, playlistID);
+    }
+
+    public void likePlaylist(HttpServletRequest request, HttpServletResponse response) {
+        String userID = request.getParameter("userID");
+        String playlistID = request.getParameter("playlistID");
+        LikeDAO likeDAO = new LikeDAO();
+        if(likeDAO.isExistedLike(userID,playlistID)){
+            likeDAO.unLikePlaylist(userID, playlistID);
+        } else {
+            likeDAO.likePlaylist(userID,playlistID );
+        }
     }
 
 
