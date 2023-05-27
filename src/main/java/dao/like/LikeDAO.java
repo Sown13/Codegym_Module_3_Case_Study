@@ -136,13 +136,14 @@ public class LikeDAO implements ILikeDAO {
 
     public boolean isExistedLike(String userID, String playlistID) {
         String sql = "select*from likes where u_id= ? and p_id =?";
-        boolean isExist = true;
+        boolean isExist = false;
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, userID);
             preparedStatement.setString(2, playlistID);
-            if (preparedStatement.executeUpdate() == 0) {
-                isExist = false;
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                isExist = true;
             }
         } catch (SQLException e) {
             printSQLException(e);
