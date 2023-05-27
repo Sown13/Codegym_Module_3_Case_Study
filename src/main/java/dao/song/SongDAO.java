@@ -1,15 +1,17 @@
 package dao.song;
 
 import model.Song;
-import static others.Utils.*;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static others.Utils.*;
+
 public class SongDAO implements ISongDAO {
 
     private static final String INSERT_song_SQL = "INSERT INTO song(song_name,author,song_url,label) VALUES(?,?,?,?)";
-    private static final String SELECT_song_BY_ID = "SELECT s_id,song_name,author,upload_date,song_url,label,listening_frequency";
+    private static final String SELECT_SONG_BY_ID = "SELECT s_id,song_name,author,upload_date,song_url,label,listening_frequency";
     private static final String SELECT_ALL_SONG = "SELECT*FORM song";
     private static final String DELETE_song_SQL = "DELETE FROM song WHERE id=?";
     private static final String Max_listen_song_SQL = "SELECT FROM* song WHERE listening_frequency=? ORDER BY listening_frequency DESC";
@@ -55,11 +57,11 @@ public class SongDAO implements ISongDAO {
 
 
     @Override
-    public Song select(String id) {
+    public Song select(String songID) {
         Song song = null;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(SELECT_song_BY_ID);) {
-            statement.setString(1, id);
+             PreparedStatement statement = connection.prepareStatement(SELECT_SONG_BY_ID);) {
+            statement.setString(1, songID);
             System.out.println(statement);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
@@ -67,7 +69,7 @@ public class SongDAO implements ISongDAO {
                 String author = rs.getString("author");
                 String song_url = rs.getString("song_url");
                 String label = rs.getString("label");
-                song = new Song(name, author, song_url, label);
+                song = new Song(songID, name, author, song_url, label);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -202,7 +204,6 @@ public class SongDAO implements ISongDAO {
     }
 
 
-
     public void playing(String id) throws SQLException {
         String play_sql = "UPDATE songs SET playing = true WHERE s_id = ?;";
         String stop_sql = "UPDATE songs SET playing = false WHERE s_id = ?;";
@@ -210,7 +211,7 @@ public class SongDAO implements ISongDAO {
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(status_sql);
         try {
-            statement.setString(1,id);
+            statement.setString(1, id);
             boolean status = statement.execute();
             if (status) {
                 statement = connection.prepareStatement(stop_sql);
@@ -226,4 +227,24 @@ public class SongDAO implements ISongDAO {
             statement.close();
         }
     }
+
+    public List<Song> findSongByName(String songName) throws SQLException{
+        String sql = "SELECT*FROM songs WHERE song_name LIKE '%'?'%'";
+        List<Song> songList = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setString(1, songName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String songID = resultSet.getString("s_id");
+                String song_name = resultSet.getString("song_name");
+                String author = resultSet.getString("author");
+                String song_url = resultSet.getString("song_url");
+                String label = resultSet.getString("label");
+                songList.add(new Song(songID,song_name, author, song_url, label));
+            }
+        }
+        return songList;
+    }
+
 }

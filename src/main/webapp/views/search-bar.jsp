@@ -16,7 +16,12 @@
     <div class="col-6 search-box">
         <div class="form ms-5">
             <svg class="fa fa-search" width="16" height="16"><use xlink:href="#search-fill"/></svg>
-            <input type="text" class="form-control form-input" placeholder="Search anything...">
+            <form>
+            <input type="text" class="form-control form-input" placeholder="Search anything..." name="playlistName">
+                <input type="hidden" name="choice" value="search">
+                <input type="hidden" name="playlistID" value="${requestScope.playlistID}">
+                <input type="submit" value="Tìm">
+            </form>
         </div>
     </div>
     <div class="col-6">

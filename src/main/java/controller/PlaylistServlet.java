@@ -45,8 +45,8 @@ public class PlaylistServlet extends HttpServlet {
                 case "delete":
                     showDeleteForm(request, response);
                     break;
-                case "find":
-                    findPlaylistByName(request, response);
+                case "search":
+                    searchPlaylistByName(request, response);
                     break;
                 case "sort":
                     sortPlayListByDate(request, response);
@@ -224,11 +224,14 @@ public class PlaylistServlet extends HttpServlet {
     }
 
 
-    private void findPlaylistByName(HttpServletRequest request, HttpServletResponse response)
+    private void searchPlaylistByName(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        String name = request.getParameter("p_name");
-        playlistDAO.findPlayListByName(name);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+        String playlistName = request.getParameter("playlistName");
+        List<PlayList> resultPlaylist = playlistDAO.findPlayListByName(playlistName);
+        request.setAttribute("resultPlaylist", resultPlaylist);
+        request.setAttribute("choice","searchResult");
+        showPlaylistOrderByUser(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/home.jsp");
         dispatcher.forward(request, response);
     }
 

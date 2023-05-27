@@ -18,7 +18,7 @@ public class PlaylistDAO implements IPlayListDAO {
     private static final String SELECT_ALL_PLAYLIST = "select * from playlist";
     private static final String DELETE_PLAYLIST_SQL = "delete from playlist where p_id = ?;";
     private static final String UPDATE_PLAYLIST_SQL = "update playlist set p_name=?;";
-    private static final String FIND_PLAYLIST_BY_NAME = "select * from playlist where p_name like '%'?'%';";
+    private static final String FIND_PLAYLIST_BY_NAME = "select * from playlist where p_name like ?;";
     private static final String SORT_PLAYLIST_BY_DATE = "select * from playlist order by create_date desc;";
     private static final String LIST_SONG = "select*from playlist_detail inner join playlist using(p_id) inner join songs using(s_id) where p_id = ?";
 
@@ -145,14 +145,15 @@ public class PlaylistDAO implements IPlayListDAO {
         List<PlayList> playLists = new ArrayList<>();
         try (Connection cn = getConnection();
              PreparedStatement ps = cn.prepareStatement(FIND_PLAYLIST_BY_NAME)) {
-            ps.setString(1, name);
+            ps.setString(1, "%" + name + "%");
             System.out.println(ps);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 String p_id = rs.getString("p_id");
+                String p_name = rs.getString("p_name");
                 String u_id = rs.getString("u_id");
                 String label = rs.getString("label");
-                playLists.add(new PlayList(p_id, name, u_id, label));
+                playLists.add(new PlayList(p_id, p_name, u_id, label));
 
             }
         } catch (SQLException e) {
@@ -307,7 +308,24 @@ public class PlaylistDAO implements IPlayListDAO {
         return songs;
     }
 
-
+    public List<Song> findSongByName(String songName) throws SQLException{
+        String sql = "SELECT*FROM songs WHERE song_name LIKE '%'?'%'";
+        List<Song> songList = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setString(1, songName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String songID = resultSet.getString("s_id");
+                String song_name = resultSet.getString("song_name");
+                String author = resultSet.getString("author");
+                String song_url = resultSet.getString("song_url");
+                String label = resultSet.getString("label");
+                songList.add(new Song(songID,song_name, author, song_url, label));
+            }
+        }
+        return songList;
+    }
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
