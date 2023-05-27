@@ -15,10 +15,11 @@
 <form action="playlists" method="post">
     <input type="hidden" name="playlistID" value="${requestScope.playlistID}">
     <button type="submit" name="choice" value="delete">Yes</button>
-</form>
-<form action="playlists" method="post">
-    <button type="submit" name="choice" value="">No</button>
-</form>
+    <button type="submit" name="choice" value="cancel">No</button>
+<%--</form>--%>
+<%--<form action="playlists" method="post">--%>
+<%--    --%>
+<%--</form>--%>
 
 </body>
 </html>

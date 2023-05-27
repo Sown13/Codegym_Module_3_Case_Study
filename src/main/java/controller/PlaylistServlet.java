@@ -91,6 +91,9 @@ public class PlaylistServlet extends HttpServlet {
                 case "delete":
                     delete(request, response);
                     break;
+                case "cancel":
+                    showEditForm(request, response);
+                break;
                 default:
                     getPlaylistByLabel(request, response);
                     break;
@@ -275,10 +278,10 @@ public class PlaylistServlet extends HttpServlet {
         String userID = request.getParameter("userID");
         String playlistID = request.getParameter("playlistID");
         LikeDAO likeDAO = new LikeDAO();
-        if(likeDAO.isExistedLike(userID,playlistID)){
+        if (likeDAO.isExistedLike(userID, playlistID)) {
             likeDAO.unLikePlaylist(userID, playlistID);
         } else {
-            likeDAO.likePlaylist(userID,playlistID );
+            likeDAO.likePlaylist(userID, playlistID);
         }
     }
 
