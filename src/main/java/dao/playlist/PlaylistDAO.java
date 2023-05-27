@@ -94,10 +94,11 @@ public class PlaylistDAO implements IPlayListDAO {
     }
 
     @Override
-    public boolean delete(String id) throws SQLException {
+    public boolean delete(String playlistID) throws SQLException {
         boolean rowDelete;
         try (Connection cn = getConnection();
              PreparedStatement ps = cn.prepareStatement(DELETE_PLAYLIST_SQL)) {
+            ps.setString(1, playlistID);
             rowDelete = ps.executeUpdate() > 0;
         }
         return rowDelete;

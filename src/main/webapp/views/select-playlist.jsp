@@ -62,7 +62,7 @@
                                                                 style="color: limegreen"></i></a>
                                 </div>
                                 <div class="col">
-                                    <a href="#delete-playlist"><i
+                                    <a href="playlists?choice=delete&playlistID=${playlistID}"><i
                                             class="fa-solid fa-trash fa-xl float-end text-light me-3"
                                             data-bs-toggle="tooltip" data-bs-placement="left" title="Delete playlist"
                                             role="button"></i></a>

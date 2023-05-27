@@ -1,7 +1,7 @@
 package controller;
 
 import dao.playlist.PlaylistDAO;
-import dao.song.SongDAO;
+import dao.playlist_detail.PlaylistDetailDAO;
 import model.PlayList;
 import model.Song;
 import model.User;
@@ -39,10 +39,10 @@ public class PlaylistServlet extends HttpServlet {
                     showNewForm(request, response);
                     break;
                 case "edit":
-                    showEditFrom(request, response);
+                    showEditForm(request, response);
                     break;
                 case "delete":
-                    delete(request, response);
+                    showDeleteForm(request, response);
                     break;
                 case "find":
                     findPlaylistByName(request, response);
@@ -78,11 +78,14 @@ public class PlaylistServlet extends HttpServlet {
                     break;
                 case "addSong":
                     addSongIntoPlaylist(request, response);
-                    showEditFrom(request, response);
+                    showEditForm(request, response);
                     break;
                 case "removeSong":
                     removeSongFromPlaylist(request, response);
-                    showEditFrom(request, response);
+                    showEditForm(request, response);
+                    break;
+                case "delete":
+                    delete(request, response);
                     break;
                 default:
                     getPlaylistByLabel(request, response);
@@ -119,16 +122,16 @@ public class PlaylistServlet extends HttpServlet {
 //        dispatcher.forward(request, response);
     }
 
-    private void showEditFrom(HttpServletRequest request, HttpServletResponse response)
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         HttpSession session = request.getSession();
         String playListID = request.getParameter("playlistID");
         List<Song> listSong = playlistDAO.getListSongByPlayListId(playListID);
         request.setAttribute("listSong", listSong);
         List<Song> listAllSong = playlistDAO.getAllSong();
-        request.setAttribute("listAllSong",listAllSong);
+        request.setAttribute("listAllSong", listAllSong);
         showPlaylistOrderByUser(request, response);
-        request.setAttribute("playlistID",playListID);
+        request.setAttribute("playlistID", playListID);
         PlayList playList = playlistDAO.select(playListID);
         request.setAttribute("playlistName", playList.getPlayListName());
         request.setAttribute("playlistUserID", playList.getU_id());
@@ -162,16 +165,21 @@ public class PlaylistServlet extends HttpServlet {
 
     private void delete(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        String id = request.getParameter("id");
-        playlistDAO.delete(id);
-
-        List<PlayList> playLists = playlistDAO.selectAll();
-        request.setAttribute("playlist", playLists);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("");
-        dispatcher.forward(request, response);
+        String playlistID = request.getParameter("playlistID");
+        PlaylistDetailDAO playlistDetailDAO = new PlaylistDetailDAO();
+        playlistDetailDAO.deleteAnEntirePlaylist(playlistID);
+        playlistDAO.delete(playlistID);
+        request.removeAttribute("choice");
+        response.sendRedirect("home");
     }
 
-
+    private void showDeleteForm(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        String playlistID = request.getParameter("playlistID");
+        request.setAttribute("playlistID", playlistID);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("views/delete_confirm.jsp");
+        dispatcher.forward(request,response);
+    }
     private void getPlaylistByLabel(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List<PlayList> playLists1 = new ArrayList<>();
@@ -246,15 +254,17 @@ public class PlaylistServlet extends HttpServlet {
         return listSong;
     }
 
-    private void addSongIntoPlaylist (HttpServletRequest request, HttpServletResponse response){
+    private void addSongIntoPlaylist(HttpServletRequest request, HttpServletResponse response) {
         String addSongID = request.getParameter("addSongID");
         String playlistID = request.getParameter("playlistID");
-        playlistDAO.addSongIntoPlaylist(addSongID,playlistID);
+        playlistDAO.addSongIntoPlaylist(addSongID, playlistID);
     }
 
-    private void removeSongFromPlaylist (HttpServletRequest request, HttpServletResponse response){
+    private void removeSongFromPlaylist(HttpServletRequest request, HttpServletResponse response) {
         String addSongID = request.getParameter("addSongID");
         String playlistID = request.getParameter("playlistID");
-        playlistDAO.removeSongFromPlaylist(addSongID,playlistID);
+        playlistDAO.removeSongFromPlaylist(addSongID, playlistID);
     }
+
+
 }

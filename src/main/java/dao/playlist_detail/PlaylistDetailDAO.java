@@ -4,6 +4,7 @@ import model.PlaylistDetail;
 
 import java.sql.*;
 import java.util.List;
+
 import static others.Utils.*;
 
 public class PlaylistDetailDAO implements IPlaylistDetailDAO {
@@ -105,5 +106,16 @@ public class PlaylistDetailDAO implements IPlaylistDetailDAO {
             rowUpdated = statement.executeUpdate() > 0;
         }
         return rowUpdated;
+    }
+
+    public void deleteAnEntirePlaylist(String playlistID) {
+        String sql = "DELETE FROM playlist_detail WHERE p_id = ?;";
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, playlistID);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
     }
 }

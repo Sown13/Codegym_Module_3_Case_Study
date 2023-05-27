@@ -29,7 +29,7 @@
         <c:when test="${sessionScope['loginUser'] != null}">
 <%--            <p class="text-white"> hien len neu co user</p>--%>
 <%--            <i class="fa-solid fa-circle-user fa-2xl float-end text-warning" role="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left"></i>--%>
-            <p class="text-end m-0" style="color: limegreen">Xin chào <c:out value="${sessionScope['loginUser'].user_name}"/></p>
+            <p class="text-end m-0" style="color: limegreen">Xin chào <c:out value="${sessionScope['loginUser'].fullname}"/></p>
             <a href="/home?choice=logout" class="text-end float-end">Logout</a>
         </c:when>
         </c:choose>

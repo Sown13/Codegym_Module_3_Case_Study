@@ -84,6 +84,11 @@ public class UserServlet extends HttpServlet {
                 case "login":
                     login(request,response);
                     break;
+                default:
+                    setHomePlaylist(request,response);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("playlists");
+                    dispatcher.forward(request, response);
+                    break;
 
             }
         } catch (SQLException ex) {
