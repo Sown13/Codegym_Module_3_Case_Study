@@ -1,6 +1,8 @@
 package dao.playlist;
 
+import dao.playlist_detail.PlaylistDetailDAO;
 import model.PlayList;
+import model.PlaylistDetail;
 import model.Song;
 
 import java.sql.*;
@@ -148,8 +150,8 @@ public class PlaylistDAO implements IPlayListDAO {
             while (rs.next()) {
                 String p_id = rs.getString("p_id");
                 String u_id = rs.getString("u_id");
-                String label=rs.getString("label");
-                playLists.add(new PlayList(p_id, name, u_id,label)) ;
+                String label = rs.getString("label");
+                playLists.add(new PlayList(p_id, name, u_id, label));
 
             }
         } catch (SQLException e) {
@@ -157,7 +159,8 @@ public class PlaylistDAO implements IPlayListDAO {
         }
         return playLists;
     }
-    public PlayList findPlaylistById (String id){
+
+    public PlayList findPlaylistById(String id) {
         PlayList playList = null;
         try (Connection cn = getConnection();
              PreparedStatement ps = cn.prepareStatement(FIND_PLAYLIST_BY_NAME)) {
@@ -167,8 +170,8 @@ public class PlaylistDAO implements IPlayListDAO {
             while (rs.next()) {
                 String p_id = rs.getString("p_id");
                 String u_id = rs.getString("u_id");
-                String label=rs.getString("label");
-                playList = new PlayList(p_id,p_id,u_id,label);
+                String label = rs.getString("label");
+                playList = new PlayList(p_id, p_id, u_id, label);
 
             }
         } catch (SQLException e) {
@@ -213,7 +216,7 @@ public class PlaylistDAO implements IPlayListDAO {
                 String author = rs.getString("author");
                 String url = rs.getString("url");
                 String label = rs.getString("label");
-                listSong.add(new Song(s_id, s_name, author,url,label));
+                listSong.add(new Song(s_id, s_name, author, url, label));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -232,12 +235,13 @@ public class PlaylistDAO implements IPlayListDAO {
                 String playlistID = rs.getString("p_id");
                 String playlistName = rs.getString("p_name");
                 String label = rs.getString("label");
-                playLists.add(new PlayList(playlistID, playlistName, userID, label));
+                Date createDate = rs.getDate("create_date");
+                playLists.add(new PlayList(playlistID, playlistName, userID, label,createDate));
             }
-            playLists.sort(Comparator.comparing(PlayList ::getP_id));
         } catch (SQLException e) {
             printSQLException(e);
         }
+        playLists.sort(Comparator.comparing(PlayList::getCreateDate).reversed());
         return playLists;
     }
 
@@ -252,7 +256,7 @@ public class PlaylistDAO implements IPlayListDAO {
                 String playlistID = rs.getString("p_id");
                 String playlistName = rs.getString("p_name");
                 String ortherUserID = rs.getString("u_id");
-                 String label = rs.getString("label");
+                String label = rs.getString("label");
                 playLists.add(new PlayList(playlistID, playlistName, ortherUserID, label));
             }
         } catch (SQLException e) {
@@ -280,7 +284,17 @@ public class PlaylistDAO implements IPlayListDAO {
         return playList;
     }
 
-    public List<Song> getAllSong(){
+    public void addSongIntoPlaylist(String songID, String playlistID) {
+        PlaylistDetail playlistDetail = new PlaylistDetail(songID, playlistID);
+        PlaylistDetailDAO playlistDetailDAO = new PlaylistDetailDAO();
+        try {
+            playlistDetailDAO.insert(playlistDetail);
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
+
+    public List<Song> getAllSong() {
         List<Song> songs = new ArrayList<>();
         String SELECT_ALL_SONG = "SELECT * FROM songs;";
         try (Connection connection = getConnection();
@@ -288,10 +302,12 @@ public class PlaylistDAO implements IPlayListDAO {
             System.out.println(statement);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
+                String songID = rs.getString("s_id");
                 String song_name = rs.getString("song_name");
                 String author = rs.getString("author");
+                String song_url = rs.getString("url");
                 String label = rs.getString("label");
-                songs.add(new Song(song_name, author, label));
+                songs.add(new Song(songID, song_name, author, song_url, label));
             }
         } catch (SQLException e) {
             printSQLException(e);

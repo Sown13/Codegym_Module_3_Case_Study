@@ -23,17 +23,19 @@ public class Song {
         this.listening_frequency=listening_frequency;
 
     }
-    public Song(String song_name,String author,String song_url,String label){
-        this.song_name=song_name;
-        this.author=author;
-        this.song_url=song_url;
-        this.label=label;
-    }
 
-    public Song(String s_id, String song_name, String author) {
+
+    public Song(String s_id, String song_name, String author, String label) {
         this.s_id = s_id;
         this.song_name = song_name;
         this.author = author;
+        this.label = label;
+    }
+
+    public Song(String song_name, String author, String label) {
+        this.song_name = song_name;
+        this.author = author;
+        this.label = label;
     }
 
     public Song(String s_id, String song_name, String author, String song_url, String label) {

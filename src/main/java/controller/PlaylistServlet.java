@@ -76,6 +76,10 @@ public class PlaylistServlet extends HttpServlet {
                 case "edit":
                     update(request, response);
                     break;
+                case "addSong":
+                    addSongIntoPlaylist(request, response);
+                    showEditFrom(request, response);
+                    break;
                 default:
                     getPlaylistByLabel(request, response);
                     break;
@@ -231,6 +235,12 @@ public class PlaylistServlet extends HttpServlet {
         String playlistID = request.getParameter("playlistID");
         List<Song> listSong = playlistDAO.getListSongByPlayListId(playlistID);
         return listSong;
+    }
+
+    private void addSongIntoPlaylist (HttpServletRequest request, HttpServletResponse response){
+        String addSongID = request.getParameter("addSongID");
+        String playlistID = request.getParameter("playlistID");
+        playlistDAO.addSongIntoPlaylist(addSongID,playlistID);
     }
 
 }
