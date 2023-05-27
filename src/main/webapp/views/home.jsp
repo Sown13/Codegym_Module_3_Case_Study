@@ -103,7 +103,7 @@
                     <section class="main-display w-auto bg-dark p-3">
 
                         <div class="container list1">
-                            <h5 class="text-white">Nhac Tre</h5>
+                            <h5 class="text-white">Vpop</h5>
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                                 <c:forEach var="playLists1" items="${requestScope['playLists1']}">
                                     <div class="col">
@@ -127,7 +127,7 @@
                                 cả</p>
                         </div>
                         <div class="container list1">
-                            <h5 class="text-white">Rock</h5>
+                            <h5 class="text-white">Kpop</h5>
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                                 <c:forEach var="playLists2" items="${requestScope['playLists2']}">
                                     <div class="col">
@@ -150,7 +150,7 @@
                                 cả</p>
                         </div>
                         <div class="container list1">
-                            <h5 class="text-white">Nhac Vang</h5>
+                            <h5 class="text-white">NHẠC VÀNG</h5>
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 
                                 <c:forEach var="playLists3" items="${requestScope['playLists3']}">
@@ -174,7 +174,7 @@
                                 cả</p>
                         </div>
                         <div class="container list1">
-                            <h5 class="text-white">Nhac Cu Chuoi</h5>
+                            <h5 class="text-white">NHẠC EDM</h5>
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                                 <c:forEach var="playLists4" items="${requestScope['playLists4']}">
                                     <div class="col">
