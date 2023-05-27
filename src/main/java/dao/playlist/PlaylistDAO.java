@@ -262,6 +262,24 @@ public class PlaylistDAO implements IPlayListDAO {
         return playLists;
     }
 
+    public PlayList SelectLastestAddedPlaylist() {
+        String queryString = "SELECT * FROM playlist ORDER BY create_date DESC LIMIT 1;";
+        PlayList playList = null;
+        try (Connection cn = getConnection(); PreparedStatement ps = cn.prepareStatement(queryString)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String playlistID = rs.getString("p_id");
+                String playlistName = rs.getString("p_name");
+                String ortherUserID = rs.getString("u_id");
+                String label = rs.getString("label");
+                playList = new PlayList(playlistID, playlistName, ortherUserID, label);
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return playList;
+    }
+
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {
