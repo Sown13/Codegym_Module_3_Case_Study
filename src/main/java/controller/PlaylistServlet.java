@@ -117,6 +117,9 @@ public class PlaylistServlet extends HttpServlet {
         playlistDAO.insert(new PlayList("New PlayList", loginUser.getU_id(), "Unknow"));
         showPlaylistOrderByUser(request, response);
         PlayList playList = playlistDAO.SelectLastestAddedPlaylist();
+        LikeDAO likeDAO = new LikeDAO();
+        int numberOfLike = likeDAO.countLikeFromPlaylist(playList.getP_id());
+        request.setAttribute("numberOfLike",numberOfLike);
         request.setAttribute("playlistName", playList.getPlayListName());
         if (playList != null) {
             String servlet_url = "/playlists?choice=edit&playlistID=" + playList.getP_id();
@@ -142,6 +145,9 @@ public class PlaylistServlet extends HttpServlet {
         PlayList playList = playlistDAO.select(playListID);
         request.setAttribute("playlistName", playList.getPlayListName());
         request.setAttribute("playlistUserID", playList.getU_id());
+        LikeDAO likeDAO = new LikeDAO();
+        int numberOfLike = likeDAO.countLikeFromPlaylist(playListID);
+        request.setAttribute("numberOfLike",numberOfLike);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/select-playlist.jsp");
         dispatcher.forward(request, response);
     }
@@ -175,6 +181,8 @@ public class PlaylistServlet extends HttpServlet {
         String playlistID = request.getParameter("playlistID");
         PlaylistDetailDAO playlistDetailDAO = new PlaylistDetailDAO();
         playlistDetailDAO.deleteAnEntirePlaylist(playlistID);
+        LikeDAO likeDAO = new LikeDAO();
+        likeDAO.deleteAnEntirePlaylist(playlistID);
         playlistDAO.delete(playlistID);
         request.removeAttribute("choice");
         response.sendRedirect("home");

@@ -179,7 +179,30 @@ public class LikeDAO implements ILikeDAO {
         System.out.println("unliked");
     }
 
-    public int countLikeFromPlaylist(String playlistI){
-        return 0;
+    public int countLikeFromPlaylist(String playlistID){
+        String sql = "select count(u_id) as numberOfLike from (select*from likes where p_id = ?) as count;";
+        int numberOfLike = 0;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, playlistID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                numberOfLike = resultSet.getInt("numberOfLike");
+            }
+        }catch (SQLException e) {
+            printSQLException(e);
+        }
+        return numberOfLike;
+    }
+
+    public void deleteAnEntirePlaylist(String playlistID) {
+        String sql = "DELETE FROM likes WHERE p_id = ?;";
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, playlistID);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
     }
 }

@@ -40,7 +40,7 @@
                                         <p class="text-white">Personal playlist</p>
                                         <h3 class="text-white">${playlistName}</h3>
                                         <p class="text-white">label</p>
-                                        <p class="text-white">Số lượt like: #like</p>
+                                        <p class="text-white">Số lượt like: ${requestScope.numberOfLike}</p>
                                     </a>
 
                                 </div>
