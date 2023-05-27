@@ -61,12 +61,17 @@
                                                                 title="Like/Unlike" role="button"
                                                                 style="color: limegreen"></i></a>
                                 </div>
-                                <div class="col">
-                                    <a href="playlists?choice=delete&playlistID=${playlistID}"><i
-                                            class="fa-solid fa-trash fa-xl float-end text-light me-3"
-                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Delete playlist"
-                                            role="button"></i></a>
-                                </div>
+                                <c:choose>
+                                    <c:when test="${sessionScope['loginUser'] != null && playlistUserID == sessionScope.loginUser.getU_id()}">
+                                        <div class="col">
+                                            <a href="playlists?choice=delete&playlistID=${playlistID}"><i
+                                                    class="fa-solid fa-trash fa-xl float-end text-light me-3"
+                                                    data-bs-toggle="tooltip" data-bs-placement="left"
+                                                    title="Delete playlist"
+                                                    role="button"></i></a>
+                                        </div>
+                                    </c:when>
+                                </c:choose>
                             </div>
                         </div>
                         <hr style="color: white">
