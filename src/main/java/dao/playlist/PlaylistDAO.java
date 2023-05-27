@@ -294,6 +294,16 @@ public class PlaylistDAO implements IPlayListDAO {
         }
     }
 
+    public void removeSongFromPlaylist(String songID, String playlistID){
+        PlaylistDetail playlistDetail = new PlaylistDetail(songID, playlistID);
+        PlaylistDetailDAO playlistDetailDAO = new PlaylistDetailDAO();
+
+        try {
+            playlistDetailDAO.removeSongFromPlaylist(playlistDetail);
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
     public List<Song> getAllSong() {
         List<Song> songs = new ArrayList<>();
         String SELECT_ALL_SONG = "SELECT * FROM songs;";

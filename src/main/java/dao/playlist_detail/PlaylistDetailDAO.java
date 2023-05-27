@@ -11,7 +11,7 @@ public class PlaylistDetailDAO implements IPlaylistDetailDAO {
     private static final String INSERT_PLAYLISTDETAIL_SQL = "INSERT INTO playlist_detail (s_id, p_id) VALUES (?, ?);";
     private static final String SELECT_PLAYLISTDETAIL_BY_ID = "select  from playlist_detail group by p_id";
     private static final String SELECT_ALL_PLAYLISTDETAIL = "select user_name,full_name, address, email from users";
-    private static final String DELETE_PLAYLISTDETAIL_SQL = "delete from playlist_detail where pd_id = ?;";
+    private static final String DELETE_PLAYLISTDETAIL_SQL = "delete from playlist_detail where s_id = ? and p_id = ?;";
     private static final String UPDATE_PLAYLISTDETAIL_SQL = "update playlist_detail set s_id = ?,p_id = ? where id = ?;";
 
     protected Connection getConnection() {
@@ -48,7 +48,8 @@ public class PlaylistDetailDAO implements IPlaylistDetailDAO {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PLAYLISTDETAIL_SQL)) {
             preparedStatement.setString(1, playlistDetail.getSongId());
-            preparedStatement.setString(2, playlistDetail.getPd_id());
+            preparedStatement.setString(2, playlistDetail.getPlaylistId());
+            preparedStatement.execute();
         } catch (SQLException e) {
             printSQLException(e);
         }
@@ -79,13 +80,18 @@ public class PlaylistDetailDAO implements IPlaylistDetailDAO {
 
     @Override
     public boolean delete(String id) throws SQLException {
-        boolean rowDeleted;
+        return false;
+    }
+
+    public void removeSongFromPlaylist(PlaylistDetail playlistDetail) throws SQLException {
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(DELETE_PLAYLISTDETAIL_SQL);) {
-            statement.setString(1, id);
-            rowDeleted = statement.executeUpdate() > 0;
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_PLAYLISTDETAIL_SQL)) {
+            preparedStatement.setString(1, playlistDetail.getSongId());
+            preparedStatement.setString(2, playlistDetail.getPlaylistId());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            printSQLException(e);
         }
-        return rowDeleted;
     }
 
     @Override

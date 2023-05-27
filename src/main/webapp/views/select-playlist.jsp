@@ -98,6 +98,9 @@
                                             <td>${song.getSong_url()}</td>
                                             <td>
                                                 <form method="post" action="playlists">
+                                                    <input type="hidden" name="choice" value="removeSong">
+                                                    <input type="hidden" name="playlistID" value="${playlistID}">
+                                                    <input type="hidden" name="addSongID" value="${song.getS_id()}">
                                                     <button type="submit" class="btn btn-outline-secondary">Xóa</button>
                                                 </form>
                                             </td>
@@ -139,10 +142,11 @@
                                             <td>${song.getLabel()}</td>
                                             <td class="text-end">
                                                 <form method="post" action="playlists">
-                                                <input type="hidden" name="playlistID" value="${playlistID}">
-                                                <input type="hidden" name="choice" value="addSong">
-                                                <input type="hidden" name="addSongID" value="${song.getS_id()}">
-                                                <button type="submit" class="btn btn-outline-secondary">Thêm</button>
+                                                    <input type="hidden" name="choice" value="addSong">
+                                                    <input type="hidden" name="playlistID" value="${playlistID}">
+                                                    <input type="hidden" name="addSongID" value="${song.getS_id()}">
+                                                    <button type="submit" class="btn btn-outline-secondary">Thêm
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>

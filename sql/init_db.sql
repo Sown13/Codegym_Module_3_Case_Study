@@ -50,13 +50,15 @@ foreign key (s_id) references songs(s_id)
 );
 
 create table playlist_detail (
-pd_id int primary key auto_increment,
 s_id int,
 p_id int,
 foreign key (s_id) references songs(s_id),
-foreign key (p_id) references playlist(p_id)
+foreign key (p_id) references playlist(p_id),
+primary key (s_id,p_id)
 );
 ALTER  table playlist add label varchar(60);
+ALTER table playlist_detail add constraint UNIQUE (s_id,p_id);
+
 
 
 

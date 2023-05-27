@@ -80,6 +80,10 @@ public class PlaylistServlet extends HttpServlet {
                     addSongIntoPlaylist(request, response);
                     showEditFrom(request, response);
                     break;
+                case "removeSong":
+                    removeSongFromPlaylist(request, response);
+                    showEditFrom(request, response);
+                    break;
                 default:
                     getPlaylistByLabel(request, response);
                     break;
@@ -123,6 +127,7 @@ public class PlaylistServlet extends HttpServlet {
         List<Song> listAllSong = playlistDAO.getAllSong();
         request.setAttribute("listAllSong",listAllSong);
         showPlaylistOrderByUser(request, response);
+        request.setAttribute("playlistID",playListID);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/select-playlist.jsp");
         dispatcher.forward(request, response);
     }
@@ -243,4 +248,9 @@ public class PlaylistServlet extends HttpServlet {
         playlistDAO.addSongIntoPlaylist(addSongID,playlistID);
     }
 
+    private void removeSongFromPlaylist (HttpServletRequest request, HttpServletResponse response){
+        String addSongID = request.getParameter("addSongID");
+        String playlistID = request.getParameter("playlistID");
+        playlistDAO.removeSongFromPlaylist(addSongID,playlistID);
+    }
 }
