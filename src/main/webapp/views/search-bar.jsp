@@ -22,16 +22,15 @@
     <div class="col-6">
         <c:choose>
         <c:when test="${sessionScope['loginUser'] == null}">
-            <p class="text-white">????????????????????</p>
             <a href="/home?choice=loginForm">
-                <i class="fa-solid fa-circle-user fa-2xl float-end text-warning-emphasis" role="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Login"></i>
+                <i class="fa-solid fa-circle-user fa-2xl float-end text-warning" role="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Login"></i>
             </a>
         </c:when>
         <c:when test="${sessionScope['loginUser'] != null}">
-            <p class="text-white"> hien len neu co user</p>
-            <i class="fa-solid fa-circle-user fa-2xl float-end text-warning" role="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left"></i>
-<%--            <p><c:out value="${loginUser.getUser_name}"/></p>--%>
-            <a href="/home?choice=logout">Logout</a>
+<%--            <p class="text-white"> hien len neu co user</p>--%>
+<%--            <i class="fa-solid fa-circle-user fa-2xl float-end text-warning" role="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left"></i>--%>
+            <p class="text-end m-0" style="color: limegreen">Xin chào <c:out value="${sessionScope['loginUser'].user_name}"/></p>
+            <a href="/home?choice=logout" class="text-end float-end">Logout</a>
         </c:when>
         </c:choose>
 

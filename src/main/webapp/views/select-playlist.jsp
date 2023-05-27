@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <hr style="color: white">
-                        <table class="table playing-table">
+                        <table class="table playing-table table-hover">
                             <thead>
                             <tr class="table-dark">
                                 <th scope="col">#</th>
@@ -78,19 +78,62 @@
                                 <th scope="col">Album</th>
                                 <th scope="col">Yêu thích</th>
                                 <th scope="col">Trạng thái</th>
+                                <th scope="col" class="align-middle" >
+                                    <i class="fa-solid fa-trash fa-lg text-light ms-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete"></i>
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
 
                             <c:forEach var="song" items="${requestScope.listSong}">
-                                <tr class="table-dark" role="button">
+                                <tr class="table-dark">
                                     <td>${song.getS_id()}</td>
                                     <td>${song.getSong_name()}</td>
                                     <td>${song.getAuthor()}</td>
                                     <td>${song.getLabel()}</td>
                                     <td>${song.getSong_url()}</td>
+                                    <td>
+                                        <form method="post" action="#">
+                                            <input type="hidden" name="key" value="value">
+                                            <button type="submit" class="btn btn-outline-secondary">Xóa</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </c:forEach>
+                            </tbody>
+                        </table>
+                    </section>
+                    <hr style="color: white">
+                    <section class="recommend-songs w-auto bg-dark p-3">
+                        <h3 class="text-white">Gợi ý</h3>
+                        <table class="table songs-table table-hover">
+                            <thead>
+                            </thead>
+                            <tbody>
+                            <tr class="table-dark" role="button">
+                                <td >1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td class="text-end"><button type="button" class="btn btn-outline-secondary">Thêm</button></td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td >1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td class="text-end"><button type="button" class="btn btn-outline-secondary">Thêm</button></td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td >1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td class="text-end"><button type="button" class="btn btn-outline-secondary">Thêm</button></td>
+                            </tr>
+                            <tr class="table-dark" role="button">
+                                <td >1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td class="text-end"><button type="button" class="btn btn-outline-secondary">Thêm</button></td>
+                            </tr>
                             </tbody>
                         </table>
                     </section>
@@ -101,11 +144,11 @@
 </main>
 <jsp:include page="play-bar.jsp"/>
 </body>
-<script>
-    $(document).ready(function () {
-        $('.playing-table').on('click', 'tbody tr', function (event) {
-            $(this).addClass('highlight').siblings().removeClass('highlight');
-        });
-    });
-</script>
+<%--<script>--%>
+<%--    $(document).ready(function () {--%>
+<%--        $('.playing-table').on('click', 'tbody tr', function (event) {--%>
+<%--            $(this).addClass('highlight').siblings().removeClass('highlight');--%>
+<%--        });--%>
+<%--    });--%>
+<%--</script>--%>
 </html>

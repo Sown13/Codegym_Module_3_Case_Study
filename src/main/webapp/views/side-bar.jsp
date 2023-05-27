@@ -87,16 +87,28 @@
     <section class="side-bar-down w-auto bg-dark">
         <div class="row mb-2">
             <div class="col-9"><h5 class="text-white">Thư viện</h5></div>
-            <div class="col-3 mt-1">
-                <form action="playlists" method="post">
-                    <input type="hidden" name="choice" value="create">
-                    <button type="submit" class="btn btn-success bg-dark border-0">
-                        <i class="fa-solid fa-plus fa-xl text-light" role="button" data-bs-toggle="tooltip"
-                           data-bs-placement="left" title="Tạo playlist"></i>
-                    </button>
+            <c:choose>
+                <c:when test="${sessionScope['loginUser'] == null}">
+                    <div class="col-3 mt-1">
+                        <a href="/home?choice=loginForm">
+                            <i class="fa-solid fa-plus fa-xl text-light" role="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Tạo playlist"></i>
+                        </a>
+                    </div>
+                </c:when>
+                <c:when test="${sessionScope['loginUser'] != null}">
+                    <div class="col-3 mt-1">
+                        <form action="playlists" method="post">
+                            <input type="hidden" name="choice" value="create">
+                            <button type="submit" class="btn btn-success bg-dark border-0">
+                                <i class="fa-solid fa-plus fa-xl text-light" role="button" data-bs-toggle="tooltip"
+                                   data-bs-placement="left" title="Tạo playlist"></i>
+                            </button>
+                        </form>
+                    </div>
+                </c:when>
+            </c:choose>
 
-                </form>
-            </div>
+
         </div>
         <div class="d-flex flex-column align-items-stretch flex-shrink-0 overflow-auto" style="height: 66vh;">
             <div class="list-group list-group-flush border-bottom list-group-item-hover scrollarea">

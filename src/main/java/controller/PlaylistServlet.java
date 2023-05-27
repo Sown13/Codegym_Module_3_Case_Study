@@ -97,9 +97,16 @@ public class PlaylistServlet extends HttpServlet {
         User loginUser = (User) session.getAttribute("loginUser");
         playlistDAO.insert(new PlayList("New PlayList", loginUser.getU_id(), "Unknow"));
         showPlaylistOrderByUser(request, response);
-//        response.sendRedirect("views/select-playlist.jsp");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("views/select-playlist.jsp");
-        dispatcher.forward(request, response);
+        PlayList playList = playlistDAO.SelectLastestAddedPlaylist();
+        if (playList != null) {
+            String servlet_url = "/playlists?choice=edit&playlistID=" + playList.getP_id();
+            response.sendRedirect(servlet_url);
+        }
+
+
+//        response.sendRedirect("playlists?choice=edit&playlistID=");
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("views/select-playlist.jsp");
+//        dispatcher.forward(request, response);
     }
 
     private void showEditFrom(HttpServletRequest request, HttpServletResponse response)
