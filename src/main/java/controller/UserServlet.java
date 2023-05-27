@@ -171,11 +171,11 @@ public class UserServlet extends HttpServlet {
     throws SQLException,IOException,ServletException{
         String user=request.getParameter("user");
         String passwords=request.getParameter("password");
-        User user1=userDAO.login(user,passwords);
+        User loginUser=userDAO.login(user,passwords);
         setHomePlaylist(request, response);
-        if(user1!=null){
+        if(loginUser!=null){
             HttpSession session = request.getSession();
-            session.setAttribute("loginUser",user1);
+            session.setAttribute("loginUser",loginUser);
 //            session.setMaxInactiveInterval(10);
             request.setAttribute("choice", "");
             RequestDispatcher dispatcher=request.getRequestDispatcher("playlists");

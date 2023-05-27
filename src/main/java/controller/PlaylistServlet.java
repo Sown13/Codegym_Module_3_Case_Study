@@ -107,6 +107,7 @@ public class PlaylistServlet extends HttpServlet {
         playlistDAO.insert(new PlayList("New PlayList", loginUser.getU_id(), "Unknow"));
         showPlaylistOrderByUser(request, response);
         PlayList playList = playlistDAO.SelectLastestAddedPlaylist();
+        request.setAttribute("playlistName", playList.getPlayListName());
         if (playList != null) {
             String servlet_url = "/playlists?choice=edit&playlistID=" + playList.getP_id();
             response.sendRedirect(servlet_url);
@@ -128,6 +129,9 @@ public class PlaylistServlet extends HttpServlet {
         request.setAttribute("listAllSong",listAllSong);
         showPlaylistOrderByUser(request, response);
         request.setAttribute("playlistID",playListID);
+        PlayList playList = playlistDAO.select(playListID);
+        request.setAttribute("playlistName", playList.getPlayListName());
+        request.setAttribute("playlistUserID", playList.getU_id());
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/select-playlist.jsp");
         dispatcher.forward(request, response);
     }

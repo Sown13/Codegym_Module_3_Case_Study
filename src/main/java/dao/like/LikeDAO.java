@@ -9,7 +9,7 @@ import java.util.List;
 
 public class LikeDAO implements ILikeDAO {
 
-    private static final String INSERT_LIKE_SQL = "INSERT INTO likes (u_id, s_id) VALUES (?,?);";
+    private static final String INSERT_LIKE_SQL = "INSERT INTO likes (u_id, p_id) VALUES (?,?);";
     private static final String SELECT_LIKE_BY_ID = "select u_id, s_id from likes where u_id = ?";
     private static final String SELECT_ALL_LIKE = "select * from likes";
     private static final String DELETE_LIKE_SQL = "delete from likes where u_id = ?";

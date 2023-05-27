@@ -38,9 +38,9 @@
                                 <div class="col-6">
                                     <a href="#edit-playlist-info" class="text-decoration-none">
                                         <p class="text-white">Personal playlist</p>
-                                        <h3 class="text-white">My Playlist #n</h3>
-                                        <p class="text-white">#author</p>
-                                        <p class="text-white">Số lượt nghe: #number</p>
+                                        <h3 class="text-white">${playlistName}</h3>
+                                        <p class="text-white">label</p>
+                                        <p class="text-white">Số lượt like: #like</p>
                                     </a>
 
                                 </div>
@@ -88,7 +88,7 @@
 
                             <c:choose>
 
-                                <c:when test="${sessionScope['loginUser'] != null}">
+                                <c:when test="${sessionScope['loginUser'] != null && playlistUserID == sessionScope.loginUser.getU_id()}">
                                     <c:forEach var="song" items="${requestScope.listSong}" varStatus="loop">
                                         <tr class="table-dark">
                                             <td>${loop.index + 1}</td>
@@ -109,8 +109,7 @@
                                     </c:forEach>
                                 </c:when>
 
-
-                                <c:when test="${sessionScope['loginUser'] == null}">
+                                <c:when test="${sessionScope['loginUser'] == null || playlistUserID != sessionScope.loginUser.getU_id()}">
                                     <c:forEach var="song" items="${requestScope.listSong}" varStatus="loop">
                                         <tr class="table-dark">
                                             <td>${loop.index + 1}</td>
@@ -129,7 +128,7 @@
                     <hr style="color: white">
                     <section class="recommend-songs w-auto bg-dark p-3">
                         <c:choose>
-                            <c:when test="${sessionScope['loginUser'] != null}">
+                            <c:when test="${sessionScope['loginUser'] != null && playlistUserID == sessionScope.loginUser.getU_id()}">
                                 <h3 class="text-white">Gợi ý</h3>
                                 <table class="table songs-table table-hover">
                                     <thead>

@@ -34,10 +34,10 @@ foreign key (u_id) references users(u_id)
 
 create table likes (
 u_id int,
-s_id int,
+p_id int,
 foreign key(u_id) references users(u_id),
-foreign key(s_id) references songs(s_id),
-primary key (u_id, s_id)
+foreign key(p_id) references playlist(p_id),
+primary key (u_id, p_id)
 );
 
 create table comments (
