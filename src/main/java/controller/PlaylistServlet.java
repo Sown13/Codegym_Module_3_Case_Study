@@ -1,6 +1,7 @@
 package controller;
 
 import dao.playlist.PlaylistDAO;
+import dao.song.SongDAO;
 import model.PlayList;
 import model.Song;
 import model.User;
@@ -115,6 +116,8 @@ public class PlaylistServlet extends HttpServlet {
         String playListID = request.getParameter("playlistID");
         List<Song> listSong = playlistDAO.getListSongByPlayListId(playListID);
         request.setAttribute("listSong", listSong);
+        List<Song> listAllSong = playlistDAO.getAllSong();
+        request.setAttribute("listAllSong",listAllSong);
         showPlaylistOrderByUser(request, response);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/select-playlist.jsp");
         dispatcher.forward(request, response);
@@ -227,7 +230,7 @@ public class PlaylistServlet extends HttpServlet {
     private List<Song> showSongInPlaylist(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String playlistID = request.getParameter("playlistID");
         List<Song> listSong = playlistDAO.getListSongByPlayListId(playlistID);
-
         return listSong;
     }
+
 }

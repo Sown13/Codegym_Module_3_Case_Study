@@ -74,68 +74,80 @@
                             <thead>
                             <tr class="table-dark">
                                 <th scope="col">#</th>
-                                <th scope="col">Tiêu đề</th>
-                                <th scope="col">Album</th>
-                                <th scope="col">Yêu thích</th>
-                                <th scope="col">Trạng thái</th>
-                                <th scope="col" class="align-middle" >
-                                    <i class="fa-solid fa-trash fa-lg text-light ms-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete"></i>
+                                <th scope="col">TÊN BÀI HÁT</th>
+                                <th scope="col">TÁC GIẢ</th>
+                                <th scope="col">THỂ LOẠI</th>
+                                <th scope="col">LINK</th>
+                                <th scope="col" class="align-middle">
+                                    <i class="fa-solid fa-trash fa-lg text-light ms-3" data-bs-toggle="tooltip"
+                                       data-bs-placement="left" title="Delete"></i>
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            <c:forEach var="song" items="${requestScope.listSong}">
-                                <tr class="table-dark">
-                                    <td>${song.getS_id()}</td>
-                                    <td>${song.getSong_name()}</td>
-                                    <td>${song.getAuthor()}</td>
-                                    <td>${song.getLabel()}</td>
-                                    <td>${song.getSong_url()}</td>
-                                    <td>
-                                        <form method="post" action="#">
-                                            <input type="hidden" name="key" value="value">
-                                            <button type="submit" class="btn btn-outline-secondary">Xóa</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </c:forEach>
+                            <c:choose>
+
+                                <c:when test="${sessionScope['loginUser'] != null}">
+                                    <c:forEach var="song" items="${requestScope.listSong}" varStatus="loop">
+                                        <tr class="table-dark">
+                                            <td>${loop.index + 1}</td>
+                                            <td>${song.getSong_name()}</td>
+                                            <td>${song.getAuthor()}</td>
+                                            <td>${song.getLabel()}</td>
+                                            <td>${song.getSong_url()}</td>
+                                            <td>
+                                                <form method="post" action="#">
+                                                    <input type="hidden" name="key" value="value">
+                                                    <button type="submit" class="btn btn-outline-secondary">Xóa</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+
+                                    </c:forEach>
+                                </c:when>
+
+
+                                <c:when test="${sessionScope['loginUser'] == null}">
+                                    <c:forEach var="song" items="${requestScope.listSong}" varStatus="loop">
+                                        <tr class="table-dark">
+                                            <td>${loop.index + 1}</td>
+                                            <td>${song.getSong_name()}</td>
+                                            <td>${song.getAuthor()}</td>
+                                            <td>${song.getLabel()}</td>
+                                            <td>${song.getSong_url()}</td>
+                                        </tr>
+                                    </c:forEach>
+                                </c:when>
+
+                            </c:choose>
                             </tbody>
                         </table>
                     </section>
                     <hr style="color: white">
                     <section class="recommend-songs w-auto bg-dark p-3">
-                        <h3 class="text-white">Gợi ý</h3>
-                        <table class="table songs-table table-hover">
-                            <thead>
-                            </thead>
-                            <tbody>
-                            <tr class="table-dark" role="button">
-                                <td >1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td class="text-end"><button type="button" class="btn btn-outline-secondary">Thêm</button></td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td >1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td class="text-end"><button type="button" class="btn btn-outline-secondary">Thêm</button></td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td >1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td class="text-end"><button type="button" class="btn btn-outline-secondary">Thêm</button></td>
-                            </tr>
-                            <tr class="table-dark" role="button">
-                                <td >1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td class="text-end"><button type="button" class="btn btn-outline-secondary">Thêm</button></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <c:choose>
+                            <c:when test="${sessionScope['loginUser'] != null}">
+                                <h3 class="text-white">Gợi ý</h3>
+                                <table class="table songs-table table-hover">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach var="song" items="${requestScope['listAllSong']}">
+                                        <tr class="table-dark" role="button">
+                                            <td>${song.getSong_name()}</td>
+                                            <td>${song.getAuthor()}</td>
+                                            <td>${song.getLabel()}</td>
+                                            <td class="text-end">
+                                                <button type="button" class="btn btn-outline-secondary">Thêm</button>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </c:when>
+                        </c:choose>
+
                     </section>
                 </div>
             </div>

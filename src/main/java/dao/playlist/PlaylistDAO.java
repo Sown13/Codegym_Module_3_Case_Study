@@ -280,6 +280,25 @@ public class PlaylistDAO implements IPlayListDAO {
         return playList;
     }
 
+    public List<Song> getAllSong(){
+        List<Song> songs = new ArrayList<>();
+        String SELECT_ALL_SONG = "SELECT * FROM songs;";
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_SONG)) {
+            System.out.println(statement);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                String song_name = rs.getString("song_name");
+                String author = rs.getString("author");
+                String label = rs.getString("label");
+                songs.add(new Song(song_name, author, label));
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return songs;
+    }
+
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {
