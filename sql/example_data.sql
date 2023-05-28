@@ -56,8 +56,13 @@ values (default, 'Không yêu', 'sonson', default, 'abc', 10, 'Nhạc trẻ', 1,
        (default, 'Em gái mưa', 'Hương Tràm', default, 'abc', 300, 'V-pop', 7, default),
        (default, 'Duyên mình lỡ', 'Hương Tràm', default, 'abc', 300, 'V-pop', 9, default),
        (default, 'là em', 'Mo no', default, 'abc', 300, 'V-pop', 2, default),
-       (default, 'Em của quá khứ', 'Sơn Tùng', default, 'abc', 300, 'V-pop', 5, default),
-       (default, 'Chúng ta của hiện tại', 'Sơn Tùng', default, 'abc', 300, 'V-pop', 5, default);
+       (default, 'Em của quá khứ', 'Sơn Tùng', default, 'abc', 300, 'V-pop', 5, default);
+insert into songs values
+       (default, 'Cô bé mùa đông', 'Thùy Chi', default, 'views/audio/Co-Be-Mua-Dong-Trung-Quan-Idol-Thuy-Chi.mp3', 300, 'V-pop', 1, default),
+       (default, 'Giấc mơ trưa', 'Thùy Chi', default, 'views/audio/Giac-Mo-Trua-Thuy-Chi.mp3', 300, 'V-pop', 1, default),
+       (default, 'Giữ em đi', 'Thùy Chi', default, 'views/audio/Giu-Em-Di-Thuy-Chi.mp3', 300, 'V-pop', 1, default),
+       (default, 'Xe đạp', 'Thùy Chi', default, 'views/audio/Xe-Dap-Thuy-Chi-M4U.mp3', 300, 'V-pop', 1, default);
+
 
 
 insert into playlist

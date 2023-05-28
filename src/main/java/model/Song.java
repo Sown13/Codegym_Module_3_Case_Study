@@ -12,7 +12,7 @@ public class Song {
     private String label;
     private int u_id;
 
-    public Song(String id, String song_name, String author, Timestamp upload_date, int listening_frequency, int listeningFrequency, String label){}
+    public Song(){}
     public Song(String s_id,String song_name,Timestamp upload_date,String author,String song_url,int listening_frequency,String label){
         this.s_id=s_id;
         this.song_name=song_name;
@@ -21,8 +21,8 @@ public class Song {
         this.label=label;
         this.upload_date=upload_date;
         this.listening_frequency=listening_frequency;
-
     }
+
 
 
     public Song(String s_id, String song_name, String author, String label) {

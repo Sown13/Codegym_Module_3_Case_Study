@@ -48,6 +48,8 @@
     </div>
   </div>
   <!--    </div>-->
+  <input type="hidden" id="playingSongURL" value="${playingSong.getSong_url()}">
+<%--  <input type="hidden" id="playingSongURL" value="views/audio/sample-15s.mp3">--%>
 </main>
 </body>
 <script>
@@ -62,7 +64,9 @@
 
 
     var audioElement = document.createElement('audio');
-    audioElement.setAttribute('src', 'views/audio/sample-15s.mp3');
+    // audioElement.setAttribute('src', 'views/audio/sample-15s.mp3');
+    var playingSongURL = document.getElementById("playingSongURL").value;
+    audioElement.setAttribute('src', playingSongURL);
 
     audioElement.addEventListener('ended', function() {
       this.play();
