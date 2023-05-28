@@ -349,8 +349,9 @@ public class PlaylistServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User loginUser = (User) session.getAttribute("loginUser");
         if (loginUser != null) {
+            UserDAO userDAO = new UserDAO();
+            String lastPlaySongID = userDAO.getLastPlaySongID(loginUser.getU_id());
             SongDAO songDAO = new SongDAO();
-            String lastPlaySongID = loginUser.getLastSongPlayID();
             Song playingSong = songDAO.select(lastPlaySongID);
             request.setAttribute("playingSong", playingSong);
         }

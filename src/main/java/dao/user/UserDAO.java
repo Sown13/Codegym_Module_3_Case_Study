@@ -161,4 +161,20 @@ public class UserDAO implements IUserDAO {
         }
     }
 
+    public String getLastPlaySongID(String userID){
+        String sql = "SELECT last_play_song_id FROM users WHERE u_id = ? ";
+        String lastPlaySongID = null;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, userID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                lastPlaySongID = resultSet.getString("last_play_song_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lastPlaySongID;
+    }
+
 }
