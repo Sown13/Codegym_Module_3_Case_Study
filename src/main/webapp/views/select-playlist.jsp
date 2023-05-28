@@ -12,7 +12,6 @@
     <title>select-playlist</title>
     <link rel="stylesheet" href="views/css/bootstrap_css/bootstrap.css">
     <!-- Option 1: Include in HTML -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="views/css/style.css">
     <script src="views/css/bootstrap_js/bootstrap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -104,10 +103,13 @@
                                 <th scope="col">TÁC GIẢ</th>
                                 <th scope="col">THỂ LOẠI</th>
                                 <th scope="col">LINK</th>
-                                <th scope="col" class="align-middle">
-                                    <i class="fa-solid fa-trash fa-lg text-light ms-3" data-bs-toggle="tooltip"
-                                       data-bs-placement="left" title="Delete"></i>
-                                </th>
+                                <c:if test="${sessionScope['loginUser'] != null && playlistUserID == sessionScope.loginUser.getU_id()}">
+                                    <th scope="col" class="align-middle">
+                                        <i class="fa-solid fa-trash fa-lg text-light ms-3" data-bs-toggle="tooltip"
+                                           data-bs-placement="left" title="Delete"></i>
+                                    </th>
+                                </c:if>
+
                             </tr>
                             </thead>
                             <tbody>

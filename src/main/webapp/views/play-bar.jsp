@@ -56,7 +56,8 @@
   $(document).ready(function() {
     var playing = false;
     try {
-      var playingsong = ${requestScope['playingSong'].s_id}
+      console.log("${requestScope['playingSong']}");
+      var playingsong = "${requestScope['playingSong'].s_id}";
       console.log(playingsong);
     }catch (err) {
       console.log("error")
