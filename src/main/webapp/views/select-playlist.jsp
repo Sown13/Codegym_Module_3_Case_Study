@@ -35,15 +35,28 @@
                                     <img src="views/images/img_2_horizontal.jpg" alt="Image placeholder"
                                          class="rounded img-fluid">
                                 </div>
-                                <div class="col-6">
-                                    <a href="views/edit-playlist.jsp" class="text-decoration-none">
-                                        <p class="text-white">Personal playlist</p>
-                                        <h3 class="text-white">${playlistName}</h3>
-                                        <p class="text-white">label</p>
-                                        <p class="text-white">Số lượt like: ${requestScope.numberOfLike}</p>
-                                    </a>
+                                <c:choose>
+                                    <c:when test="${sessionScope['loginUser'] != null && playlistUserID == sessionScope.loginUser.getU_id()}">
+                                        <div class="col-6">
+                                            <a href="playlists?choice=editPlaylistInfo&playlistID=${playlistID}" class="text-decoration-none">
+                                                <p class="text-white">Personal playlist</p>
+                                                <h3 class="text-white">${playlistName}</h3>
+                                                <p class="text-white">label</p>
+                                                <p class="text-white">Số lượt like: ${requestScope.numberOfLike}</p>
+                                            </a>
+                                        </div>
+                                    </c:when>
 
-                                </div>
+                                    <c:when test="${sessionScope['loginUser'] == null || playlistUserID != sessionScope.loginUser.getU_id()}">
+                                        <div class="col-6">
+                                            <p class="text-white">Personal playlist</p>
+                                            <h3 class="text-white">${playlistName}</h3>
+                                            <p class="text-white">label</p>
+                                            <p class="text-white">Số lượt like: ${requestScope.numberOfLike}</p>
+                                        </div>
+                                    </c:when>
+
+                                </c:choose>
                             </div>
                         </div>
                         <hr style="color: white">

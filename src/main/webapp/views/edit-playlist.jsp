@@ -29,7 +29,7 @@
                 </div>
                 <div class="overflow-auto" style="height: 80vh">
                     <h1>Trang thay đổi thông tin Playlist</h1>
-                    <form>
+                    <form action="playlists" method="post">
                         <table class="table table-dark able-striped table-hover">
                             <thead>
                             <tr>
@@ -40,14 +40,16 @@
                             <tbody>
                             <tr>
                                 <th scope="row">Tên</th>
-                                <td><input class="w-100" name="playlist_name" value="Tên playlist hiển thị ở đây"></td>
+                                <td><input class="w-100" name="newPlaylistName" value="${requestScope.playlitsEdit.getPlayListName()}"></td>
                             </tr>
                             <tr>
-                                <th scope="row">Thuộc tính nào đấy</th>
-                                <td><input class="w-100" name="other_name" value="Tên playlist hiển thị ở đây"></td>
+                                <th scope="row">Label</th>
+                                <td><input class="w-100" name="newPlaylistLabel" value="${requestScope.playlitsEdit.getLabel()}"></td>
                             </tr>
                             </tbody>
                         </table>
+                        <input type="hidden" name="playlistID" value="${playlistID}">
+                        <input type="hidden" name="choice" value="editPlaylistInfo">
                         <button type="submit" class="btn btn-outline-secondary text-white">Save</button>
                     </form>
 

@@ -163,7 +163,6 @@ public class PlaylistDAO implements IPlayListDAO {
     }
 
 
-
     public List<PlayList> sortPlaylistByDate() {
         List<PlayList> playLists = new ArrayList<>();
         System.out.println(SORT_PLAYLIST_BY_DATE);
@@ -219,7 +218,7 @@ public class PlaylistDAO implements IPlayListDAO {
                 String playlistName = rs.getString("p_name");
                 String label = rs.getString("label");
                 Date createDate = rs.getDate("create_date");
-                playLists.add(new PlayList(playlistID, playlistName, userID, label,createDate));
+                playLists.add(new PlayList(playlistID, playlistName, userID, label, createDate));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -277,7 +276,7 @@ public class PlaylistDAO implements IPlayListDAO {
         }
     }
 
-    public void removeSongFromPlaylist(String songID, String playlistID){
+    public void removeSongFromPlaylist(String songID, String playlistID) {
         PlaylistDetail playlistDetail = new PlaylistDetail(songID, playlistID);
         PlaylistDetailDAO playlistDetailDAO = new PlaylistDetailDAO();
 
@@ -287,6 +286,7 @@ public class PlaylistDAO implements IPlayListDAO {
             printSQLException(e);
         }
     }
+
     public List<Song> getAllSong() {
         List<Song> songs = new ArrayList<>();
         String SELECT_ALL_SONG = "SELECT * FROM songs;";
@@ -308,11 +308,11 @@ public class PlaylistDAO implements IPlayListDAO {
         return songs;
     }
 
-    public List<Song> findSongByName(String songName) throws SQLException{
+    public List<Song> findSongByName(String songName) throws SQLException {
         String sql = "SELECT*FROM songs WHERE song_name LIKE '%'?'%'";
         List<Song> songList = new ArrayList<>();
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, songName);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -321,13 +321,13 @@ public class PlaylistDAO implements IPlayListDAO {
                 String author = resultSet.getString("author");
                 String song_url = resultSet.getString("song_url");
                 String label = resultSet.getString("label");
-                songList.add(new Song(songID,song_name, author, song_url, label));
+                songList.add(new Song(songID, song_name, author, song_url, label));
             }
         }
         return songList;
     }
 
-    public List<PlayList> getHotTrendPlaylist(){
+    public List<PlayList> getHotTrendPlaylist() {
         String sql = "SELECT p_id,p.p_name,p.u_id,label,COUNT(l.u_id) AS numberOfLike \n" +
                 "FROM likes l \n" +
                 "inner join playlist p using(p_id) \n" +
@@ -335,19 +335,32 @@ public class PlaylistDAO implements IPlayListDAO {
                 "ORDER BY numberOfLike DESC LIMIT 3;";
         List<PlayList> playLists = new ArrayList<>();
         try (Connection connection = getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String playlistID = resultSet.getString("p_id");
                 String playlistName = resultSet.getString("p_name");
                 String playlistUserID = resultSet.getString("u_id");
                 String label = resultSet.getString("label");
-                playLists.add(new PlayList(playlistID,playlistName,playlistUserID,label));
+                playLists.add(new PlayList(playlistID, playlistName, playlistUserID, label));
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             printSQLException(e);
         }
         return playLists;
+    }
+
+    public void updatePlaylistInfoByID(String newPlaylistName, String newPlaylistLabel, String playlistID) {
+        String sql = "update playlist set p_name = ?,label = ? where p_id = ?;";
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, newPlaylistName);
+            preparedStatement.setString(2, newPlaylistLabel);
+            preparedStatement.setString(3, playlistID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
     }
 
     private void printSQLException(SQLException ex) {

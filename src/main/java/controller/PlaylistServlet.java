@@ -8,6 +8,7 @@ import dao.user.UserDAO;
 import model.PlayList;
 import model.Song;
 import model.User;
+import sun.rmi.server.Dispatcher;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,27 +48,30 @@ public class PlaylistServlet extends HttpServlet {
                     showEditForm(request, response);
                     break;
                 case "delete":
-                    checkLastSongPlay(request,response);
+                    checkLastSongPlay(request, response);
                     showDeleteForm(request, response);
                     break;
                 case "search":
-                    checkLastSongPlay(request,response);
+                    checkLastSongPlay(request, response);
                     searchPlaylistByName(request, response);
                     break;
                 case "sort":
                     sortPlayListByDate(request, response);
                     break;
                 case "listSong":
-                    checkLastSongPlay(request,response);
+                    checkLastSongPlay(request, response);
                     findListSongByPlayListId(request, response);
                     break;
                 case "like":
                     likePlaylist(request, response);
-                    checkLastSongPlay(request,response);
+                    checkLastSongPlay(request, response);
                     showEditForm(request, response);
                     break;
                 case "play":
                     play(request, response);
+                    break;
+                case "editPlaylistInfo":
+                    showEditPlaylistInfo(request, response);
                     break;
                 default:
                     checkLastSongPlay(request, response);
@@ -92,7 +96,7 @@ public class PlaylistServlet extends HttpServlet {
                     showNewForm(request, response);
                     break;
                 case "edit":
-                    checkLastSongPlay(request,response);
+                    checkLastSongPlay(request, response);
                     update(request, response);
                     break;
                 case "addSong":
@@ -112,6 +116,10 @@ public class PlaylistServlet extends HttpServlet {
                 case "cancel":
                     checkLastSongPlay(request, response);
                     showEditForm(request, response);
+                    break;
+                case "editPlaylistInfo":
+                    checkLastSongPlay(request, response);
+                    editPlaylistInfo(request, response);
                     break;
                 default:
                     checkLastSongPlay(request, response);
@@ -247,8 +255,8 @@ public class PlaylistServlet extends HttpServlet {
     private void setHotTrendPlaylist(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List<PlayList> trendList = new ArrayList<>();
-    trendList = playlistDAO.getHotTrendPlaylist();
-    request.setAttribute("trendList", trendList);
+        trendList = playlistDAO.getHotTrendPlaylist();
+        request.setAttribute("trendList", trendList);
     }
 
     private void searchPlaylistByName(HttpServletRequest request, HttpServletResponse response)
@@ -328,9 +336,9 @@ public class PlaylistServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User loginUser = (User) session.getAttribute("loginUser");
         String lastPlaySongID = request.getParameter("playingSong");
-        if (loginUser != null){
+        if (loginUser != null) {
             UserDAO userDAO = new UserDAO();
-            userDAO.updateLastPlay(lastPlaySongID,loginUser.getU_id());
+            userDAO.updateLastPlay(lastPlaySongID, loginUser.getU_id());
         }
         SongDAO songDAO = new SongDAO();
         Song playingSong = songDAO.select(lastPlaySongID);
@@ -340,7 +348,7 @@ public class PlaylistServlet extends HttpServlet {
     public void checkLastSongPlay(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         User loginUser = (User) session.getAttribute("loginUser");
-        if (loginUser != null){
+        if (loginUser != null) {
             SongDAO songDAO = new SongDAO();
             String lastPlaySongID = loginUser.getLastSongPlayID();
             Song playingSong = songDAO.select(lastPlaySongID);
@@ -354,5 +362,25 @@ public class PlaylistServlet extends HttpServlet {
         showEditForm(request, response);
     }
 
+    private void showEditPlaylistInfo(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
+        String playlistID = request.getParameter("playlistID");
+        request.setAttribute("playlistID",playlistID);
+        PlayList playList = playlistDAO.select(playlistID);
+        request.setAttribute("playlitsEdit", playList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/edit-playlist.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void editPlaylistInfo(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
+        String newPlaylistName = request.getParameter("newPlaylistName");
+        String newPlaylistLabel = request.getParameter("newPlaylistLabel");
+        String playlistID = request.getParameter("playlistID");
+        playlistDAO.updatePlaylistInfoByID(newPlaylistName,newPlaylistLabel,playlistID);
+        request.setAttribute("playlistID", playlistID);
+        request.setCharacterEncoding("UTF-8");
+        showEditForm(request, response);
+    }
 
 }
