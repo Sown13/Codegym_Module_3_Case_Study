@@ -1,15 +1,15 @@
 use case_study_m3;
 insert into users (u_id, user_name, password, fullname, address, email)
-values (default, 'son94', '123456', 'Nguyễn Hải Sơn', 'Hà Nam', 'son@gmail.com'),
-       (default, 'nam95', '123456', 'Nguyễn Hoài Nam', 'Hà Nội', 'nam@gmail.com'),
-       (default, 'adua2001', '123456', 'Giàng A Dủa', 'Bắc Ninh', 'adua@gmail.com'),
-       (default, 'tuuyen2001', '123456', 'Đinh Tú Uyên', 'Hà Nội', 'uyen@gmail.com'),
-       (default, 'tuan97', '123456', 'Phạm Minh Tuấn', 'Hà Nội', 'tuan@gmail.com'),
-       (default, 'hung97', '123456', 'Nguyễn Như Hùng', 'Nam Định', 'hung@gmail.com'),
-       (default, 'congnghien97', '123456', 'Phạm Minh Công', 'Bắc Ninh', 'cong@gmail.com'),
-       (default, 'hai96', '987654321', 'Ngô Hoàng Hải', 'Ha Noi', 'hai@gmail.com'),
-       (default, 'hai00', '234567', 'Đỗ Trọng Hải', 'Bắc Ninh', 'haido@gmail.com'),
-       (default, 'hieu96', '3445778', 'Đặng Mạnh Hiếu', 'Nam Định', 'hieu@gmail.com');
+values (default, 'son94', '123', 'Nguyễn Hải Sơn', 'Hà Nam', 'son@gmail.com'),
+       (default, 'nam90', '123', 'Nguyễn Hoài Nam', 'Hà Nội', 'nam@gmail.com'),
+       (default, 'adua2001', '123', 'Giàng A Dủa', 'Bắc Ninh', 'adua@gmail.com'),
+       (default, 'tuuyen2001', '123', 'Đinh Tú Uyên', 'Hà Nội', 'uyen@gmail.com'),
+       (default, 'tuan97', '123', 'Phạm Minh Tuấn', 'Hà Nội', 'tuan@gmail.com'),
+       (default, 'hung97', '123', 'Nguyễn Như Hùng', 'Nam Định', 'hung@gmail.com'),
+       (default, 'congnghien97', '123', 'Phạm Minh Công', 'Bắc Ninh', 'cong@gmail.com'),
+       (default, 'hai96', '123', 'Ngô Hoàng Hải', 'Ha Noi', 'hai@gmail.com'),
+       (default, 'hai00', '123', 'Đỗ Trọng Hải', 'Bắc Ninh', 'haido@gmail.com'),
+       (default, 'hieu96', '123', 'Đặng Mạnh Hiếu', 'Nam Định', 'hieu@gmail.com');
 
 insert into songs
 values (default, 'Không yêu', 'sonson', default, 'abc', 10, 'Nhạc trẻ', 1, default),
