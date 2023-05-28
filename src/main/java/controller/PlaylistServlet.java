@@ -368,6 +368,7 @@ public class PlaylistServlet extends HttpServlet {
         request.setAttribute("playlistID",playlistID);
         PlayList playList = playlistDAO.select(playlistID);
         request.setAttribute("playlitsEdit", playList);
+        showPlaylistOrderByUser(request, response);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/edit-playlist.jsp");
         dispatcher.forward(request, response);
     }
