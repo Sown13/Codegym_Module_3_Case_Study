@@ -197,19 +197,6 @@
                                 </div>
                             </c:when>
                         </c:choose>
-                        
-
-
-                        <!-- Image cover display here-->
-                        <div class=" mx-0 my-5">
-                            <h1 class="text-white w-100">Image cover</h1>
-                        </div>
-                        <hr style="color: white">
-                        <!-- Playlist play button display here-->
-                        <div class="mx-0 my-3">
-                            <h5 class="text-white w-100 m-0">Play button display</h5>
-                        </div>
-                        <hr style="color: white">
                     </section>
                 </div>
             </div>
