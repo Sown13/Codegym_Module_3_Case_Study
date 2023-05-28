@@ -53,6 +53,14 @@
 <script>
   $(document).ready(function() {
     var playing = false;
+    try {
+      var playingsong = ${requestScope['playingSong'].s_id}
+      console.log(playingsong);
+    }catch (err) {
+      console.log("error")
+    }
+
+
     var audioElement = document.createElement('audio');
     audioElement.setAttribute('src', 'views/audio/sample-15s.mp3');
 
@@ -70,6 +78,12 @@
       $("#currentTime").text("Current second:" + audioElement.currentTime);
       $("#time").attr('value', audioElement.currentTime * 100 /audioElement.duration  );
     });
+    if (playingsong) {
+      audioElement.play();
+      $('#playbtn').removeClass("fa-play");
+      $('#playbtn').addClass("fa-pause");
+      playing = true;
+    }
 
     $('#playbtn').click(function() {
       if (playing == false) {
