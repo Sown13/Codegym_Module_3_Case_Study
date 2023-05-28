@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Playbar</title>
+  <title>Playbar</title>
 </head>
 <body>
 <main class="play-bar">
@@ -20,10 +20,8 @@
             <i class="fa-solid fa-music fa-2xl "></i>
           </div>
           <div class="col-6">
-            <c:set var="playingSong" value="${requestScope['playingSong']}">
-            <h6 class="p-0 m-0 small">${playingSong.getSong_name()}</h6>
-            <p class="p-0 m-0 small">${playingSong.getAuthor()}</p>
-            </c:set>
+            <h6 class="p-0 m-0 small">SONG NAME HERE</h6>
+            <p class="p-0 m-0 small">artist here</p>
           </div>
           <div class="col-3">
             <i class="fa-regular fa-heart text-light"></i>
@@ -36,7 +34,7 @@
         <div class="d-flex justify-content-center">
           <i class="fa-solid fa-shuffle fa-lg mx-2"></i>
           <i class="fa-solid fa-backward-step fa-lg mx-2"></i>
-          <i class="fa-solid fa-play fa-2xl mx-4"></i>
+          <i class="fa-solid fa-play fa-2xl mx-4" role="button" id="playbtn"></i>
           <i class="fa-solid fa-forward-step fa-lg mx-2"></i>
           <i class="fa-solid fa-repeat fa-lg mx-2"></i>
         </div>
@@ -50,4 +48,41 @@
   <!--    </div>-->
 </main>
 </body>
+<script>
+  $(document).ready(function() {
+    var playing = false;
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', 'views/audio/sample-15s.mp3');
+
+    audioElement.addEventListener('ended', function() {
+      this.play();
+    }, false);
+
+    audioElement.addEventListener("canplay",function(){
+      $("#length").text("Duration:" + audioElement.duration + " seconds");
+      $("#source").text("Source:" + audioElement.src);
+      $("#status").text("Status: Ready to play").css("color","green");
+    });
+
+    audioElement.addEventListener("timeupdate",function(){
+      $("#currentTime").text("Current second:" + audioElement.currentTime);
+      $("#time").attr('value', audioElement.currentTime * 100 /audioElement.duration  );
+    });
+
+    $('#playbtn').click(function() {
+      if (playing == false) {
+        audioElement.play();
+        $('#playbtn').removeClass("fa-play");
+        $('#playbtn').addClass("fa-pause");
+        playing = true;
+      } else {
+        audioElement.pause();
+        audioElement.currentTime = 0;
+        $('#playbtn').removeClass("fa-pause");
+        $('#playbtn').addClass("fa-play");
+        playing = false;
+      }
+    });
+  });
+</script>
 </html>
