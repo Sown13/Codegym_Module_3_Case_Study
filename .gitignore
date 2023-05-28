@@ -40,7 +40,4 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-/src/main/webapp/views/audio/Co-Be-Mua-Dong-Trung-Quan-Idol-Thuy-Chi.mp3
-/src/main/webapp/views/audio/Giac-Mo-Trua-Thuy-Chi.mp3
-/src/main/webapp/views/audio/Giu-Em-Di-Thuy-Chi.mp3
-/src/main/webapp/views/audio/Xe-Dap-Thuy-Chi-M4U.mp3
+
