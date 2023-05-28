@@ -8,8 +8,10 @@ user_name varchar(50) not null unique,
 password varchar(50) not null,
 fullname varchar(255),
 address varchar(255),
-email varchar(255) not null unique
+email varchar(255) not null unique,
+last_play_song_id int default null
 );
+
 
 Create table songs (
 s_id int auto_increment primary key,

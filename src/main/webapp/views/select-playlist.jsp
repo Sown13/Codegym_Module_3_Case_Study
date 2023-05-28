@@ -105,7 +105,7 @@
                                     <c:forEach var="song" items="${requestScope.listSong}" varStatus="loop">
                                         <tr class="table-dark">
                                             <td>${loop.index + 1}</td>
-                                            <td>${song.getSong_name()}</td>
+                                            <td><a href="playlists?choice=play&playlistID=${playlistID}&playingSong=${song.getS_id()}">${song.getSong_name()}</a></td>
                                             <td>${song.getAuthor()}</td>
                                             <td>${song.getLabel()}</td>
                                             <td>${song.getSong_url()}</td>
@@ -126,7 +126,7 @@
                                     <c:forEach var="song" items="${requestScope.listSong}" varStatus="loop">
                                         <tr class="table-dark">
                                             <td>${loop.index + 1}</td>
-                                            <td>${song.getSong_name()}</td>
+                                            <td><a href="playlists?choice=play&playlistID=${playlistID}&playingSong=${song.getS_id()}">${song.getSong_name()}</a></td>
                                             <td>${song.getAuthor()}</td>
                                             <td>${song.getLabel()}</td>
                                             <td>${song.getSong_url()}</td>
@@ -149,7 +149,7 @@
                                     <tbody>
                                     <c:forEach var="song" items="${requestScope['listAllSong']}">
                                         <tr class="table-dark" role="button">
-                                            <td>${song.getSong_name()}</td>
+                                            <td><a href="playlists?choice=play&playlistID=${playlistID}&playingSong=${song.getS_id()}">${song.getSong_name()}</a></td>
                                             <td>${song.getAuthor()}</td>
                                             <td>${song.getLabel()}</td>
                                             <td class="text-end">

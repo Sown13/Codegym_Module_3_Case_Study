@@ -1,7 +1,5 @@
 package dao.user;
 
-import controller.UserServlet;
-import model.Song;
 import model.User;
 
 import java.sql.*;
@@ -142,22 +140,25 @@ public class UserDAO implements IUserDAO {
                         resultSet.getString("password"),
                         resultSet.getString("fullname"),
                         resultSet.getString("address"),
-                        resultSet.getString("email"));
+                        resultSet.getString("email"),
+                        resultSet.getString("last_play_song_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-    public void logout(){
 
+    public void updateLastPlay(String songID, String userID) {
+        String sql = "UPDATE users SET last_play_song_id = ? WHERE u_id = ?;";
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, songID);
+            preparedStatement.setString(2, userID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-//
-//    public static void main(String[] args) {
-//        UserDAO userDAO=new UserDAO();
-//        User user=userDAO.login("1","1");
-//        System.out.println(user);
-//    }
 }
-

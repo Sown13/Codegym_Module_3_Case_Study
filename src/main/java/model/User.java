@@ -8,13 +8,16 @@ public class User {
     private String address;
     private String email;
 
-    public User(String u_id, String user_name, String password,String fullname, String address, String email) {
+    private String lastSongPlayID;
+
+    public User(String u_id, String user_name, String password,String fullname, String address, String email, String lastSongPlayID) {
         this.u_id = u_id;
         this.user_name = user_name;
         this.password = password;
         this.fullname = fullname;
         this.address = address;
         this.email = email;
+        this.lastSongPlayID = lastSongPlayID;
     }
 
     public User(String user_name, String password, String fullname, String address, String email) {
@@ -81,5 +84,13 @@ public class User {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public String getLastSongPlayID() {
+        return lastSongPlayID;
+    }
+
+    public void setLastSongPlayID(String lastSongPlayID) {
+        this.lastSongPlayID = lastSongPlayID;
     }
 }

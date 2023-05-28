@@ -1,5 +1,5 @@
 use case_study_m3;
-insert into users
+insert into users (u_id, user_name, password, fullname, address, email)
 values (default, 'son94', '123456', 'Nguyễn Hải Sơn', 'Hà Nam', 'son@gmail.com'),
        (default, 'nam95', '123456', 'Nguyễn Hoài Nam', 'Hà Nội', 'nam@gmail.com'),
        (default, 'adua2001', '123456', 'Giàng A Dủa', 'Bắc Ninh', 'adua@gmail.com'),

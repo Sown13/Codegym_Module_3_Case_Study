@@ -10,13 +10,13 @@ import static others.Utils.*;
 
 public class SongDAO implements ISongDAO {
 
-    private static final String INSERT_song_SQL = "INSERT INTO song(song_name,author,song_url,label) VALUES(?,?,?,?)";
-    private static final String SELECT_SONG_BY_ID = "SELECT s_id,song_name,author,upload_date,song_url,label,listening_frequency";
-    private static final String SELECT_ALL_SONG = "SELECT*FORM song";
-    private static final String DELETE_song_SQL = "DELETE FROM song WHERE id=?";
-    private static final String Max_listen_song_SQL = "SELECT FROM* song WHERE listening_frequency=? ORDER BY listening_frequency DESC";
-    private static final String SEARCH_SONG_BY_SONG_NAME_SQL = "SELECT * FROM song WHERE name_song like=%name_song% ";
-    private static final String UPDATE_USERS_SQL = "UPDATE song s_name=?,author=?,song_url=?,label=?";
+    private static final String INSERT_song_SQL = "INSERT INTO songs(song_name,author,song_url,label) VALUES(?,?,?,?)";
+    private static final String SELECT_SONG_BY_ID = "SELECT*FROM songs WHERE s_id = ?;";
+    private static final String SELECT_ALL_SONG = "SELECT*FROM songs";
+    private static final String DELETE_song_SQL = "DELETE FROM songs WHERE s_id=?";
+    private static final String Max_listen_song_SQL = "SELECT*FROM songs WHERE listening_frequency=? ORDER BY listening_frequency DESC";
+    private static final String SEARCH_SONG_BY_SONG_NAME_SQL = "SELECT * FROM songs WHERE name_song like=%name_song% ";
+    private static final String UPDATE_SONG_SQL = "UPDATE songs SET songs s_name=?,author=?,song_url=?,label=? WHERE s_id = ?;";
 
     public SongDAO() {
     }
@@ -51,8 +51,6 @@ public class SongDAO implements ISongDAO {
             printSQLException(e);
 
         }
-
-
     }
 
 
@@ -60,14 +58,14 @@ public class SongDAO implements ISongDAO {
     public Song select(String songID) {
         Song song = null;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(SELECT_SONG_BY_ID);) {
+             PreparedStatement statement = connection.prepareStatement(SELECT_SONG_BY_ID)) {
             statement.setString(1, songID);
             System.out.println(statement);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 String name = rs.getString("song_name");
                 String author = rs.getString("author");
-                String song_url = rs.getString("song_url");
+                String song_url = rs.getString("url");
                 String label = rs.getString("label");
                 song = new Song(songID, name, author, song_url, label);
             }
@@ -111,7 +109,7 @@ public class SongDAO implements ISongDAO {
     public boolean update(Song song) throws SQLException {
         boolean checkSong;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL)) {
+             PreparedStatement statement = connection.prepareStatement(UPDATE_SONG_SQL)) {
             statement.setString(1, song.getSong_name());
             statement.setString(2, song.getAuthor());
             statement.setString(3, song.getSong_url());
@@ -135,7 +133,6 @@ public class SongDAO implements ISongDAO {
                 }
             }
         }
-
     }
 
     public List<Song> searchSong(String name) throws SQLException {
@@ -163,27 +160,7 @@ public class SongDAO implements ISongDAO {
         return songs;
     }
 
-    //    public List<Song>ListMaxSong(int listening_frequency ) throws  SQLException{
-//        List<Song>songs=new ArrayList<>();
-//        Song song;
-//        try (Connection connection=getConnection();
-//        PreparedStatement statement=connection.prepareStatement(Max_listen_song_SQL)) {
-//
-//            System.out.println(statement);
-//            System.out.println(statement);
-//            ResultSet rs = statement.executeQuery();
-//            while (rs.next()) {
-//                String name_song = rs.getString("song_name");
-//                String author = rs.getString("author");
-//                String song_url = rs.getString("song_url");
-//                String label = rs.getString("label");
-//                song = new Song(name_song, author, song_url, label);
-//                songs.add(song);
-//            }
-//
-//        }
-//        return songs;
-//    }
+
     public List<Song> range() throws SQLException {
         List<Song> songList = new ArrayList<>();
         Song song;
@@ -246,5 +223,7 @@ public class SongDAO implements ISongDAO {
         }
         return songList;
     }
+
+
 
 }
