@@ -20,8 +20,10 @@
             <i class="fa-solid fa-music fa-2xl "></i>
           </div>
           <div class="col-6">
-            <h6 class="p-0 m-0 small">SONG NAME HERE</h6>
-            <p class="p-0 m-0 small">artist here</p>
+            <c:set var="playingSong" value="${requestScope['playingSong']}">
+              <h6 class="p-0 m-0 small">${playingSong.getSong_name()}</h6>
+              <p class="p-0 m-0 small">${playingSong.getAuthor()}</p>
+            </c:set>
           </div>
           <div class="col-3">
             <i class="fa-regular fa-heart text-light"></i>
