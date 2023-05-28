@@ -1,3 +1,4 @@
+drop database case_study_m3;
 CREATE DATABASE case_study_m3;
 use case_study_m3;
 

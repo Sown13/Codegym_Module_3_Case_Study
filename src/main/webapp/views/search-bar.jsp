@@ -20,7 +20,7 @@
             <input type="text" class="form-control form-input" placeholder="Search anything..." name="playlistName">
                 <input type="hidden" name="choice" value="search">
                 <input type="hidden" name="playlistID" value="${requestScope.playlistID}">
-                <input type="submit" value="Tìm">
+<%--                <input type="submit" value="Tìm">--%>
             </form>
         </div>
     </div>
