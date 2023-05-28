@@ -36,7 +36,7 @@
                                          class="rounded img-fluid">
                                 </div>
                                 <div class="col-6">
-                                    <a href="#edit-playlist-info" class="text-decoration-none">
+                                    <a href="views/edit-playlist.jsp" class="text-decoration-none">
                                         <p class="text-white">Personal playlist</p>
                                         <h3 class="text-white">${playlistName}</h3>
                                         <p class="text-white">label</p>
